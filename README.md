@@ -2,8 +2,10 @@
 
 Este repositório contém as configurações, personalidades (`SOUL.md`) e plugins dos agentes do CIIA para o Hermes Agent:
 
-*   **Jo:** Gestão do Conhecimento & Google Drive
-*   **Larissa:** Engajamento de Bolsistas no Discord
+Todos os três agentes interagem com os usuários primariamente através do Discord:
+
+*   **Jo:** Gestão do Conhecimento & Integração com o Google Drive
+*   **Larissa:** Engajamento de Bolsistas
 *   **Vini:** Comunicação & Divulgação
 
 ---
@@ -47,9 +49,9 @@ Dentro deste arquivo, adicione as chaves necessárias (como `OPENROUTER_API_KEY`
 
 ---
 
-## Integração com o Discord (Larissa & Vini)
+## Integração com o Discord (Acesso dos Usuários)
 
-Para que os agentes funcionem no Discord, você precisa conectar o perfil do Hermes a um Bot do Discord.
+Para que os usuários consigam conversar com os 3 agentes (Jo, Larissa e Vini), você precisa conectar cada perfil do Hermes ao seu respectivo Bot no Discord. O processo abaixo deve ser feito individualmente para cada agente:
 
 ### 1. Criar o Bot no Portal de Desenvolvedores do Discord
 1. Acesse o [Discord Developer Portal](https://discord.com/developers/applications).
