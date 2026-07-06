@@ -4,9 +4,14 @@ Este repositório contém as configurações, personalidades (`SOUL.md`) e plugi
 
 Todos os três agentes interagem com os usuários primariamente através do Discord:
 
-*   **Jo:** Gestão do Conhecimento & Integração com o Google Drive
-*   **Larissa:** Engajamento de Bolsistas
-*   **Vini:** Comunicação & Divulgação
+<div align="center">
+
+| <img src="./hermes_fotos_agentes/jo_pic.png" width="120"> | <img src="./hermes_fotos_agentes/larissa_pic.png" width="120"> | <img src="./hermes_fotos_agentes/vini_pic.png" width="120"> |
+|:---:|:---:|:---:|
+| **Jo** | **Larissa** | **Vini** |
+| *Gestão do Conhecimento &*<br>*Integração com o Google Drive* | *Engajamento de Bolsistas* | *Comunicação & Divulgação* |
+
+</div>
 
 ---
 
