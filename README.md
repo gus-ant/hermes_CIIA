@@ -135,3 +135,44 @@ Guarde esta tabela. Ela é o seu mapa para lidar com o terminal no dia a dia dos
 | Reiniciar a conexão com o Discord | `hermes gateway restart --profile nome_do_agente` |
 | Ver o logs/diário do robô em tempo real | `tail -f ~/.hermes/profiles/nome_do_agente/logs/gateway.log` |
 | Verificar se o token do Discord é válido | `curl -H "Authorization: Bot SEU_TOKEN" https://discord.com/api/v10/users/@me` |
+
+---
+
+## Economia de Tokens e Otimização de Custos
+
+Manter agentes rodando continuamente (especialmente em plataformas como o Discord) pode consumir muitos tokens caso não haja um controle. O Hermes possui ferramentas nativas em seu `config.yaml` para otimizar esse consumo:
+
+### 1. Compressão Automática de Contexto
+A compressão resume conversas longas de forma automática. Ela usa um modelo mais leve para gerar resumos do histórico intermediário, liberando espaço de contexto.
+Ajuste os parâmetros no `config.yaml` de cada agente:
+```yaml
+compression:
+  enabled: true
+  threshold: 0.50       # Ativa a compressão ao atingir 50% do limite do modelo
+  target_ratio: 0.20    # Mantém 20% do limite reservado para as mensagens recentes
+  protect_last_n: 20    # Mantém as últimas 20 mensagens totalmente intactas
+```
+
+### 2. Reinicialização Automática de Sessões
+Para agentes no Discord, conversas ativas acumulam tokens rapidamente. Use o `session_reset` para limpar o contexto após inatividade ou diariamente. O Hermes salvará os aprendizados importantes na memória persistente antes de limpar o histórico.
+Configure no `config.yaml`:
+```yaml
+session_reset:
+  mode: both           # Limpa por inatividade E num horário agendado
+  idle_minutes: 1440   # Zera após 24h sem interações
+  at_hour: 4           # Reinicia às 4:00 da manhã
+```
+
+### 3. Prompt Caching
+Se estiver utilizando modelos da Anthropic (como Claude 3.5 Sonnet), ative o cache de prompt para reutilizar instruções de sistema (`SOUL.md`) e históricos, reduzindo drasticamente o custo de leitura (input).
+Configure no `config.yaml`:
+```yaml
+prompt_caching:
+  cache_ttl: "1h"      # Mantém o cache por 1 hora
+```
+
+### 4. Controle Manual via Chat
+Os usuários também podem comandar o agente diretamente na conversa para poupar recursos:
+*   Use `/reset` ou `/new` para zerar o histórico da conversa e começar um assunto novo.
+*   Use `/compact` para forçar a compressão do contexto imediatamente.
+*   Use `/context` para visualizar o consumo atual de tokens da sessão.
