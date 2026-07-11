@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Agentes de Inteligência Artificial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ffcc;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --neon-purple: #9d4edd;
+            --neon-yellow: #f9d423;
+            --dark-black: #000000;
+        }
+
+        .reveal { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--dark-black);
+            color: #ffffff;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 { 
+            font-family: 'Outfit', sans-serif; 
+            text-transform: none; 
+            letter-spacing: -2px; 
+            font-weight: 900; 
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+
+        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
+        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
+        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
+        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
+        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
+        
+        .accent-gradient {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.4));
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            text-align: center;
+            margin: 15px auto;
+            width: 95%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+        
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .flex-item {
+            flex: 1;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s;
+            text-align: center;
+        }
+        
+        .flex-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .icon-large { width: 80px; height: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 10px currentColor); }
+        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+
+        .reveal p { font-size: 0.9em; line-height: 1.5; font-weight: 300; color: #d1d1e9; }
+        
+        /* Floating animations for the cover slide */
+        @keyframes float1 { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        @keyframes float2 { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(20px) rotate(-5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        .float-fast { animation: float1 4s ease-in-out infinite; }
+        .float-slow { animation: float2 6s ease-in-out infinite; }
+        
+        /* Scheme arrows */
+        .scheme-arrow { font-size: 1.5em; color: var(--neon-blue); align-self: center; margin: 0 10px; }
+
+        .mockup-message {
+            background: #202c33;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 4px solid var(--neon-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .mockup-time { font-size: 0.6em; color: #8696a0; text-align: right; display: block; margin-top: 10px; }
+
+        .split-code-text { display: flex; align-items: center; justify-content: center; gap: 30px; }
+        .code-box { font-family: monospace; text-align: left; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #ff4444; color: #888; font-size: 0.7em;}
+        .text-box { font-family: inherit; text-align: left; background: rgba(0,255,204,0.1); padding: 20px; border-radius: 10px; border: 1px solid var(--neon-green); font-size: 0.8em; }
+
+        /* Controls */
+        .reveal .controls-arrow { color: var(--neon-purple) !important; }
+        .reveal .progress span { background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: A Capa -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="position: relative; height: 40px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                    <!-- Floating digital tools -->
+                    <svg class="icon-med accent-blue float-fast" style="position: absolute; left: 20%;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M18 9l-5 5-4-4-5 5"/></svg>
+                    <svg class="icon-med accent-green float-slow" style="position: absolute; right: 20%;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                    <!-- Center user -->
+                    <svg class="icon-large accent-purple" style="z-index: 10;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                </div>
+                
+                <h1 style="font-size: 3em; margin-bottom: 20px;">Como Colocar a Inteligência Artificial para <span class="accent-gradient">Trabalhar por Você</span></h1>
+                <p style="font-size: 1.3em;"><strong class="accent-blue">(Sem Programar Nada)</strong></p>
+                
+                <aside class="notes">
+                    Olá, pessoal, muito obrigado pela presença de todos. Hoje nós vamos falar sobre um assunto que está em todo lugar: a Inteligência Artificial. Mas esqueçam aquela ideia de que IA é coisa de cientista de dados ou de Hollywood. Hoje, eu vou mostrar como vocês podem criar uma equipe de assistentes virtuais altamente qualificados — os chamados Agentes — para assumirem o trabalho chato do dia a dia de vocês, usando apenas o bom e velho português.
+                </aside>
+            </section>
+
+            <!-- Slide 2: O Problema -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>O Dia Só Tem 24 Horas <span class="accent-pink">(E Falta Tempo)</span></h2>
+                
+                <div class="glass-box">
+                    <div class="flex-container" style="justify-content: center; flex-wrap: wrap;">
+                        <svg class="icon-large accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <svg class="icon-large accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" /></svg>
+                    </div>
+                    <p style="font-size: 1.1em; text-align: center; margin-top: 20px;">Trabalho braçal, e-mails repetitivos, extração de dados manuais...</p>
+                    <p style="font-size: 1.2em; text-align: center; color: var(--neon-pink); font-weight: 600;">E se você pudesse delegar tudo isso?</p>
+                </div>
+                
+                <aside class="notes">
+                    Vamos ser sinceros: quem aqui já terminou o dia com a sensação de que trabalhou feito um louco, mas passou 80% do tempo respondendo e-mails repetitivos, caçando informações na internet ou copiando e colando dados de um lugar para o outro? Nós gastamos nossa energia intelectual com processos manuais. E se você pudesse delegar isso tudo?
+                </aside>
+            </section>
+
+            <!-- Slide 3: ChatGPT vs. Agente -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2><span class="accent-pink">O Estagiário Reativo</span> vs. <span class="accent-green">O Funcionário Sênior</span></h2>
+                
+                <div class="flex-container">
+                    <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3);">
+                        <svg class="icon-large accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.625.625 0 11-1.25 0 .625.625 0 011.25 0zm0 0H8.25m4.125 0a.625.625 0 11-1.25 0 .625.625 0 011.25 0zm0 0H12m4.125 0a.625.625 0 11-1.25 0 .625.625 0 011.25 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
+                        <h3 class="accent-pink">ChatGPT Comum</h3>
+                        <p>Você pergunta, ele responde. <strong>Só se move se você mandar.</strong></p>
+                    </div>
+                    
+                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3);">
+                        <svg class="icon-large accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" /></svg>
+                        <h3 class="accent-green">Agente Virtual</h3>
+                        <p>Recebe uma meta, planeja os passos e <strong>resolve sozinho.</strong></p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Muitos de vocês já devem ter usado o ChatGPT ou ferramentas parecidas. Você faz uma pergunta, ele te dá um texto e para ali, certo? Ele é reativo. É como um estagiário muito inteligente, mas que precisa que você segure a mão dele a cada passo. O que eu vim apresentar hoje é o próximo nível: os Agentes de IA. Um agente não quer apenas conversar com você; ele quer trabalhar. Em vez de pedir 'escreva um texto', você dá uma missão para ele: 'Pesquise os preços de mercado, compare com os nossos concorrentes e me mande o resumo'. O agente se vira sozinho e só volta quando o trabalho estiver pronto.
+                </aside>
+            </section>
+
+            <!-- Slide 4: Anatomia -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Como Pensa um <span class="accent-blue">Agente Virtual?</span></h2>
+                
+                <div class="flex-container">
+                    <div class="flex-item" style="border-color: rgba(249, 212, 35, 0.3);">
+                        <svg class="icon-large accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" /></svg>
+                        <h3 class="accent-yellow" style="font-size: 1.5em;">Identidade</h3>
+                    </div>
+                    <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
+                        <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
+                        <h3 class="accent-blue" style="font-size: 1.5em;">Ferramentas</h3>
+                    </div>
+                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3);">
+                        <svg class="icon-large accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" /></svg>
+                        <h3 class="accent-green" style="font-size: 1.5em;">Objetivo</h3>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Para fazer a Inteligência Artificial trabalhar como um agente para você, nós dividimos a mente dela em três partes simples: Primeiro, damos uma Identidade. Dizemos a ela: 'Você é um Analista de Mercado Sênior'. Segundo, damos Ferramentas. Mostramos o que ela pode usar. Ela pode usar a internet para pesquisar? Pode ler uma planilha? Pode enviar um e-mail? E terceiro, damos um Objetivo claro: 'Descubra quais são as principais tendências de tecnologia desta semana e prepare um relatório'. Com isso, ela une a sua identidade com as ferramentas disponíveis para cumprir a meta.
+                </aside>
+            </section>
+
+            <!-- Slide 5: Caso Prático 1 -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>Exemplo 1: <span class="accent-green">O Monitor de Mercado 24/7</span></h2>
+                
+                <div class="mockup-message">
+                    <p style="margin:0; font-weight: 600; color: #fff;">Agente (Analista Sênior)</p>
+                    <p style="margin-top: 10px; font-size: 0.9em; line-height: 1.4;">Bom dia! ☕<br><br>Aqui está o resumo das tendências do seu setor de hoje:<br>
+                    <strong>1. Tecnologia:</strong> Nova IA anunciada com redução de custos em 30%.<br>
+                    <strong>2. Concorrentes:</strong> Empresa X lançou produto Y focado no mesmo nicho que o nosso.<br><br>
+                    Acesse o dossiê completo no drive.</p>
+                    <span class="mockup-time">06:00 AM</span>
+                </div>
+
+                <aside class="notes">
+                    Vamos para a prática. Imaginem um empresário ou profissional autônomo que precisa estar sempre atualizado sobre o seu mercado. Em vez de passar uma hora lendo portais de notícias todas as manhãs, ele cria um Agente. O agente acorda às 6h da manhã, varre os principais sites do setor, filtra o que realmente importa, descarta as fofocas, traduz o que estiver em inglês e deixa um resumo perfeito direto no celular do dono da empresa antes do horário do café. Quanto tempo isso economiza na sua semana?
+                </aside>
+            </section>
+
+            <!-- Slide 6: Caso Prático 2 -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Exemplo 2: <span class="accent-pink">O Fim da Caixa Lotada</span></h2>
+                
+                <div class="glass-box" style="display: flex; align-items: center; justify-content: center; padding: 50px;">
+                    <div style="text-align: center;">
+                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <p style="margin:0;">E-mail Chega</p>
+                    </div>
+                    <div class="scheme-arrow">→</div>
+                    <div style="text-align: center;">
+                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                        <p style="margin:0;">Agente Categoriza</p>
+                    </div>
+                    <div class="scheme-arrow">→</div>
+                    <div style="text-align: center;">
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                        <p style="margin:0;">Rascunho Pronto</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Outro exemplo clássico: a caixa de e-mails. Um agente pode ser programado para ler cada e-mail que chega para você. Se for uma dúvida comum de cliente, ele vai no seu histórico de dados, entende a resposta correta e escreve um rascunho de e-mail impecável. Quando você abre o seu computador, o seu único trabalho é ler o rascunho que a IA fez, ver se está tudo certo e clicar em 'Enviar'. Você vira um supervisor do seu próprio tempo.
+                </aside>
+            </section>
+
+            <!-- Slide 7: Como é feito? -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>A Nova Linguagem de Programação é o <span class="accent-gradient">Português</span></h2>
+                
+                <div class="split-code-text">
+                    <!-- Bad Code Box -->
+                    <div class="code-box" style="flex:1;">
+                        <p style="color: #ff4444; font-weight: bold; text-align: center; font-size: 1.5em; margin: 0;">❌</p>
+                        <code>
+                            <del>import requests<br>
+                            def scrape_data(url):<br>
+                            &nbsp;&nbsp;response = req.get(url)<br>
+                            &nbsp;&nbsp;soup = bs4(response)<br>
+                            &nbsp;&nbsp;return soup.find("div")<br>
+                            if __name__ == '__main__':<br>
+                            &nbsp;&nbsp;run_bot()</del>
+                        </code>
+                    </div>
+                    
+                    <div class="scheme-arrow" style="color: #666;">vs</div>
+                    
+                    <!-- Good Text Box -->
+                    <div class="text-box" style="flex:1;">
+                        <p style="color: var(--neon-green); font-weight: bold; text-align: center; font-size: 1.5em; margin: 0;">✅</p>
+                        <p style="font-weight: 600; color: #fff;">"Atue como meu assistente financeiro. Leia a planilha de vendas na pasta X, calcule o lucro desta semana e me avise se estiver abaixo da meta."</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Vocês devem estar pensando: 'Tudo bem, isso parece mágica, mas deve ser caríssimo ou exigir que eu saiba programar em Python'. E a resposta é: não. Hoje em dia, criar esses fluxos com agentes é feito através de conversas ou de plataformas visuais — onde você arrasta blocos na tela e conecta as ferramentas. A linguagem de programação mais importante do mundo hoje se chama português bem escrito. Se você sabe dar ordens claras e delegar tarefas para um ser humano, você sabe criar um Agente de IA.
+                </aside>
+            </section>
+
+            <!-- Slide 8: Conclusão -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="height: 10vh; display: flex; align-items: center; justify-content: center;">
+                    <h1 style="font-size: 3.5em; line-height: 1.2;">
+                        O Futuro Pertence a Quem Sabe <span class="accent-gradient">Delegar.</span>
+                    </h1>
+                </div>
+
+                <aside class="notes">
+                    A Inteligência Artificial não vai substituir as pessoas. Quem vai substituir profissionais são as pessoas que sabem usar a Inteligência Artificial a seu favor. Criar agentes virtuais para trabalharem para você não é luxo, é sobrevivência no mercado atual para focar no que realmente importa: a estratégia, o lado humano e o crescimento do seu negócio. Muito obrigado!
+                </aside>
+            </section>
+
+            <!-- Slide 9: Q&A -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h1 class="accent-blue" style="font-size: 2.8em;">Perguntas?</h1>
+                <h2>Bora Criar um Agente <span class="accent-green">Agora?</span></h2>
+                
+                <div class="glass-box" style="text-align: center; margin-top: 40px; padding: 20px;">
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;"> Professores: Gustavo, André e João</p>
+                    <p style="color: var(--neon-pink); margin-bottom: 5px;">Aula 1: Conhecendo o poder do Hermes</p>
+                </div>
+
+                <aside class="notes">
+                    Agora eu quero abrir o espaço para vocês. Me digam: qual é a tarefa mais chata ou demorada do dia a dia de vocês? Vamos desenhar juntos, aqui e agora, como seria o agente ideal para resolver esse problema.
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 1100,
+            height: 700,
+            margin: 0.04,
+            transition: 'zoom', 
+            backgroundTransition: 'convex',
+            controls: true,
+            progress: true,
+            center: true,
+            mouseWheel: false,
+            // Enables speaker notes to be viewed by pressing 's' on the keyboard
+            showNotes: false 
+        });
+    </script>
+</body>
+</html>
