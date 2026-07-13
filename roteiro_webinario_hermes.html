@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Roteiro de Webinário – Hermes CIIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #fff;
+    color: #1a1a2e;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    page-break-after: always;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a0530 50%, #001a2c 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 80px;
+  }
+
+  .cover .badge {
+    background: rgba(0, 210, 255, 0.15);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    border-radius: 50px;
+    padding: 8px 24px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d2ff;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .cover h1 span {
+    background: linear-gradient(90deg, #00ffcc, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cover .subtitle {
+    font-size: 16px;
+    color: #9090b0;
+    max-width: 600px;
+    margin: 0 auto 60px;
+  }
+
+  .cover .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .cover .meta-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .cover .meta-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #606080;
+    margin-bottom: 6px;
+  }
+
+  .cover .meta-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0e0ff;
+  }
+
+  .cover .footer-note {
+    margin-top: 60px;
+    font-size: 10px;
+    color: #404060;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ===== DAY DIVIDER ===== */
+  .day-divider {
+    page-break-before: always;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
+  }
+
+  .day-divider .day-number {
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -6px;
+    color: rgba(0,0,0,0.04);
+    margin-bottom: -20px;
+  }
+
+  .day-divider .day-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .day-divider h2 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #1a1a2e;
+  }
+
+  .day-divider .day-desc {
+    font-size: 14px;
+    color: #606080;
+    max-width: 550px;
+    margin: 0 auto 50px;
+  }
+
+  .day-divider .timeline {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+  }
+
+  .day-divider .timeline-item {
+    border: 1px solid #dde;
+    border-radius: 10px;
+    padding: 12px 18px;
+    text-align: left;
+    min-width: 160px;
+    background: #fff;
+  }
+
+  .day-divider .tl-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9090b0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .day-divider .tl-topic {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-top: 4px;
+  }
+
+  /* ===== MODULE HEADER ===== */
+  .module-header {
+    page-break-before: always;
+    padding: 40px 60px 30px;
+    border-bottom: 3px solid #eef;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .module-header .module-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  .module-header h3 {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #1a1a2e;
+  }
+
+  /* ===== SLIDE ENTRY ===== */
+  .slide-entry {
+    padding: 30px 60px;
+    border-bottom: 1px solid #f0f0fa;
+  }
+
+  .slide-entry:last-child {
+    border-bottom: none;
+  }
+
+  .slide-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b0b0c8;
+    margin-bottom: 6px;
+  }
+
+  .slide-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .duration-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  .script-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9090b0;
+    margin-bottom: 8px;
+  }
+
+  .script-text {
+    font-size: 12px;
+    color: #2a2a3e;
+    line-height: 1.8;
+    padding: 16px 20px;
+    background: #f8f9ff;
+    border-left: 4px solid #dde;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+  }
+
+  .tips-block {
+    font-size: 11px;
+    color: #50507a;
+    line-height: 1.6;
+    padding: 12px 16px;
+    background: #fffbea;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+  }
+
+  .tips-block strong {
+    color: #8a6000;
+  }
+
+  .code-inline {
+    font-family: monospace;
+    background: #e8f4ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #0066aa;
+  }
+
+  .transition-note {
+    font-size: 11px;
+    font-style: italic;
+    color: #8080a0;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px dashed #dde;
+    margin-top: 16px;
+  }
+
+  /* ===== COLORS PER MODULE ===== */
+  .mod1 { background: rgba(0, 210, 255, 0.12); color: #006688; border: 1px solid rgba(0,210,255,0.3); }
+  .mod2 { background: rgba(157, 78, 221, 0.12); color: #6a009a; border: 1px solid rgba(157,78,221,0.3); }
+  .mod3 { background: rgba(0, 255, 204, 0.12); color: #007755; border: 1px solid rgba(0,255,204,0.3); }
+  .mod4 { background: rgba(255, 0, 127, 0.12); color: #880044; border: 1px solid rgba(255,0,127,0.3); }
+
+  .dur1 { background: #e8f4ff; color: #0066aa; }
+  .dur2 { background: #f0eaff; color: #6a009a; }
+  .dur3 { background: #e8fff8; color: #007755; }
+  .dur4 { background: #fff0f6; color: #880044; }
+
+  .script-text1 { border-left-color: #00d2ff; }
+  .script-text2 { border-left-color: #9d4edd; }
+  .script-text3 { border-left-color: #00ffcc; }
+  .script-text4 { border-left-color: #ff007f; }
+
+  .module-header1 { border-bottom-color: #00d2ff; }
+  .module-header2 { border-bottom-color: #9d4edd; }
+  .module-header3 { border-bottom-color: #00ffcc; }
+  .module-header4 { border-bottom-color: #ff007f; }
+
+  /* ===== CLOSING PAGE ===== */
+  .closing {
+    page-break-before: always;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a0530 100%);
+    color: #fff;
+  }
+
+  .closing h2 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .closing .green { color: #00ffcc; }
+
+  .closing p {
+    font-size: 13px;
+    color: #8080a0;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+
+  .repo-link {
+    font-family: monospace;
+    font-size: 13px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: #00d2ff;
+  }
+
+  @media print {
+    .cover { min-height: 100vh; }
+    .day-divider { min-height: 100vh; }
+    h1, h2, h3 { page-break-after: avoid; }
+    .slide-entry { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================ -->
+<!-- CAPA                                             -->
+<!-- ================================================ -->
+<div class="cover">
+  <div class="badge">📋 Roteiro Oficial de Apresentação</div>
+  <h1>Webinário CIIA<br><span>Projeto Hermes</span></h1>
+  <p class="subtitle">Guia completo de apresentação em dois dias para o instrutor, com roteiro slide a slide, duração estimada e dicas pedagógicas.</p>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <div class="meta-label">Formato</div>
+      <div class="meta-value">Webinário Online em 2 Dias</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duração por Dia</div>
+      <div class="meta-value">~60 min cada</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Público-Alvo</div>
+      <div class="meta-value">Comunidade Acadêmica Leiga em IA</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Dia 1 — Módulos</div>
+      <div class="meta-value">1 e 2 (Teoria)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Dia 2 — Módulos</div>
+      <div class="meta-value">3 e 4 (Execução)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Nível</div>
+      <div class="meta-value">Iniciante / Zero Código</div>
+    </div>
+  </div>
+
+  <p class="footer-note">Projeto Hermes CIIA · Documento Interno de Uso do Instrutor</p>
+</div>
+
+
+<!-- ================================================ -->
+<!-- DIA 1 — SEPARADOR                                -->
+<!-- ================================================ -->
+<div class="day-divider">
+  <div class="day-number">01</div>
+  <div class="day-label" style="color: #00d2ff;">Dia Um</div>
+  <h2>Fundamentos e Arquitetura<br>da Inteligência Artificial Ativa</h2>
+  <p class="day-desc">Jornada puramente conceitual para eliminar os mitos sobre IA, apresentar o ecossistema Hermes e construir a mentalidade de design de agentes nos participantes.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-time">00:00 – 15:00</div>
+      <div class="tl-topic">Módulo 1: O que é o Hermes?</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">15:00 – 35:00</div>
+      <div class="tl-topic">Módulo 1 (cont.): IA Ativa vs. Chatbot</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">35:00 – 55:00</div>
+      <div class="tl-topic">Módulo 2: Arquitetura do Agente CRONOS</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">55:00 – 60:00</div>
+      <div class="tl-topic">Encerramento + Q&amp;A</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- MÓDULO 1                                         -->
+<!-- ================================================ -->
+<div class="module-header module-header1">
+  <span class="module-badge mod1">Módulo 1</span>
+  <h3>O que é o Hermes? Por que ele é diferente?</h3>
+</div>
+
+<!-- Slide 1-1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 1 de 9 · Módulo 1</div>
+  <div class="slide-title">Bem-vindo ao Futuro do Trabalho Inteligente <span class="duration-badge dur1">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    Bem-vindos a todos! Que prazer ter vocês aqui. Neste primeiro encontro, nós vamos desmontar o maior mito do momento sobre Inteligência Artificial. A maioria das pessoas acha que IA é sinônimo de "aquele chat que responde perguntas". Mas existe uma categoria de software muito mais poderosa, muito mais autônoma e com implicações diretas para o trabalho acadêmico e profissional de vocês. Nós chamamos essas peças de Agentes de IA, e o que vamos explorar hoje se chama Hermes. Fiquem à vontade para anotar dúvidas — ao final teremos um momento para respondê-las.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Antes de avançar, pergunte à turma: "Quem aqui já usou o ChatGPT?" e peça para alguém descrever como foi. Isso cria engajamento imediato e ancora o próximo conceito.
+  </div>
+</div>
+
+<!-- Slide 1-2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 2 de 9 · Módulo 1</div>
+  <div class="slide-title">O Problema com os Assistentes Comuns <span class="duration-badge dur1">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    Imaginem um funcionário brilhante, com o conhecimento de um doutor em medicina, direito, engenharia e literatura ao mesmo tempo. Mas esse funcionário mora em uma sala sem telefone, sem internet e sem acesso ao mundo externo. Você precisa ir até ele, fazer uma pergunta, receber a resposta e ir embora. Isso é exatamente o que os assistentes de texto tradicionais fazem. Eles sabem muito, mas são passivos. Eles não têm continuidade de memória, não agem sozinhos e não se conectam com os seus sistemas. O Hermes é a resposta para esse problema.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> A analogia do "funcionário numa sala sem telefone" é extremamente eficaz. Pause aqui e deixe a turma processar. Reforce: "A diferença não é de inteligência, é de autonomia e conectividade."
+  </div>
+</div>
+
+<!-- Slide 1-3 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 3 de 9 · Módulo 1</div>
+  <div class="slide-title">Hermes vs. Chatbots: O Espaguete e o Orçamento <span class="duration-badge dur1">~6 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    Nós gostamos de usar a analogia do espaguete versus o arquivo de orçamento. Um chatbot é como o espaguete: você serve, ele entrega e acabou. Não tem como reutilizar, não tem estrutura, é um resultado volátil. O Hermes, por outro lado, é como um arquivo de orçamento estruturado. Cada bloco de trabalho tem nome, conexão com outros blocos, e um objetivo definido. Quando você modifica um item, o sistema inteiro se atualiza de forma coerente. Essa estrutura modular é o que permite ao Hermes realizar tarefas complexas de ponta a ponta, sem intervenção humana constante.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Mostre os dois blocos visuais do slide (espaguete vs. estrutura). Pergunte: "Em qual dos dois vocês confiariam para entregar um relatório diário para o chefe de vocês?" Espere as risadas e confirme: "Exatamente — o segundo."
+  </div>
+</div>
+
+<!-- Slide 1-4 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 4 de 9 · Módulo 1</div>
+  <div class="slide-title">Casos de Uso Reais do Hermes <span class="duration-badge dur1">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    Mas chega de teoria abstrata. O que o Hermes realmente faz no mundo real? Ele pode agir como um secretário que agenda reuniões, lê e-mails, prioriza demandas e te envia um resumo no celular antes de você acordar. Ele pode monitorar continuamente um banco de dados de artigos científicos e te notificar quando surgir uma nova publicação no seu campo de pesquisa. Ele pode operar como um analista financeiro pessoal, varrendo notícias de mercado e te entregando insights formatados. Qualquer tarefa repetitiva, estruturável e que envolva leitura ou envio de dados — o Hermes pode fazer.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Conecte os casos de uso com o contexto acadêmico da plateia. Pergunte: "Quem aqui perde tempo monitorando publicações do Lattes ou notícias do SISU? O Hermes pode automatizar isso."
+  </div>
+</div>
+
+<!-- Slide 1-5 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 5 de 9 · Módulo 1</div>
+  <div class="slide-title">O Ecossistema Hermes: Como Ele Funciona? <span class="duration-badge dur1">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    Por dentro, o Hermes é um orquestrador. Pense como um regente de orquestra: ele não toca nenhum instrumento, mas coordena tudo. O modelo de linguagem (a inteligência comprada via API) é o músico principal. As ferramentas — de busca, de e-mail, de leitura de arquivos — são os outros instrumentos. E o Hermes é quem diz quem toca quando. A beleza do sistema é que você pode trocar o músico principal (migrar do GPT-4 para o Claude, por exemplo) sem precisar reescrever a orquestra inteira.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Essa slide tem bastante conteúdo visual. Deixe um tempo para a turma observar o diagrama antes de falar. A metáfora do regente de orquestra costuma gerar perguntas ótimas.
+  </div>
+</div>
+
+<!-- Slides 1-6 a 1-9 (compacto) -->
+<div class="slide-entry">
+  <div class="slide-num">Slides 6–9 de 9 · Módulo 1</div>
+  <div class="slide-title">Como a IA Aprende com Você / Por que Agora? / A Memória / Encerramento do Módulo <span class="duration-badge dur1">~10 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text1">
+    <strong>[Slide: Como a IA Aprende com Você]</strong> — O grande diferencial do Hermes é o System Prompt. Diferente de uma IA genérica que atende milhões de pessoas com o mesmo molde, você é quem define o caráter e a especialidade do seu agente. Você escreve em português quem ele é, o que ele prioriza e o que ele jamais deve fazer.<br><br>
+    <strong>[Slide: Por que Agora?]</strong> — A convergência de APIs acessíveis, hardware mais barato e frameworks abertos criou uma janela histórica. O que custava R$ 500.000 em desenvolvimento dedicado há 5 anos, hoje roda na máquina de qualquer professor de universidade federal.<br><br>
+    <strong>[Slide: A Memória do Agente]</strong> — O Hermes não esquece entre sessões. Ele usa arquivos locais para lembrar o que pesquisou antes e evitar trabalho redundante. Esse mecanismo de memória é o que transforma um agente episódico num assistente verdadeiramente contínuo.<br><br>
+    <strong>[Slide de Encerramento do Módulo 1]</strong> — Parabéns, vocês acabaram de desmistificar a inteligência artificial ativa. Na segunda metade de hoje, nós vamos arquitetar o agente que construiremos juntos: o CRONOS.
+  </div>
+  <div class="transition-note">⏩ Transição: pausa de 5 minutos antes do Módulo 2</div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- MÓDULO 2                                         -->
+<!-- ================================================ -->
+<div class="module-header module-header2" style="page-break-before: always;">
+  <span class="module-badge mod2">Módulo 2</span>
+  <h3>Arquitetando o Agente CRONOS na Prática</h3>
+</div>
+
+<!-- Slide 2-1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 1 de 9 · Módulo 2</div>
+  <div class="slide-title">Bem-vindo à Parte 2 – O Projeto Começa <span class="duration-badge dur2">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    Olá pessoal, bem-vindos à segunda metade de hoje. Agora que já entendemos o poder da Inteligência Artificial ativa em comparação aos chatbots tradicionais, vamos dar nome ao nosso projeto. O agente que vamos construir se chama CRONOS — nosso Caçador de Oportunidades. Ele vai varrer a internet por nós, analisar os dados e entregar o que chamamos de "o filé mignon da informação". Hoje, nós vamos desenhar toda a lógica dele. Amanhã, colocaremos para rodar de verdade.
+  </div>
+</div>
+
+<!-- Slide 2-2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 2 de 9 · Módulo 2</div>
+  <div class="slide-title">Por que Desenhar Antes de Construir? <span class="duration-badge dur2">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    Antes de colocar a mão na massa, precisamos entender o maior erro que as pessoas cometem ao trabalhar com inteligência artificial: elas abrem o ChatGPT e pedem "faça meu trabalho do dia". A IA tenta fazer tudo de uma vez e acaba alucinando ou entregando respostas vagas. A engenharia de processos nos ensina que a chave do sucesso é a especialização. Nós dividimos um grande problema em pequenos agentes que fazem uma única coisa com maestria. E para estruturar qualquer agente, nós nos apoiamos em três pilares fundamentais que vamos destrinchar agora.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Escreva no quadro/chat: "Identidade + Ferramentas + Canal de Ação = Agente Completo". Essa equação vai se repetir ao longo das próximas horas.
+  </div>
+</div>
+
+<!-- Slide 2-3 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 3 de 9 · Módulo 2</div>
+  <div class="slide-title">A Arquitetura do CRONOS (Fluxo) <span class="duration-badge dur2">~6 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    Este é o fluxo lógico do nosso agente. Ele opera em três etapas bem definidas: a Ingestão, onde ele atua como nossos olhos na web, vasculhando portais de notícias ou feeds específicos. A Análise, onde o cérebro processa o texto, separa o joio do trigo usando as instruções que definimos e resume o essencial. E por fim, a Ação, onde ele empacota tudo e nos envia por e-mail. Para criar qualquer agente, nós não começamos digitando no computador — começamos desenhando o processo num papel.
+  </div>
+</div>
+
+<!-- Slide 2-4 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 4 de 9 · Módulo 2</div>
+  <div class="slide-title">Pilar 1 – Identidade e Fronteiras de Ação <span class="duration-badge dur2">~6 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    O primeiro pilar de qualquer agente é a Identidade, implementada através do "System Prompt". Nele, nós não apenas dizemos quem a IA é — "um Analista de Mercado Sênior" — mas também definimos restrições duras. Repare na instrução: "Recuse-se a resumir conteúdos patrocinados". Dizer o que o agente NÃO deve fazer economiza créditos de API, economiza tempo e evita que notícias irrelevantes poluam seu e-mail. A Regra de Ouro: limitar o que a IA não deve fazer é mais importante do que dizer o que ela deve.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Peça para a turma escrever um System Prompt de 3 linhas para um agente hipotético deles (pode ser no chat do webinário). Leia dois em voz alta e discuta os pontos fortes.
+  </div>
+</div>
+
+<!-- Slide 2-5 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 5 de 9 · Módulo 2</div>
+  <div class="slide-title">Pilar 2 – Ferramentas (As "Mãos" da IA) <span class="duration-badge dur2">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    O segundo pilar são as Ferramentas. Um modelo de linguagem sozinho é como um cérebro sem corpo: ele pensa, mas não consegue interagir com o ambiente físico. Nós conectamos ferramentas ao nosso agente para estender suas capacidades. As ferramentas de leitura, como buscas na web e scrapers de páginas, permitem que ele aprenda coisas em tempo real. As ferramentas de ação, como serviços de e-mail e mensageiros, permitem que ele envie seus relatórios. E a memória local evita que ele pesquise duas vezes a mesma coisa.
+  </div>
+</div>
+
+<!-- Slide 2-6 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 6 de 9 · Módulo 2</div>
+  <div class="slide-title">Como a IA Executa: O Ciclo ReAct <span class="duration-badge dur2">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    Como o agente decide usar uma ferramenta? Ele usa um ciclo chamado ReAct — Reasoning e Acting (Raciocínio e Ação). Diante de um objetivo, o CRONOS avalia o que precisa fazer, decide qual ferramenta é a melhor para aquela etapa, executa, lê a resposta e avalia se o resultado é suficiente. Se ainda não atingiu o objetivo, ele repete o processo até conseguir. É um comportamento muito diferente de um prompt comum que tenta adivinhar a resposta de uma só vez.
+  </div>
+</div>
+
+<!-- Slide 2-7 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 7 de 9 · Módulo 2</div>
+  <div class="slide-title">Pilar 3 – O Resultado na Sua Caixa de Entrada <span class="duration-badge dur2">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    E aqui está o terceiro pilar: a entrega de valor. O CRONOS pega toda a bagunça da internet, passa pelo filtro da inteligência e gera um e-mail limpo, direto ao ponto, com links de fonte verificados. Sem anúncios, sem ruídos, sem distrações. Ao automatizar essa rotina de 30 minutos diários, você economiza cerca de 180 horas de trabalho manual por ano. Esse é o poder real dos agentes.
+  </div>
+</div>
+
+<!-- Slides 2-8 e 2-9 -->
+<div class="slide-entry">
+  <div class="slide-num">Slides 8–9 de 9 · Módulo 2</div>
+  <div class="slide-title">Engenharia de Prompt / Conclusão do Dia 1 <span class="duration-badge dur2">~7 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text2">
+    <strong>[Slide: Engenharia de Prompt]</strong> — Para garantir que seu agente performe perfeitamente, precisamos dominar a escrita de instruções. Observe a diferença: o prompt da esquerda pede "pesquise sobre inteligência artificial". Muito genérico. O da direita especifica quantidade, intervalo de tempo, escopo geográfico e formato visual da resposta. Quanto mais explícito você for nas fronteiras do processo, melhor será a execução do agente.<br><br>
+    <strong>[Slide: Conclusão do Dia 1]</strong> — Com isso, concluímos o nosso primeiro dia de webinário. Vocês agora possuem a mentalidade de engenharia necessária para construir agentes que funcionam de verdade. Amanhã, vamos direto para a máquina. Antes de encerrar: há alguma dúvida sobre conceitos de hoje? Reservamos 5 minutos para Q&A.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica de Encerramento do Dia 1:</strong> Deixe os participantes com uma tarefa simples: "Antes de amanhã, escreva em 3 linhas qual seria o System Prompt do SEU agente ideal. Você pode compartilhar amanhã se quiser." Isso os mantém engajados até o próximo dia.
+  </div>
+  <div class="transition-note">⏩ FIM DO DIA 1 · Total estimado: ~60 min</div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- DIA 2 — SEPARADOR                                -->
+<!-- ================================================ -->
+<div class="day-divider">
+  <div class="day-number">02</div>
+  <div class="day-label" style="color: #00ffcc;">Dia Dois</div>
+  <h2>Instalação, Configuração<br>e Primeiro Agente em Produção</h2>
+  <p class="day-desc">Sessão 100% prática. O participante instala o ambiente, configura as chaves de API, cria o agente CRONOS com o Antigravity e dispara o primeiro e-mail automatizado.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-time">00:00 – 05:00</div>
+      <div class="tl-topic">Abertura e revisão do Dia 1</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">05:00 – 30:00</div>
+      <div class="tl-topic">Módulo 3: Setup do Hermes</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">30:00 – 55:00</div>
+      <div class="tl-topic">Módulo 4: Criando e ativando o CRONOS</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-time">55:00 – 60:00</div>
+      <div class="tl-topic">Encerramento + Q&A Final</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- MÓDULO 3                                         -->
+<!-- ================================================ -->
+<div class="module-header module-header3">
+  <span class="module-badge mod3">Módulo 3</span>
+  <h3>O Setup — Instalando e Dando Vida ao Seu Agente</h3>
+</div>
+
+<!-- Slide 3-1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 1 de 10 · Módulo 3</div>
+  <div class="slide-title">Abertura do Dia 2 <span class="duration-badge dur3">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Bem-vindos de volta ao segundo dia do nosso webinário! Ontem nós fizemos toda a parte de fundamentos e arquitetura. Hoje, vamos deixar a teoria de lado e colocar a mão na massa. E quando eu digo "mão na massa", eu realmente quero dizer: vamos instalar, configurar e disparar o nosso agente. Não se preocupem com código, porque vocês não vão precisar escrever nada além de um parágrafo em português. O Antigravity 2.0 vai fazer todo o trabalho técnico por vocês.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Revisão Rápida:</strong> Antes de avançar, pergunte: "Quem lembra dos 3 pilares de um agente?" e espere respostas do chat. Identidade, Ferramentas e Canal de Ação. Confirme e avance.
+  </div>
+</div>
+
+<!-- Slide 3-2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 2 de 10 · Módulo 3</div>
+  <div class="slide-title">O Nosso Cinto de Utilidades <span class="duration-badge dur3">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Para preparar o terreno, precisamos baixar apenas duas ferramentas. A primeira é o Antigravity 2.0, um assistente autônomo que age como um desenvolvedor particular, fazendo o trabalho pesado por você. A segunda é o Visual Studio Code, ou VS Code. Quem ainda não fez o download pode fazer agora enquanto assistem — ambos são gratuitos. Os links estão no chat.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Ação Prática:</strong> Cole os links de download no chat do webinário agora: <strong>code.visualstudio.com</strong> para o VS Code. Dê 2 minutos para quem ainda não instalou.
+  </div>
+</div>
+
+<!-- Slide 3-3 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 3 de 10 · Módulo 3</div>
+  <div class="slide-title">Por que o VS Code? <span class="duration-badge dur3">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Muitas pessoas olham para o VS Code e entram em pânico achando que terão que programar em Matrix. Mas na verdade, para leigos, o VS Code funciona como um Bloco de Notas mais chique e seguro. Nós baixamos ele apenas porque o bloco de notas normal do Windows às vezes estraga arquivos de configuração. Nós vamos abri-lo, clicar num arquivo chamado .env — que é basicamente o cofre do agente —, colar um texto lá dentro e fechar. Simples assim.
+  </div>
+</div>
+
+<!-- Slide 3-4 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 4 de 10 · Módulo 3</div>
+  <div class="slide-title">Perdendo o Medo da Tela Preta <span class="duration-badge dur3">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Outro pavor dos iniciantes é o Terminal, aquela famosa "tela preta". Para desmistificar: o terminal é apenas um chat do WhatsApp, só que em vez de falar com uma pessoa, você fala com o núcleo do seu computador. E como você fala? Escrevendo comandos. Nós vamos usar a tela preta apenas para duas coisas simples hoje: rodar a configuração inicial e dar o botão de "Play" no agente. E mesmo isso, faremos com ajuda do Antigravity.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Dica Pedagógica:</strong> Abra o terminal ao vivo na sua tela e mostre que ele começa com um cursor piscando. Diga: "Isso aqui não é diferente de um chat. É só mais silencioso." A reação da turma costuma ser de alívio.
+  </div>
+</div>
+
+<!-- Slide 3-5 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 5 de 10 · Módulo 3</div>
+  <div class="slide-title">Instalação Facilitada pelo Antigravity <span class="duration-badge dur3">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Para instalar o agente de verdade, você não precisa decorar um passo a passo enorme. Lembra do Antigravity 2.0? Nós vamos abrir o chat com ele e pedir em português: "Instale o Hermes na minha máquina". Ele vai assumir o controle, com a sua permissão, e fazer o download, instalar arquivos nas pastas corretas e configurar tudo. É uma IA instalando outra IA.
+  </div>
+</div>
+
+<!-- Slide 3-6 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 6 de 10 · Módulo 3</div>
+  <div class="slide-title">Como o Antigravity Trabalha nos Bastidores <span class="duration-badge dur3">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    E enquanto o Antigravity trabalha, o que ele está fazendo exatamente? Ele está usando as próprias ferramentas que descrevemos na aula anterior. Ele usa a ferramenta Terminal para clonar repositórios, a de Leitura para ver se a pasta já existe e a de Edição para preparar os arquivos base. É um processo completamente transparente e auditável: você pode ver cada passo que ele dá.
+  </div>
+</div>
+
+<!-- Slide 3-7 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 7 de 10 · Módulo 3</div>
+  <div class="slide-title">A Chave no OpenRouter <span class="duration-badge dur3">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Assim que a instalação termina, o agente existe, mas é como um cérebro desligado. A inteligência vem da Chave de API, que conecta a estrutura local à capacidade de raciocínio de ponta. Acessem <strong>openrouter.ai</strong>, criem a chave e deixem no Ctrl+C. O OpenRouter é excelente porque nos dá acesso a dezenas de modelos de IA num único lugar, pagando apenas centavos por uso. Para fins de aprendizado, o custo é praticamente zero.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Ação ao Vivo:</strong> Abra a tela do OpenRouter no compartilhamento e mostre os passos: Conta → Keys → Create Key → Copiar. Peça para a turma fazer junto. Reserve 3 minutos.
+  </div>
+</div>
+
+<!-- Slide 3-8 – Print 1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 8 de 10 · Módulo 3 · 📸 Slide de Print</div>
+  <div class="slide-title">Configurando no Terminal (hermes configure) <span class="duration-badge dur3">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    [Mostrar o print do terminal ao vivo ou na tela] Como vocês podem ver no print da tela preta, quando digitamos <code class="code-inline">hermes configure</code>, o programa nos guia interativamente. Ele pergunta: qual provedor? Escolhemos OpenRouter. Qual modelo? Escolhemos Llama ou Claude. Agora cole a sua chave. O terminal nos confirma que a configuração foi salva com sucesso. Feito isso, o cérebro está conectado ao corpo.
+  </div>
+  <div class="tips-block">
+    <strong>📸 INSTRUÇÃO:</strong> Neste slide, o instrutor deve mostrar ao vivo ou exibir um print do terminal com o fluxo completo do <code class="code-inline">hermes configure</code>, mostrando as 3 perguntas interativas.
+  </div>
+</div>
+
+<!-- Slide 3-9 – Print 2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 9 de 10 · Módulo 3 · 📸 Slide de Print</div>
+  <div class="slide-title">Colando a Chave no VS Code (.env) <span class="duration-badge dur3">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    Para quem preferir ou precisar validar manualmente, aqui está como o VS Code se parece por dentro nesse momento. Olhem para este print: nós abrimos a pasta do projeto, clicamos no arquivo .env e vemos nossa chave na linha: <code class="code-inline">OPENROUTER_API_KEY=sk-or-v1-xxxx...</code>. Ninguém de fora tem acesso a esse arquivo — ele é 100% local. O cérebro está fisicamente conectado à estrutura!
+  </div>
+  <div class="tips-block">
+    <strong>📸 INSTRUÇÃO:</strong> Neste slide, o instrutor deve exibir um print do VS Code aberto com o arquivo <code class="code-inline">~/.hermes/profiles/.env</code> e a chave de API visível (pode ocultar os últimos caracteres por segurança).
+  </div>
+</div>
+
+<!-- Slide 3-10 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 10 de 10 · Módulo 3</div>
+  <div class="slide-title">O Despertar do Hermes (hermes start) <span class="duration-badge dur3">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text3">
+    E, finalmente, nós voltamos para o terminal e rodamos <code class="code-inline">hermes start</code>. O que vemos agora? Serviços iniciando... Conexão com OpenRouter OK. Memória OK. Hermes Gateway Online. Ele está vivo, rodando silenciosamente no fundo do computador. E para provar que funciona, vamos agora, ao vivo, testar essa comunicação: <em>"Vamos fazer uma pergunta para o nosso Hermes?"</em>
+  </div>
+  <div class="transition-note">⏩ Pausa de 3 minutos antes do Módulo 4</div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- MÓDULO 4                                         -->
+<!-- ================================================ -->
+<div class="module-header module-header4" style="page-break-before: always;">
+  <span class="module-badge mod4">Módulo 4</span>
+  <h3>Dando Superpoderes — Criando o Agente CRONOS</h3>
+</div>
+
+<!-- Slide 4-1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 1 de 10 · Módulo 4</div>
+  <div class="slide-title">Abertura do Módulo 4 <span class="duration-badge dur4">~2 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Chegamos ao ápice do nosso curso. Até agora, nós baixamos as ferramentas e instalamos o cérebro base. Mas a verdadeira mágica não está em ter um cérebro inteligente; está em dar braços, pernas e tarefas específicas para esse cérebro. Hoje nós vamos dar superpoderes ao sistema e colocar o CRONOS para trabalhar sozinho e enviar e-mails de notícias para nós — sem que precisemos apertar nenhum botão.
+  </div>
+</div>
+
+<!-- Slide 4-2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 2 de 10 · Módulo 4</div>
+  <div class="slide-title">O Cérebro Precisa de Braços <span class="duration-badge dur4">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Um ponto crucial sobre inteligência artificial: um modelo sem ferramentas é só um papagaio muito inteligente. Ele sabe muito, mas está preso dentro de uma caixa. A importância de darmos autonomia ao Hermes é exatamente essa. Quando conectamos ferramentas de e-mail e de navegação na web, nós tiramos ele da caixa. Ele se torna um ator no mundo real, capaz de entrar num site de notícias, resumir o que encontrou e despachar isso ativamente para a sua caixa de entrada.
+  </div>
+</div>
+
+<!-- Slide 4-3 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 3 de 10 · Módulo 4</div>
+  <div class="slide-title">Criando o Agente CRONOS via Antigravity <span class="duration-badge dur4">~6 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    E como criamos esse agente? Será que precisamos abrir o código-fonte? Claro que não. Nós temos um assistente na nossa máquina, o Antigravity. Você só precisa abrir o chat dele e jogar esse prompt: <em>"Crie um agente chamado CRONOS focado em procurar notícias. Configure o ambiente dele para que ele consiga varrer sites de forma autônoma e me enviar os relatórios diários exclusivamente por e-mail."</em> O próprio Antigravity vai gerar as pastas isoladas para o Cronos, instalar os plugins de busca e de e-mail, e preparar todo o terreno.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Ação Ao Vivo:</strong> Abra o Antigravity na sua tela, cole o prompt ao vivo e deixe a turma assistir a criação do perfil do CRONOS em tempo real. Comente cada passo que o Antigravity executa.
+  </div>
+</div>
+
+<!-- Slide 4-4 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 4 de 10 · Módulo 4</div>
+  <div class="slide-title">O Arquivo Isolado do CRONOS <span class="duration-badge dur4">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Uma vez que o Antigravity cria o Cronos, existe um detalhe arquitetônico importante. O Cronos não é o Hermes inteiro; ele é um "filho" especializado. Ele herda a inteligência — a chave do OpenRouter — do agente principal, mas tem um perfil isolado com as suas próprias configurações de e-mail. O Antigravity vai pedir para configurar as permissões de e-mail exclusivamente para o Cronos, rodando o comando: <code class="code-inline">code ~/.hermes/profiles/cronos/.env</code>
+  </div>
+</div>
+
+<!-- Slide 4-5 – Print 1 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 5 de 10 · Módulo 4 · 📸 Slide de Print</div>
+  <div class="slide-title">Inserindo as Credenciais de E-mail <span class="duration-badge dur4">~6 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Quando o VS Code abrir, você verá algo exatamente igual a esse print. Preencha as variáveis de ambiente:<br><br>
+    • <code class="code-inline">EMAIL_ADDRESS</code> — o seu endereço de e-mail remetente<br>
+    • <code class="code-inline">EMAIL_PASSWORD</code> — a senha de aplicativo do Gmail (não a senha da conta!)<br>
+    • <code class="code-inline">EMAIL_SMTP_HOST</code> — para Gmail: <code class="code-inline">smtp.gmail.com</code><br>
+    • <code class="code-inline">EMAIL_SMTP_PORT</code> — porta <code class="code-inline">587</code> (TLS padrão)<br>
+    • <code class="code-inline">EMAIL_HOME_ADDRESS</code> — o e-mail para onde o CRONOS deve enviar os relatórios<br><br>
+    Depois disso, salve o arquivo com Ctrl+S e feche o VS Code.
+  </div>
+  <div class="tips-block">
+    <strong>📸 INSTRUÇÃO:</strong> Neste slide, exibir o print do VS Code com o arquivo <code class="code-inline">cronos/.env</code> aberto, mostrando as 5 variáveis preenchidas (oculte os valores reais por segurança).<br><br>
+    <strong>⚠️ Atenção:</strong> Se alguém usar Gmail, oriente sobre a geração de uma <em>Senha de Aplicativo</em> (Conta Google → Segurança → Verificação em 2 etapas → Senhas de App). Isso leva 2 minutos.
+  </div>
+</div>
+
+<!-- Slide 4-6 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 6 de 10 · Módulo 4</div>
+  <div class="slide-title">A Rotina Matinal — O Cron Job <span class="duration-badge dur4">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Agora vem a parte mágica. Queremos que ele trabalhe sozinho. Usamos o agendamento em background — o famoso Cron Job. O comando abaixo faz uma coisa muito simples: os números <code class="code-inline">0 8 * * *</code> significam "rode às 08h00, todos os dias". Logo abaixo está o prompt com o que o agente deve fazer, seguido do nome da rotina e do formato de entrega — e-mail. Acabou. Seu robô foi contratado para um turno fixo.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Explique o Cron:</strong> Para leigos, use a metáfora de programar uma cafeteira. "Você configura uma vez para as 08:00 e o café fica pronto todo dia — sem você precisar apertar nada."
+  </div>
+</div>
+
+<!-- Slide 4-7 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 7 de 10 · Módulo 4</div>
+  <div class="slide-title">Dicas Úteis com o CRONOS <span class="duration-badge dur4">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Uma dica muito bacana do Hermes é a flexibilidade. Você agendou para de manhã, mas e se quiser pedir uma pesquisa na hora? Basta abrir o terminal e digitar <code class="code-inline">cronos</code> — e ele entra em modo Chat para conversar em tempo real. E se quiser testar o envio do e-mail agora mesmo, use o atalho <code class="code-inline">cronos cron trigger "Newsletter do Cronos"</code>, que força a tarefa a rodar neste segundo, sem esperar o horário.
+  </div>
+</div>
+
+<!-- Slide 4-8 – Print 2 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 8 de 10 · Módulo 4 · 📸 Slide de Print</div>
+  <div class="slide-title">O Primeiro E-mail Autônomo <span class="duration-badge dur4">~4 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    [Mostrar o print do e-mail recebido ao vivo] E aqui está! O resultado tangível. Você estava tomando café ou em outra reunião, e o CRONOS entrou nos portais de notícias, filtrou o lixo, organizou os textos, entrou no servidor de e-mail e despachou isso para você. Esse nível de automação inteligente, antigamente, custava dezenas de milhares de reais para ser desenvolvido. Vocês acabaram de fazer em 30 minutos.
+  </div>
+  <div class="tips-block">
+    <strong>📸 INSTRUÇÃO:</strong> Exibir o print da caixa de e-mail com o relatório recebido, formatado e enviado pelo agente CRONOS. Comente o cabeçalho, o resumo das 5 notícias e os links de fonte.
+  </div>
+</div>
+
+<!-- Slide 4-9 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 9 de 10 · Módulo 4</div>
+  <div class="slide-title">Modificando o CRONOS — Variações Temáticas <span class="duration-badge dur4">~5 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    O mais sensacional é que essa lógica é completamente universal. Você não precisa ficar preso às notícias gerais. Se você é contador, mande o CRONOS varrer notícias de mudanças tributárias no Diário Oficial. Se é investidor, mande-o resumir os comunicados ao mercado das empresas da sua carteira. Se é profissional de RH, peça para ele monitorar novas vagas sênior em empresas específicas. É só mudar uma linha de texto no comando de agendamento. O limite é a sua criatividade.
+  </div>
+  <div class="tips-block">
+    <strong>💡 Atividade Final:</strong> Peça para a turma escrever no chat do webinário: "Qual seria a variação do meu CRONOS?" e leia 3 respostas em voz alta. Isso gera pertencimento e demonstra o potencial do aprendizado.
+  </div>
+</div>
+
+<!-- Slide 4-10 -->
+<div class="slide-entry">
+  <div class="slide-num">Slide 10 de 10 · Módulo 4</div>
+  <div class="slide-title">Encerramento Final <span class="duration-badge dur4">~3 min</span></div>
+  <div class="script-label">🎙 Roteiro do Instrutor</div>
+  <div class="script-text script-text4">
+    Com isso, concluímos nossa jornada de criação do Caçador de Oportunidades. Vocês não apenas entenderam o que é um agente inteligente, mas botaram a mão na massa, conectaram a espinha dorsal de API, integraram a ferramenta de correio e orquestraram o agendamento de tarefas. Vocês não são mais usuários casuais de ferramentas prontas; vocês se tornaram construtores e engenheiros de automação. O próximo passo é de vocês. Muito obrigado pela presença!
+  </div>
+  <div class="transition-note">⏩ FIM DO DIA 2 · Total estimado: ~60 min · Q&A Final: 5 min</div>
+</div>
+
+
+<!-- ================================================ -->
+<!-- PÁGINA DE ENCERRAMENTO                           -->
+<!-- ================================================ -->
+<div class="closing">
+  <h2>Projeto <span class="green">Hermes CIIA</span></h2>
+  <p>Todos os slides, código e recursos do webinário estão disponíveis no repositório oficial do projeto.</p>
+  <div class="repo-link">github.com/gus-ant/hermes_CIIA</div>
+  <p style="margin-top: 30px; font-size: 11px;">Documento de uso interno. Não distribuir sem autorização do instrutor.</p>
+</div>
+
+</body>
+</html>
