@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Setup do Hermes - Módulo 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ffcc;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --neon-purple: #9d4edd;
+            --neon-yellow: #f9d423;
+            --dark-black: #000000;
+        }
+
+        .reveal { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--dark-black);
+            color: #ffffff;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 { 
+            font-family: 'Outfit', sans-serif; 
+            text-transform: none; 
+            letter-spacing: -2px; 
+            font-weight: 900; 
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+
+        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
+        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
+        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
+        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
+        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
+        
+        .accent-gradient {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.4));
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            text-align: center;
+            margin: 0 auto;
+            width: 95%;
+            max-width: 900px;
+            box-sizing: border-box;
+        }
+        
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .flex-item {
+            flex: 1;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s;
+            text-align: center;
+        }
+        
+        .flex-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .icon-large { width: 90px; height: 90px; margin-bottom: 20px; filter: drop-shadow(0 0 10px currentColor); }
+        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+
+        .reveal p { font-size: 1.1em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
+        
+        .code-block {
+            background: #111;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-family: monospace;
+            font-size: 1.2em;
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            margin: 20px 0;
+        }
+
+        .scheme-arrow { font-size: 2em; color: var(--neon-blue); align-self: center; margin: 0 10px; }
+
+        .reveal .controls-arrow { color: var(--neon-green) !important; }
+        .reveal .progress span { background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)) !important; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Introdução -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <svg class="icon-large accent-gradient" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.829M11.42 15.17l-3.96 3.96a1.5 1.5 0 01-2.12 0l-1.061-1.061a1.5 1.5 0 010-2.12l3.96-3.96M11.42 15.17l4.02-4.02M13.25 10.75L15.5 8.5M8.75 6.25L11 8.5M3 3l2.5 2.5" /></svg>
+                <h1 style="font-size: 3.5em;">Módulo 3: O Setup</h1>
+                <h2>Instalando e Dando Vida ao <span class="accent-gradient">Seu Agente</span></h2>
+                
+                <aside class="notes">
+                    Neste terceiro módulo, nós vamos literalmente dar vida ao Hermes no seu computador. Muitas pessoas acham que rodar Inteligência Artificial localmente exige supercomputadores da NASA ou ser hacker de filmes, mas vou mostrar que é tão simples quanto instalar qualquer outro aplicativo de celular.
+                </aside>
+            </section>
+
+            <!-- Slide 2: O Download -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>O Primeiro Passo: <span class="accent-blue">Trazendo o Hermes para Casa</span></h2>
+                
+                <div class="glass-box">
+                    <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                    <p style="margin-bottom: 20px;">Qualquer computador moderno pode rodar a plataforma Hermes como orquestrador.</p>
+                    <div class="code-block">
+                        hermes install --core
+                    </div>
+                    <p style="font-size: 0.9em; margin-top: 20px; opacity: 0.8;">(Isso baixa os arquivos estruturais e cria as pastas onde seu agente vai "morar")</p>
+                </div>
+
+                <aside class="notes">
+                    O primeiro passo é simplesmente instalar a plataforma no seu computador. Nós não estamos baixando um modelo de linguagem gigante que vai consumir todo o seu espaço livre; estamos apenas instalando o "gerente", a infraestrutura. É um comando simples ou um instalador que prepara a casa para receber o agente.
+                </aside>
+            </section>
+
+            <!-- Slide 3: A Alma do Agente -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>A Chave de API: <span class="accent-pink">O Cérebro do Agente</span></h2>
+                
+                <div class="flex-container">
+                    <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3);">
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>
+                        <h3 class="accent-pink">O que é a API?</h3>
+                        <p style="font-size: 0.9em;">É o passaporte que permite que o seu computador "converse" com os grandes modelos de IA pelo mundo.</p>
+                    </div>
+                    
+                    <div class="scheme-arrow">+</div>
+                    
+                    <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
+                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" /></svg>
+                        <h3 class="accent-blue">OpenRouter</h3>
+                        <p style="font-size: 0.9em;">Uma plataforma que reúne todos os modelos de IA em um só lugar. Você pega a sua chave lá.</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Sem um cérebro inteligente, o agente é só um robô bobo. A forma mais eficiente de dar inteligência a ele é através de uma Chave de API. Para quem não é da tecnologia: a chave de API é como se fosse o seu bilhete de acesso que permite ao Hermes ligar para o provedor de IA e pedir respostas. Nós usamos o OpenRouter porque ele tem milhares de modelos gratuitos e super baratos, então você pode ter inteligência de ponta sem pesar o seu computador de casa.
+                </aside>
+            </section>
+
+            <!-- Slide 4: Vinculando a Chave -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>Ligando os <span class="accent-yellow">Motores</span></h2>
+                
+                <div class="glass-box" style="border-left: 6px solid var(--neon-yellow);">
+                    <svg class="icon-large accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    
+                    <p style="font-weight: 600; margin-bottom: 20px;">Apenas cole a sua chave no arquivo seguro <code>.env</code>:</p>
+                    
+                    <div class="code-block" style="border-color: var(--neon-yellow); color: #fff;">
+                        OPENROUTER_API_KEY="sk-or-v1-xxxxxxxxxxxxxxxxx"
+                    </div>
+                    
+                    <p style="font-size: 0.9em; margin-top: 20px;">Dessa forma, a chave fica protegida na sua máquina local.</p>
+                </div>
+
+                <aside class="notes">
+                    Com a sua chave em mãos, tudo o que precisamos fazer é apresentá-la ao Hermes. Existe um arquivo dentro da pasta do agente chamado .env. Nós abrimos ele num bloco de notas, colamos a chave de texto que o OpenRouter nos deu e salvamos. Acabou. O seu agente agora tem cérebro e permissão para funcionar. 
+                </aside>
+            </section>
+
+            <!-- Slide 5: O Primeiro Teste -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>O Despertar do <span class="accent-green">Agente</span></h2>
+                
+                <div class="glass-box" style="padding: 50px;">
+                    <div style="margin-bottom: 30px;">
+                        <svg class="icon-large accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" /></svg>
+                    </div>
+                    
+                    <div class="code-block" style="border-color: var(--neon-green); margin-bottom: 20px;">
+                        hermes gateway start --profile cacador
+                    </div>
+                    
+                    <p style="color: var(--neon-green); font-weight: 600; font-size: 1.3em;">
+                        "Gateway iniciado com sucesso. Agente online."
+                    </p>
+                </div>
+
+                <aside class="notes">
+                    E agora é o momento da verdade. Você abre a tela preta e diz para o Hermes iniciar o gateway dele, passando o nome do perfil (no nosso caso, o nosso caçador). Imediatamente, ele exibe a mensagem de sucesso. A partir desse segundo, ele está dormindo em segundo plano na sua máquina, pronto para receber ordens via Discord, terminal ou acionar os alarmes automáticos que programamos para varrer a internet. Na próxima parte, vamos acoplar as ferramentas práticas nele!
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 1100,
+            height: 700,
+            margin: 0.04,
+            transition: 'zoom', 
+            backgroundTransition: 'convex',
+            controls: true,
+            progress: true,
+            center: true,
+            mouseWheel: false,
+            showNotes: false 
+        });
+    </script>
+</body>
+</html>

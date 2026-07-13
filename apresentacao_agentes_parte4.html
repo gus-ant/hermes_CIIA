@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Executando Ferramentas - Módulo 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ffcc;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --neon-purple: #9d4edd;
+            --neon-yellow: #f9d423;
+            --dark-black: #000000;
+        }
+
+        .reveal { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--dark-black);
+            color: #ffffff;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 { 
+            font-family: 'Outfit', sans-serif; 
+            text-transform: none; 
+            letter-spacing: -2px; 
+            font-weight: 900; 
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+
+        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
+        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
+        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
+        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
+        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
+        
+        .accent-gradient {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.4));
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            text-align: center;
+            margin: 0 auto;
+            width: 95%;
+            max-width: 900px;
+            box-sizing: border-box;
+        }
+        
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .flex-item {
+            flex: 1;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s;
+            text-align: center;
+        }
+        
+        .flex-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .icon-large { width: 90px; height: 90px; margin-bottom: 20px; filter: drop-shadow(0 0 10px currentColor); }
+        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+
+        .reveal p { font-size: 1.1em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
+        
+        .code-block {
+            background: #111;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .highlight-text { color: var(--neon-pink); font-weight: bold; }
+        .scheme-arrow { font-size: 2em; color: var(--neon-pink); align-self: center; margin: 0 10px; }
+
+        .reveal .controls-arrow { color: var(--neon-pink) !important; }
+        .reveal .progress span { background: linear-gradient(90deg, var(--neon-yellow), var(--neon-pink)) !important; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Introdução -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <svg class="icon-large accent-gradient" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.829M11.42 15.17l-3.96 3.96a1.5 1.5 0 01-2.12 0l-1.061-1.061a1.5 1.5 0 010-2.12l3.96-3.96M11.42 15.17l4.02-4.02M13.25 10.75L15.5 8.5M8.75 6.25L11 8.5M3 3l2.5 2.5" /></svg>
+                <h1 style="font-size: 3.5em;">Módulo 4: A Ação</h1>
+                <h2>Colocando as Ferramentas para <span class="accent-gradient">Funcionar</span></h2>
+                
+                <aside class="notes">
+                    Chegamos ao último módulo, o momento em que a mágica de fato acontece. O agente já tem cérebro, mas como já vimos, ele precisa de braços e pernas. Nós vamos configurar as ferramentas que escolhemos no planejamento: a permissão para ele navegar na internet e a capacidade de enviar e-mails para nós.
+                </aside>
+            </section>
+
+            <!-- Slide 2: Habilitando a Pesquisa -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>Dando Olhos ao Hermes: <span class="accent-blue">Web Scraping</span></h2>
+                
+                <div class="glass-box">
+                    <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+                    
+                    <p style="margin-bottom: 10px;">No arquivo de configuração, adicionamos a permissão:</p>
+                    
+                    <div class="code-block">
+                        tools:<br>
+                        &nbsp;&nbsp;- name: <span class="highlight-text">web_search</span><br>
+                        &nbsp;&nbsp;- name: <span class="highlight-text">read_url_content</span>
+                    </div>
+                    
+                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 15px;">Agora o agente consegue pesquisar no Google e extrair textos de sites automaticamente.</p>
+                </div>
+
+                <aside class="notes">
+                    Para habilitar o agente a ler a internet, basta ir no arquivo de configuração (config.yaml) dele e adicionar duas linhas no campo de ferramentas: web_search e read_url_content. Só de fazer isso, você já concedeu o superpoder da visão pro agente. Se ele precisar pesquisar uma notícia nova, ele vai acionar essas ferramentas. Sem a sua ajuda.
+                </aside>
+            </section>
+
+            <!-- Slide 3: Habilitando o Envio -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Dando Braços ao Hermes: <span class="accent-yellow">Automação</span></h2>
+                
+                <div class="flex-container">
+                    <div class="flex-item" style="border-color: rgba(249, 212, 35, 0.3);">
+                        <svg class="icon-med accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <h3 class="accent-yellow">Via E-mail (SMTP)</h3>
+                        <p style="font-size: 0.9em;">Ferramenta que permite ao agente formatar uma tabela linda e enviá-la para sua caixa de entrada.</p>
+                    </div>
+                    
+                    <div class="scheme-arrow">OU</div>
+                    
+                    <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
+                        <svg class="icon-med accent-blue" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.9-.65,1.76-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.82.71,1.68,1.4,2.58,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31.58-18.83C129.13,50.78,123.24,28.06,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/></svg>
+                        <h3 class="accent-blue">Via Discord</h3>
+                        <p style="font-size: 0.9em;">Agente fixado no servidor pronto para ser acionado com um @, respondendo na hora para a equipe.</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Do mesmo jeito que ensinamos ele a ler a internet, nós podemos conectar a ferramenta de envio de e-mail (que roda localmente no seu computador, de forma segura) ou plugar a conta dele no Discord. Você decide o formato de entrega. Nós definimos o cérebro, demos visão na internet e criamos os braços que nos entregarão os relatórios de mercado mastigados. 
+                </aside>
+            </section>
+
+            <!-- Slide 4: O Grande Play -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>Ação: <span class="accent-green">O Caçador Trabalhando</span></h2>
+                
+                <div class="glass-box" style="border-left: 6px solid var(--neon-green); padding: 30px;">
+                    <p style="text-align: center; margin-bottom: 20px; font-weight: 600;">O que o agente está fazendo sozinho (logs em tempo real):</p>
+                    
+                    <div class="code-block" style="width: 100%; border-color: rgba(0,255,204,0.3); color: #ccc; font-size: 0.9em; line-height: 1.8;">
+                        [10:00:01] ⚡ Recebido gatilho programado.<br>
+                        [10:00:03] 🔍 Executando busca: "novidades IA Brasil g1"<br>
+                        [10:00:15] 📄 Lendo conteúdo de 3 URLs...<br>
+                        [10:00:28] 🧠 Processando dados via OpenRouter...<br>
+                        [10:00:40] 📤 Enviando E-mail formatado...<br>
+                        <span class="highlight-text" style="color: var(--neon-green);">&gt; Tarefa concluída com sucesso.</span>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Isso é o que acontece nos bastidores. Enquanto você está focado em analisar planilhas, desenhar projetos ou conversar com a sua equipe, o agente é ativado, pesquisa e filtra tudo em menos de 1 minuto. Observe no slide que ele nos poupou de todo o esforço bruto e robótico. A máquina processou os dados, não você.
+                </aside>
+            </section>
+
+            <!-- Slide 5: Revisão -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 20vh;">
+                    <svg class="icon-large accent-gradient" style="width: 120px; height: 120px; margin-bottom: 30px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
+                    
+                    <h1 style="font-size: 3em; line-height: 1.2;">
+                        Bem-vindo à Sua <br><span class="accent-gradient">Nova Rotina Produtiva</span>
+                    </h1>
+                </div>
+
+                <aside class="notes">
+                    E é assim que nós transformamos horas de trabalho maçante em um arquivo de configuração de texto que roda para sempre no seu computador. Hoje nós fizemos isso com pesquisas de notícias. Amanhã você pode fazer para geração de atas de reunião, disparo de respostas para clientes, ou análises de faturamento de fim de mês. Vocês acabam de desbloquear o nível de supervisores de processos. Muito obrigado.
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 1100,
+            height: 700,
+            margin: 0.04,
+            transition: 'zoom', 
+            backgroundTransition: 'convex',
+            controls: true,
+            progress: true,
+            center: true, // Centralizado perfeitamente conforme solicitado
+            mouseWheel: false,
+            showNotes: false 
+        });
+    </script>
+</body>
+</html>
