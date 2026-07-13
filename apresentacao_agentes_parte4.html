@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <title>Executando Ferramentas - Módulo 4</title>
+    <title>Ferramentas e Agente CRONOS - Módulo 4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- Reveal.js CSS -->
@@ -47,7 +47,7 @@
         .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
         
         .accent-gradient {
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-yellow));
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.4));
@@ -58,64 +58,82 @@
             backdrop-filter: blur(20px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 40px;
+            padding: 30px 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
             text-align: center;
             margin: 0 auto;
             width: 95%;
-            max-width: 900px;
+            max-width: 950px;
             box-sizing: border-box;
         }
         
         .flex-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
             width: 100%;
+            margin-top: 20px;
         }
 
         .flex-item {
             flex: 1;
-            padding: 30px 20px;
+            padding: 25px 20px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.4s;
-            text-align: center;
-        }
-        
-        .flex-item:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
         }
 
         .icon-large { width: 90px; height: 90px; margin-bottom: 20px; filter: drop-shadow(0 0 10px currentColor); }
-        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+        .icon-med { width: 50px; height: 50px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
 
-        .reveal p { font-size: 1.1em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
+        .reveal p { font-size: 1.0em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
+        .reveal li { margin-bottom: 15px; font-weight: 300; color: #d1d1e9; line-height: 1.5; }
         
         .code-block {
             background: #111;
             border-radius: 10px;
-            padding: 15px 25px;
+            padding: 20px 25px;
             font-family: monospace;
-            font-size: 1.1em;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: inline-block;
+            font-size: 0.9em;
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            display: block;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             margin: 15px 0;
             text-align: left;
+            line-height: 1.6;
         }
 
-        .highlight-text { color: var(--neon-pink); font-weight: bold; }
-        .scheme-arrow { font-size: 2em; color: var(--neon-pink); align-self: center; margin: 0 10px; }
+        .print-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 50px 20px;
+            margin-top: 20px;
+            color: #888;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        
+        .print-placeholder:hover {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            background: rgba(255, 0, 127, 0.05);
+            transition: all 0.3s;
+        }
 
         .reveal .controls-arrow { color: var(--neon-pink) !important; }
-        .reveal .progress span { background: linear-gradient(90deg, var(--neon-yellow), var(--neon-pink)) !important; }
+        .reveal .progress span { background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) !important; }
     </style>
 </head>
 <body>
@@ -125,96 +143,186 @@
             <!-- Slide 1: Introdução -->
             <section data-transition="zoom" data-background-color="#000000">
                 <svg class="icon-large accent-gradient" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.829M11.42 15.17l-3.96 3.96a1.5 1.5 0 01-2.12 0l-1.061-1.061a1.5 1.5 0 010-2.12l3.96-3.96M11.42 15.17l4.02-4.02M13.25 10.75L15.5 8.5M8.75 6.25L11 8.5M3 3l2.5 2.5" /></svg>
-                <h1 style="font-size: 3.5em;">Módulo 4: A Ação</h1>
-                <h2>Colocando as Ferramentas para <span class="accent-gradient">Funcionar</span></h2>
+                <h1 style="font-size: 3.5em;">Módulo 4: Dando <span class="accent-gradient">Superpoderes</span></h1>
+                <h2>Criando o Agente <span class="accent-purple">CRONOS</span></h2>
                 
                 <aside class="notes">
-                    Chegamos ao último módulo, o momento em que a mágica de fato acontece. O agente já tem cérebro, mas como já vimos, ele precisa de braços e pernas. Nós vamos configurar as ferramentas que escolhemos no planejamento: a permissão para ele navegar na internet e a capacidade de enviar e-mails para nós.
+                    Chegamos ao ápice do nosso curso, o Módulo 4. Até agora, nós baixamos as ferramentas e instalamos o cérebro base do projeto. Mas a verdadeira mágica não está em ter um cérebro inteligente; está em dar braços, pernas e tarefas específicas para esse cérebro. Hoje nós vamos dar superpoderes ao nosso sistema e colocar o nosso Caçador de Oportunidades, que chamaremos de CRONOS, para trabalhar sozinho e enviar e-mails para nós.
                 </aside>
             </section>
 
-            <!-- Slide 2: Habilitando a Pesquisa -->
+            <!-- Slide 2: Importância das Ferramentas -->
             <section data-transition="convex" data-background-color="#000000">
-                <h2>Dando Olhos ao Hermes: <span class="accent-blue">Web Scraping</span></h2>
+                <h2>O Cérebro Precisa de <span class="accent-blue">Braços</span></h2>
                 
-                <div class="glass-box">
-                    <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
-                    
-                    <p style="margin-bottom: 10px;">No arquivo de configuração, adicionamos a permissão:</p>
-                    
-                    <div class="code-block">
-                        tools:<br>
-                        &nbsp;&nbsp;- name: <span class="highlight-text">web_search</span><br>
-                        &nbsp;&nbsp;- name: <span class="highlight-text">read_url_content</span>
-                    </div>
-                    
-                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 15px;">Agora o agente consegue pesquisar no Google e extrair textos de sites automaticamente.</p>
+                <div class="glass-box" style="text-align: left; border-left: 5px solid var(--neon-blue);">
+                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #fff;">
+                        Por que integrar ferramentas ao Hermes?
+                    </p>
+                    <ul>
+                        <li>Um agente sem ferramentas é apenas um ChatGPT glorificado. Ele até conversa bem, mas <strong>não age</strong> no mundo real.</li>
+                        <li>A verdadeira <strong>autonomia</strong> vem quando conectamos o cérebro (API) a módulos como Busca Web e Servidor de E-mail (SMTP).</li>
+                        <li>Isso permite que o agente faça tarefas de ponta a ponta: <em>Navega &rarr; Lê &rarr; Filtra &rarr; Envia.</em></li>
+                    </ul>
                 </div>
 
                 <aside class="notes">
-                    Para habilitar o agente a ler a internet, basta ir no arquivo de configuração (config.yaml) dele e adicionar duas linhas no campo de ferramentas: web_search e read_url_content. Só de fazer isso, você já concedeu o superpoder da visão pro agente. Se ele precisar pesquisar uma notícia nova, ele vai acionar essas ferramentas. Sem a sua ajuda.
+                    Um ponto crucial sobre inteligência artificial: um modelo sem ferramentas é só um papagaio muito inteligente. Ele sabe muito, mas está preso dentro de uma caixa. A importância de darmos autonomia ao Hermes é exatamente essa. Quando conectamos ferramentas de e-mail e de navegação na web, nós tiramos ele da caixa. Ele se torna um ator no mundo real, capaz de entrar num site de notícias, resumir o que encontrou e despachar isso ativamente para a sua caixa de entrada, sem que você precise apertar nenhum botão.
                 </aside>
             </section>
 
-            <!-- Slide 3: Habilitando o Envio -->
+            <!-- Slide 3: Criando o Agente CRONOS -->
             <section data-transition="zoom" data-background-color="#000000">
-                <h2>Dando Braços ao Hermes: <span class="accent-yellow">Automação</span></h2>
+                <h2>Criando o <span class="accent-pink">Agente CRONOS</span></h2>
+                <p>O jeito certo (e fácil): vamos usar o <strong>Antigravity</strong> para programar o nosso agente.</p>
+                
+                <div class="glass-box">
+                    <p style="text-align: left; margin-bottom: 10px; color: var(--neon-pink); font-weight: bold;">Mande esse prompt no chat do Antigravity:</p>
+                    <div class="code-block" style="border-color: var(--neon-pink); color: #fff;">
+                        "Crie um agente chamado CRONOS focado em procurar notícias. Configure o ambiente dele para que ele consiga varrer sites de forma autônoma e me enviar os relatórios diários exclusivamente por e-mail."
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    E como criamos esse agente? Será que precisamos abrir o código-fonte? Claro que não. Nós temos um assistente na nossa máquina, o Antigravity. Você só precisa abrir o chat dele e jogar esse prompt: 'Crie um agente chamado CRONOS focado em procurar notícias...'. O próprio Antigravity vai gerar as pastas isoladas para o Cronos, instalar os plugins de busca e de e-mail, e preparar todo o terreno para que o seu agente particular possa nascer.
+                </aside>
+            </section>
+
+            <!-- Slide 4: Configurando o E-mail -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>O Caminho da <span class="accent-green">Informação</span></h2>
+                <p>O CRONOS é independente. Ele precisa da sua chave de e-mail.</p>
+                
+                <div class="glass-box" style="text-align: left;">
+                    <p style="font-size: 1.1em; color: #fff; font-weight: bold;">A Regra da Herança</p>
+                    <p>O CRONOS herda a inteligência (API Key) do Hermes padrão, mas opera em um <strong>arquivo isolado</strong> para não misturar funções.</p>
+                    <p>Logo após criar o agente, o Antigravity vai pedir para você abrir o cofre do CRONOS no VS Code rodando o comando:</p>
+                    <div class="code-block" style="text-align: center; font-size: 1.1em;">
+                        code ~/.hermes/profiles/cronos/.env
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Uma vez que o Antigravity cria o Cronos, existe um detalhe arquitetônico importante. O Cronos não é o Hermes inteiro; ele é um 'filho' especializado. Ele herda a inteligência (a chave do OpenRouter) do agente principal, mas tem um perfil isolado. O Antigravity vai te pedir para configurar as permissões de e-mail exclusivamente para o Cronos. Para isso, usaremos aquele comando clássico do VS Code para abrir o arquivo .env específico do nosso Caçador de Oportunidades.
+                </aside>
+            </section>
+
+            <!-- Slide 5: Inserindo as Credenciais (Print 1) -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Inserindo as <span class="accent-purple">Credenciais</span></h2>
+                <p>Preencha as variáveis de servidor SMTP no VS Code e salve.</p>
+                
+                <div class="print-placeholder">
+                    <!-- ADICIONAR PRINT DO VS CODE AQUI -->
+                    <svg class="icon-med" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+                    <p>[ COLE O PRINT DO VS CODE AQUI ]</p>
+                    <p style="font-size: 0.7em; font-weight: normal; margin-top: 10px;">Mostre o arquivo aberto com EMAIL_ADDRESS, EMAIL_PASSWORD, EMAIL_SMTP_HOST, EMAIL_SMTP_PORT, EMAIL_HOME_ADDRESS</p>
+                </div>
+
+                <aside class="notes">
+                    [INSTRUÇÃO PARA O PROFESSOR: Mostrar e explicar a tela do VS Code]
+                    Quando o VS Code abrir, você verá algo exatamente igual a esse print. Preencha as variáveis de ambiente: o seu endereço de e-mail, a sua senha de aplicativo (ou senha de SMTP segura), o host (ex: smtp.gmail.com), a porta, e para quem ele deve enviar o e-mail final. Depois disso, feche o VS Code. Pronto, você deu braços ao seu agente e ensinou ele a usar os correios.
+                </aside>
+            </section>
+
+            <!-- Slide 6: Agendando a Rotina -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>A Rotina Matinal <span class="accent-blue">(O Cron Job)</span></h2>
+                <p>Como dizer ao agente para trabalhar sozinho todo dia às 08:00?</p>
+                
+                <div class="glass-box" style="padding: 20px 30px;">
+                    <p style="text-align: left; font-size: 0.9em; margin-bottom: 5px;">Rode este comando no terminal para automatizar o envio:</p>
+                    <div class="code-block" style="font-size: 0.85em; color: var(--neon-blue);">
+cronos cron create "0 8 * * *" \<br>
+&nbsp;&nbsp;"Visite um site de notícias confiável, leia as manchetes do dia, crie uma newsletter amigável com as 5 mais relevantes e me envie o resumo." \<br>
+&nbsp;&nbsp;--name "Newsletter do Cronos" \<br>
+&nbsp;&nbsp;--deliver email
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Agora vem a parte mágica. Queremos que ele trabalhe dormindo. Usamos o agendamento em background (o famoso Cron Job). Esse comando assustador faz uma coisa muito simples: Os números "0 8 * * *" dizem: rode às 08h00, todos os dias. Logo abaixo está o comando claro do que ele deve fazer, seguido do nome da rotina e o formato de entrega: email. Acabou. Seu robô foi contratado para um turno fixo!
+                </aside>
+            </section>
+
+            <!-- Slide 7: Dicas e Atalhos -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Dicas Úteis <span class="accent-yellow">com o CRONOS</span></h2>
                 
                 <div class="flex-container">
                     <div class="flex-item" style="border-color: rgba(249, 212, 35, 0.3);">
-                        <svg class="icon-med accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                        <h3 class="accent-yellow">Via E-mail (SMTP)</h3>
-                        <p style="font-size: 0.9em;">Ferramenta que permite ao agente formatar uma tabela linda e enviá-la para sua caixa de entrada.</p>
+                        <svg class="icon-med accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+                        <h3 class="accent-yellow" style="font-size: 1.2em;">Bata um papo no Chat</h3>
+                        <p style="font-size: 0.85em;">Quer falar com ele agora? No terminal, digite apenas <code style="color:var(--neon-yellow);">cronos</code> e converse diretamente com ele.</p>
                     </div>
                     
-                    <div class="scheme-arrow">OU</div>
-                    
-                    <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
-                        <svg class="icon-med accent-blue" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.9-.65,1.76-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.82.71,1.68,1.4,2.58,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31.58-18.83C129.13,50.78,123.24,28.06,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/></svg>
-                        <h3 class="accent-blue">Via Discord</h3>
-                        <p style="font-size: 0.9em;">Agente fixado no servidor pronto para ser acionado com um @, respondendo na hora para a equipe.</p>
+                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3);">
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
+                        <h3 class="accent-green" style="font-size: 1.2em;">Forçar Execução</h3>
+                        <p style="font-size: 0.85em;">Não quer esperar as 08:00 para ver funcionando? Rode: <br><code style="color:var(--neon-green);">cronos cron trigger "Newsletter do Cronos"</code></p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Do mesmo jeito que ensinamos ele a ler a internet, nós podemos conectar a ferramenta de envio de e-mail (que roda localmente no seu computador, de forma segura) ou plugar a conta dele no Discord. Você decide o formato de entrega. Nós definimos o cérebro, demos visão na internet e criamos os braços que nos entregarão os relatórios de mercado mastigados. 
+                    Uma dica muito bacana do Hermes é a flexibilidade. Você agendou pra de manhã, mas e se quiser pedir uma pesquisa na hora? Basta abrir o terminal e digitar "cronos", e ele entra em modo Chat para conversar com você em tempo real. E se você quiser apenas testar para ver se o e-mail chega certinho agora mesmo, use o atalho 'cron trigger', forçando a tarefa que você acabou de criar a rodar neste exato segundo.
                 </aside>
             </section>
 
-            <!-- Slide 4: O Grande Play -->
+            <!-- Slide 8: O Resultado Final (Print 2) -->
             <section data-transition="convex" data-background-color="#000000">
-                <h2>Ação: <span class="accent-green">O Caçador Trabalhando</span></h2>
+                <h2>O Seu Primeiro <span class="accent-pink">E-mail Autônomo</span></h2>
+                <p>O que acontece quando o gatilho dispara:</p>
                 
-                <div class="glass-box" style="border-left: 6px solid var(--neon-green); padding: 30px;">
-                    <p style="text-align: center; margin-bottom: 20px; font-weight: 600;">O que o agente está fazendo sozinho (logs em tempo real):</p>
-                    
-                    <div class="code-block" style="width: 100%; border-color: rgba(0,255,204,0.3); color: #ccc; font-size: 0.9em; line-height: 1.8;">
-                        [10:00:01] ⚡ Recebido gatilho programado.<br>
-                        [10:00:03] 🔍 Executando busca: "novidades IA Brasil g1"<br>
-                        [10:00:15] 📄 Lendo conteúdo de 3 URLs...<br>
-                        [10:00:28] 🧠 Processando dados via OpenRouter...<br>
-                        [10:00:40] 📤 Enviando E-mail formatado...<br>
-                        <span class="highlight-text" style="color: var(--neon-green);">&gt; Tarefa concluída com sucesso.</span>
-                    </div>
+                <div class="print-placeholder">
+                    <!-- ADICIONAR PRINT DO EMAIL AQUI -->
+                    <svg class="icon-med" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                    <p>[ COLE O PRINT DA SUA CAIXA DE EMAIL AQUI ]</p>
+                    <p style="font-size: 0.7em; font-weight: normal; margin-top: 10px;">Mostre a tela do e-mail recebido, formatado e enviado pelo agente de forma 100% invisível</p>
                 </div>
 
                 <aside class="notes">
-                    Isso é o que acontece nos bastidores. Enquanto você está focado em analisar planilhas, desenhar projetos ou conversar com a sua equipe, o agente é ativado, pesquisa e filtra tudo em menos de 1 minuto. Observe no slide que ele nos poupou de todo o esforço bruto e robótico. A máquina processou os dados, não você.
+                    [INSTRUÇÃO PARA O PROFESSOR: Mostrar e celebrar o print do e-mail recebido]
+                    E aqui está! O resultado tangível. Você estava tomando café ou em outra reunião, e o Cronos entrou nos portais de notícias, filtrou o lixo, organizou os textos, entrou no servidor de e-mail e despachou isso pra você. Esse nível de automação inteligente, antigamente, custava dezenas de milhares de dólares para ser desenvolvido por engenheiros de software. Vocês acabaram de fazer na sala de casa.
                 </aside>
             </section>
 
-            <!-- Slide 5: Revisão -->
+            <!-- Slide 9: Expandindo Horizontes -->
             <section data-transition="zoom" data-background-color="#000000">
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 20vh;">
-                    <svg class="icon-large accent-gradient" style="width: 120px; height: 120px; margin-bottom: 30px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
-                    
-                    <h1 style="font-size: 3em; line-height: 1.2;">
-                        Bem-vindo à Sua <br><span class="accent-gradient">Nova Rotina Produtiva</span>
-                    </h1>
+                <h2>Modificando o <span class="accent-blue">Caçador</span></h2>
+                <p>O poder de criar múltiplos agentes especialistas.</p>
+                
+                <div class="glass-box" style="text-align: left; border-left: 5px solid var(--neon-blue);">
+                    <p style="font-size: 1.1em; margin-bottom: 20px;">Você não está restrito a notícias gerais. É só alterar o <strong>prompt do comando</strong>:</p>
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Política:</strong> <em>"Resuma os projetos de lei focados em impostos votados ontem."</em></li>
+                        <li><strong>Mercado:</strong> <em>"Analise as manchetes de finanças e destaque a cotação das empresas X e Y."</em></li>
+                        <li><strong>Empregos:</strong> <em>"Visite portais de vagas e me avise se surgiu algo para Analista de Marketing Sênior no Linkedin."</em></li>
+                    </ul>
+                    <p style="color: var(--neon-green); text-align: center; font-weight: bold; font-size: 1.1em; margin-top: 30px;">
+                        Imagine ter 5 agentes diferentes, todos trabalhando em background.
+                    </p>
                 </div>
 
                 <aside class="notes">
-                    E é assim que nós transformamos horas de trabalho maçante em um arquivo de configuração de texto que roda para sempre no seu computador. Hoje nós fizemos isso com pesquisas de notícias. Amanhã você pode fazer para geração de atas de reunião, disparo de respostas para clientes, ou análises de faturamento de fim de mês. Vocês acabam de desbloquear o nível de supervisores de processos. Muito obrigado.
+                    O mais sensacional é que essa lógica é completamente universal. Você não precisa ficar preso às notícias gerais. E se você quisesse um robô monitorando apenas vagas de emprego para um cargo sênior em uma empresa específica? É só alterar uma frase no comando do agendamento. Se você é contador, mande ele varrer notícias de mudanças tributárias no Diário Oficial. Se você é investidor, mande ele resumir os comunicados ao mercado das empresas da sua carteira. O limite é só a sua criatividade.
+                </aside>
+            </section>
+
+            <!-- Slide 10: Conclusão Final -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg class="icon-large accent-gradient" style="width: 120px; height: 120px; margin-bottom: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+                    
+                    <h1 style="font-size: 3.5em; line-height: 1.2;">
+                        O Fim é Apenas o <span class="accent-gradient">Começo</span>
+                    </h1>
+                    <p style="margin-top: 20px; font-size: 1.2em; max-width: 800px;">
+                        Parabéns! Você acaba de construir, treinar e dar autonomia ao seu primeiro funcionário 100% digital.
+                    </p>
+                </div>
+
+                <aside class="notes">
+                    Com isso, concluímos a nossa jornada de criação do Caçador de Oportunidades. Vocês não apenas entenderam o que é um agente inteligente, mas botaram a mão na massa, conectaram a espinha dorsal de API, integraram a ferramenta de correio, e orquestraram o agendamento de tarefas. Vocês não são mais usuários casuais de ferramentas prontas; vocês se tornaram construtores e engenheiros de automação. Muito obrigado e sucesso com o Hermes!
                 </aside>
             </section>
 
@@ -233,7 +341,7 @@
             backgroundTransition: 'convex',
             controls: true,
             progress: true,
-            center: true, // Centralizado perfeitamente conforme solicitado
+            center: true,
             mouseWheel: false,
             showNotes: false 
         });
