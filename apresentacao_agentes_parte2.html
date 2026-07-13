@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Construindo Seu Primeiro Agente na Prática - Parte 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ffcc;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --neon-purple: #9d4edd;
+            --neon-yellow: #f9d423;
+            --dark-black: #000000;
+        }
+
+        .reveal { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--dark-black);
+            color: #ffffff;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 { 
+            font-family: 'Outfit', sans-serif; 
+            text-transform: none; 
+            letter-spacing: -2px; 
+            font-weight: 900; 
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+
+        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
+        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
+        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
+        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
+        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
+        
+        .accent-gradient {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.4));
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            text-align: center;
+            margin: 15px auto;
+            width: 95%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+        
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .flex-item {
+            flex: 1;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s;
+            text-align: center;
+        }
+        
+        .flex-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .icon-large { width: 80px; height: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 10px currentColor); }
+        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+        .icon-small { width: 40px; height: 40px; filter: drop-shadow(0 0 5px currentColor); }
+
+        .reveal p { font-size: 0.9em; line-height: 1.5; font-weight: 300; color: #d1d1e9; }
+        
+        .reveal .slides section {
+            padding-top: 0px !important;
+        }
+        
+        /* Floating animations for the cover slide */
+        @keyframes float1 { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(3deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        @keyframes float2 { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(15px) rotate(-3deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        .float-fast { animation: float1 4s ease-in-out infinite; }
+        .float-slow { animation: float2 6s ease-in-out infinite; }
+        
+        /* Scheme arrows */
+        .scheme-arrow { font-size: 1.5em; color: var(--neon-blue); align-self: center; margin: 0 10px; }
+
+        .mockup-message {
+            background: #202c33;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 4px solid var(--neon-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .mockup-email {
+            background: #ffffff;
+            color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            max-width: 1800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,255,204,0.2);
+            border-top: 5px solid var(--neon-blue);
+        }
+        .mockup-time { font-size: 0.6em; color: #8696a0; text-align: right; display: block; margin-top: 10px; }
+
+        .split-code-text { display: flex; align-items: stretch; justify-content: center; gap: 30px; }
+        .code-box { font-family: monospace; text-align: left; background: #1e1e1e; padding: 25px; border-radius: 10px; border: 1px solid #ff4444; color: #888; font-size: 0.85em; display: flex; flex-direction: column; justify-content: center;}
+        .text-box { font-family: inherit; text-align: left; background: rgba(0,255,204,0.1); padding: 25px; border-radius: 10px; border: 1px solid var(--neon-green); font-size: 0.9em; display: flex; flex-direction: column; justify-content: center;}
+
+        /* Controls */
+        .reveal .controls-arrow { color: var(--neon-purple) !important; }
+        .reveal .progress span { background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Introdução à Parte 2 -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="position: relative; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                    <!-- Puzzle Blocks / Workspace -->
+                    <svg class="icon-med accent-green float-fast" style="position: absolute; left: 25%; top: 20%;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a1.5 1.5 0 01-1.5 1.5H6a2.25 2.25 0 00-2.25 2.25v3.75m16.5 0v-3.75a2.25 2.25 0 00-2.25-2.25h-3.75a1.5 1.5 0 01-1.5-1.5v0z" /></svg>
+                    
+                    <svg class="icon-large accent-blue" style="z-index: 10;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                    
+                    <svg class="icon-med accent-pink float-slow" style="position: absolute; right: 25%; top: 50%;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" /></svg>
+                </div>
+                
+                <h1 style="font-size: 3.2em; margin-bottom: 20px;">Parte 2: Construindo Seu <span class="accent-gradient">Primeiro Agente</span> na Prática.</h1>
+                
+                <aside class="notes">
+                    Agora que vocês já entenderam o conceito, vamos abrir o capô do carro. Mas não se preocupem, não vamos mexer com fios ou códigos. Nós vamos montar juntos um Agente altamente útil para qualquer pessoa aqui na sala: o nosso Caçador de Oportunidades. Ele vai varrer a internet por nós, analisar os dados e nos entregar o filé mignon da informação.
+                </aside>
+            </section>
+
+            <!-- Slide 2: O Desenho do Nosso Agente -->
+            <section data-transition="convex" data-background-color="#000000">
+                <h2>O Fluxo de Trabalho do <span class="accent-blue">Nosso Agente</span></h2>
+                
+                <div class="glass-box" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+                    <div style="text-align: center; flex: 1;">
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+                        <p style="margin:0; font-weight: 600;">1. Robô busca na Internet</p>
+                        <p style="font-size: 0.7em; opacity: 0.7;">(Google/Sites)</p>
+                    </div>
+                    <div class="scheme-arrow">→</div>
+                    <div style="text-align: center; flex: 1;">
+                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                        <p style="margin:0; font-weight: 600;">2. Cérebro do Hermes</p>
+                        <p style="font-size: 0.7em; opacity: 0.7;">(Analisa e Filtra)</p>
+                    </div>
+                    <div class="scheme-arrow">→</div>
+                    <div style="text-align: center; flex: 1;">
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <p style="margin:0; font-weight: 600;">3. Envia o Resumo</p>
+                        <p style="font-size: 0.7em; opacity: 0.7;">(E-mail ou WhatsApp)</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Para criar qualquer agente, nós não começamos digitando no computador; começamos desenhando o processo em um papel. O que nós queremos que ele faça? Passo 1: Ele vai entrar em portais de conteúdo ou pesquisar termos específicos na internet. Passo 2: Ele vai ler tudo o que achou e usar a inteligência dele para separar o que é ouro do que é lixo. Passo 3: Ele vai organizar isso em uma tabela ou texto bonito e nos enviar. Vamos dar os três pilares para ele agora.
+                </aside>
+            </section>
+
+            <!-- Slide 3: Definindo a Identidade -->
+            <section style="margin-bottom: 20px;", data-transition="convex" data-background-color="#000000">
+                <h2>Passo 1: Dando um Cargo e <span class="accent-green">Instruções ao Hermes</span></h2>
+                
+                <div class="glass-box" style="padding: 10px; border-left: 6px solid var(--neon-green);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <svg class="icon-small accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 15px; margin-bottom: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                        <h3 style="margin: 0; font-size: 1.4em;">Prompt Principal (Identidade)</h3>
+                    </div>
+                    <p style="font-size: 1.2em; font-style: italic; line-height: 1.6; color: #fff; text-align: left;">
+                        "Você é o meu <strong class="accent-green">Analista de Mercado Particular</strong>. Seu objetivo é encontrar as <strong class="accent-blue">3 notícias ou oportunidades mais importantes do dia</strong> sobre o tema [X] (marketing, tecnologia, vagas, etc.). Você deve ignorar anúncios e fofocas, focando apenas em fatos que gerem impacto real."
+                    </p>
+                </div>
+
+                <aside class="notes">
+                    O primeiro passo é dizer quem ele é. Nós escrevemos em português claro: 'Você é o meu Analista de Mercado Particular. Seu objetivo é encontrar as 3 notícias ou oportunidades mais importantes do dia sobre o tema X (que pode ser marketing, tecnologia, vagas de emprego, etc.). Você deve ignorar anúncios e fofocas, focando apenas em fatos que gerem impacto real.' Pronto. Acabamos de dar um cérebro e uma personalidade para o nosso agente.
+                </aside>
+            </section>
+
+            <!-- Slide 4: Dando as Ferramentas -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Passo 2: O Que o <span class="accent-blue">Agente Sabe Usar?</span></h2>
+                
+                <div class="glass-box">
+                    <p style="font-size: 1.1em; margin-bottom: 30px;">Conectando a Inteligência ao Mundo Real</p>
+                    
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                        
+                        <!-- AI Brain Center -->
+                        <svg class="icon-large accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" /></svg>
+                        
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <div class="scheme-arrow" style="transform: rotate(45deg); font-size: 2em; margin: 0;">↗</div>
+                            <div class="scheme-arrow" style="font-size: 2em; margin: 0;">→</div>
+                            <div class="scheme-arrow" style="transform: rotate(-45deg); font-size: 2em; margin: 0;">↘</div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <!-- Browser / Google -->
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <svg class="icon-small accent-green" style="margin: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+                                <p style="margin:0; font-weight: bold; font-size: 1.1em;">Google / Web</p>
+                            </div>
+                            <!-- Email / WhatsApp -->
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <svg class="icon-small accent-pink" style="margin: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                                <p style="margin:0; font-weight: bold; font-size: 1.1em;">E-mail / WhatsApp</p>
+                            </div>
+                            <!-- Excel / Drive -->
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <svg class="icon-small accent-blue" style="margin: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+                                <p style="margin:0; font-weight: bold; font-size: 1.1em;">Excel / Drive</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Se você deixar a IA trancada em uma sala sem internet, ela não consegue te ajudar. Então, nesse passo, nós liberamos as ferramentas para ela. Através de plataformas onde você só clica e arrasta (como o n8n ou ferramentas similares), nós dizemos: 'Hermes, você tem permissão para usar o Google para pesquisar. E você tem permissão para acessar o meu e-mail para me mandar o resultado final.' O agente agora tem olhos para ver o mundo (a internet) e braços para agir (o e-mail).
+                </aside>
+            </section>
+
+            <!-- Slide 5: O Resultado Final -->
+            <section , data-transition="convex" data-background-color="#000000">
+                <h2 style="padding-top: 5px;">Passo 3: O Trabalho Pronto no <span class="accent-pink">Seu E-mail</span></h2>
+                
+                <div class="mockup-email">
+                    <p style="margin:0; font-weight: 800; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                        Assunto: 📊 Seu Relatório Diário de Mercado - Hermes
+                    </p>
+                    <div style="padding-top: 5px; font-size: 0.9em; line-height: 1.6;">
+                        <p>Olá Gustavo,</p>
+                        <p>Fiz a varredura matinal. Aqui estão os 3 pontos cruciais de hoje:</p>
+                        <ul style="padding-left: 20px; color: #444;">
+                            <li style="margin-bottom: 10px;"><strong>Lançamento da API XYZ:</strong> Reduz custos em nuvem em até 40%. <a href="#" style="color: var(--neon-blue); text-decoration: none;">[Leia a Fonte]</a></li>
+                            <li style="margin-bottom: 10px;"><strong>Nova Vaga Estratégica:</strong> Empresa Alfa abriu posição sênior que bate com seu perfil de projetos. <a href="#" style="color: var(--neon-blue); text-decoration: none;">[Ver Vaga]</a></li>
+                            <li style="margin-bottom: 10px;"><strong>Queda na Taxa de Juros:</strong> Mercado reagiu positivamente no setor de tecnologia.</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: bold;">Bom trabalho!<br>— Seu Agente Hermes</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    E aqui está o resultado. Sem que você precise clicar em nada, todo dia no horário combinado, o agente executa esse fluxo. Ele pesquisa, lê, filtra com os critérios que você definiu e te entrega isso na sua caixa de entrada. Se você fizesse isso manualmente, levaria pelo menos 30 a 40 minutos por dia. Multiplique isso por um ano inteiro. O seu agente acabou de te devolver semanas inteiras de tempo livre.
+                </aside>
+            </section>
+
+            <!-- Slide 6: O Grande Segredo -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Como Conversar com o <span class="accent-yellow">Seu Agente</span></h2>
+                
+                <div class="split-code-text" style="align-items: stretch;">
+                    <!-- Bad Prompt Box -->
+                    <div class="code-box" style="flex:1;">
+                        <p style="color: #ff4444; font-weight: bold; text-align: center; font-size: 1.5em; margin-bottom: 15px;">❌ Não Faça</p>
+                        <p style="color: #ccc; text-align: center; font-size: 1.1em; margin: 0; font-family: 'Outfit', sans-serif;">
+                            "Pesquise sobre inteligência artificial para mim."
+                        </p>
+                        <p style="color: #888; text-align: center; margin-top: 15px; font-style: italic;">(Muito vago. Ele não sabe o formato, o tamanho ou o foco.)</p>
+                    </div>
+                    
+                    <div class="scheme-arrow" style="color: #666; font-size: 2em; display: flex; align-items: center;">vs</div>
+                    
+                    <!-- Good Prompt Box -->
+                    <div class="text-box" style="flex:1;">
+                        <p style="color: var(--neon-green); font-weight: bold; text-align: center; font-size: 1.5em; margin-bottom: 15px;">✅ Faça</p>
+                        <p style="color: #fff; text-align: center; font-size: 1.1em; font-weight: 600; margin: 0;">
+                            "Pesquise as 3 principais ferramentas de IA lançadas nesta semana para criadores de conteúdo. Faça um resumo de 2 linhas para cada uma."
+                        </p>
+                        <p style="color: var(--neon-green); text-align: center; margin-top: 15px; font-style: italic;">(Específico, direcionado e com formato definido.)</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Para fechar a nossa aula prática, guardem esse segredo: o seu agente vai ser tão bom quanto a clareza das suas instruções. Se você der uma ordem vaga, terá um resultado vago. Trate o agente como um funcionário brilhante, mas que acabou de chegar na empresa e não conhece a sua rotina. Seja específico, diga o formato que você quer o resultado e veja a mágica acontecer.
+                </aside>
+            </section>
+
+            <!-- Slide 7: Conclusão -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="height: 10vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg class="icon-large accent-gradient" style="width: 100px; height: 100px; margin-bottom: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
+                    
+                    <h1 style="font-size: 3.2em; line-height: 1.2;">
+                        Sua Equipe Digital <br><span class="accent-gradient">Está Esperando.</span>
+                    </h1>
+                </div>
+
+                <aside class="notes">
+                    O maior erro hoje é achar que a IA serve só para gerar textos engraçados ou imagens. A IA serve para criar processos. Criar o seu primeiro agente é o primeiro passo para você deixar de ser um executor de tarefas repetitivas e se tornar, de verdade, o diretor da sua própria rotina. Muito obrigado e comecem a criar os seus agentes ainda hoje!
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 1100,
+            height: 700,
+            margin: 0.04,
+            transition: 'zoom', 
+            backgroundTransition: 'convex',
+            controls: true,
+            progress: true,
+            center: false,
+            mouseWheel: false,
+            // Enables speaker notes to be viewed by pressing 's' on the keyboard
+            showNotes: false 
+        });
+    </script>
+</body>
+</html>
