@@ -161,7 +161,6 @@
                     Chegamos ao ápice do nosso curso, o Módulo 4. Até agora, nós baixamos as ferramentas e instalamos o cérebro base do projeto. Mas a verdadeira mágica não está em ter um cérebro inteligente; está em dar braços, pernas e tarefas específicas para esse cérebro. Hoje nós vamos dar superpoderes ao nosso sistema e colocar o nosso Caçador de Oportunidades, que chamaremos de CRONOS, para trabalhar sozinho e enviar e-mails para nós.
                 </aside>
             
-                <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
             </section>
 
             <!-- Slide 2: Importância das Ferramentas -->
@@ -183,7 +182,6 @@
                     Um ponto crucial sobre inteligência artificial: um modelo sem ferramentas é só um papagaio muito inteligente. Ele sabe muito, mas está preso dentro de uma caixa. A importância de darmos autonomia ao Hermes é exatamente essa. Quando conectamos ferramentas de e-mail e de navegação na web, nós tiramos ele da caixa. Ele se torna um ator no mundo real, capaz de entrar num site de notícias, resumir o que encontrou e despachar isso ativamente para a sua caixa de entrada, sem que você precise apertar nenhum botão.
                 </aside>
             
-                <div class="slide-source">Fonte: Conceitos de 'Tool-Augmented Language Models'</div>
             </section>
 
             <!-- Slide 3: Criando o Agente CRONOS -->
@@ -202,7 +200,6 @@
                     E como criamos esse agente? Será que precisamos abrir o código-fonte? Claro que não. Nós temos um assistente na nossa máquina, o Antigravity. Você só precisa abrir o chat dele e jogar esse prompt: 'Crie um agente chamado CRONOS focado em procurar notícias...'. O próprio Antigravity vai gerar as pastas isoladas para o Cronos, instalar os plugins de busca e de e-mail, e preparar todo o terreno para que o seu agente particular possa nascer.
                 </aside>
             
-                <div class="slide-source">Fonte: Framework de Subagentes Antigravity / Hermes</div>
             </section>
 
             <!-- Slide 4: Configurando o E-mail -->
@@ -223,7 +220,6 @@
                     Uma vez que o Antigravity cria o Cronos, existe um detalhe arquitetônico importante. O Cronos não é o Hermes inteiro; ele é um 'filho' especializado. Ele herda a inteligência (a chave do OpenRouter) do agente principal, mas tem um perfil isolado. O Antigravity vai te pedir para configurar as permissões de e-mail exclusivamente para o Cronos. Para isso, usaremos aquele comando clássico do VS Code para abrir o arquivo .env específico do nosso Caçador de Oportunidades.
                 </aside>
             
-                <div class="slide-source">Fonte: Arquitetura de Perfis Isolados (Hermes Profiles)</div>
             </section>
 
             <!-- Slide 5: Inserindo as Credenciais (Print 1) -->
@@ -243,7 +239,6 @@
                     Quando o VS Code abrir, você verá algo exatamente igual a esse print. Preencha as variáveis de ambiente: o seu endereço de e-mail, a sua senha de aplicativo (ou senha de SMTP segura), o host (ex: smtp.gmail.com), a porta, e para quem ele deve enviar o e-mail final. Depois disso, feche o VS Code. Pronto, você deu braços ao seu agente e ensinou ele a usar os correios.
                 </aside>
             
-                <div class="slide-source">Fonte: Protocolos SMTP e Autenticação de Aplicativos</div>
             </section>
 
             <!-- Slide 6: Agendando a Rotina -->
@@ -265,7 +260,6 @@ cronos cron create "0 8 * * *" \<br>
                     Agora vem a parte mágica. Queremos que ele trabalhe dormindo. Usamos o agendamento em background (o famoso Cron Job). Esse comando assustador faz uma coisa muito simples: Os números "0 8 * * *" dizem: rode às 08h00, todos os dias. Logo abaixo está o comando claro do que ele deve fazer, seguido do nome da rotina e o formato de entrega: email. Acabou. Seu robô foi contratado para um turno fixo!
                 </aside>
             
-                <div class="slide-source">Fonte: Documentação do Cron (Unix/Linux Task Scheduler)</div>
             </section>
 
             <!-- Slide 7: Dicas e Atalhos -->
@@ -290,7 +284,6 @@ cronos cron create "0 8 * * *" \<br>
                     Uma dica muito bacana do Hermes é a flexibilidade. Você agendou pra de manhã, mas e se quiser pedir uma pesquisa na hora? Basta abrir o terminal e digitar "cronos", e ele entra em modo Chat para conversar com você em tempo real. E se você quiser apenas testar para ver se o e-mail chega certinho agora mesmo, use o atalho 'cron trigger', forçando a tarefa que você acabou de criar a rodar neste exato segundo.
                 </aside>
             
-                <div class="slide-source">Fonte: Guias de Uso Avançado do Hermes CIIA</div>
             </section>
 
             <!-- Slide 8: O Resultado Final (Print 2) -->
@@ -310,7 +303,6 @@ cronos cron create "0 8 * * *" \<br>
                     E aqui está! O resultado tangível. Você estava tomando café ou em outra reunião, e o Cronos entrou nos portais de notícias, filtrou o lixo, organizou os textos, entrou no servidor de e-mail e despachou isso pra você. Esse nível de automação inteligente, antigamente, custava dezenas de milhares de dólares para ser desenvolvido por engenheiros de software. Vocês acabaram de fazer na sala de casa.
                 </aside>
             
-                <div class="slide-source">Fonte: Validação e Testes Internos da Equipe Hermes CIIA</div>
             </section>
 
             <!-- Slide 9: Expandindo Horizontes -->
@@ -334,7 +326,6 @@ cronos cron create "0 8 * * *" \<br>
                     O mais sensacional é que essa lógica é completamente universal. Você não precisa ficar preso às notícias gerais. E se você quisesse um robô monitorando apenas vagas de emprego para um cargo sênior em uma empresa específica? É só alterar uma frase no comando do agendamento. Se você é contador, mande ele varrer notícias de mudanças tributárias no Diário Oficial. Se você é investidor, mande ele resumir os comunicados ao mercado das empresas da sua carteira. O limite é só a sua criatividade.
                 </aside>
             
-                <div class="slide-source">Fonte: Casos de Uso Expandidos (Projeto Hermes)</div>
             </section>
 
             <!-- Slide 10: Conclusão Final -->
