@@ -237,7 +237,19 @@
         .reveal .progress span {
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important;
         }
-    </style>
+    
+  .slide-source {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Outfit', sans-serif;
+    z-index: 1000;
+    text-align: left;
+  }
+
+</style>
 </head>
 
 <body>
@@ -277,6 +289,8 @@
                     virtuais altamente qualificados — os chamados Agentes — para assumirem o trabalho chato do dia a dia
                     de vocês, usando apenas o bom e velho português.
                 </aside>
+            
+                <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
             </section>
 
             <!-- Slide 2: O Problema -->
@@ -313,6 +327,8 @@
                     colando dados de um lugar para o outro? Nós gastamos nossa energia intelectual com processos
                     manuais. E se você pudesse delegar isso tudo?
                 </aside>
+            
+                <div class="slide-source">Fonte: Relatórios de Produtividade Acadêmica (2024)</div>
             </section>
 
             <!-- Slide 3: ChatGPT vs. Agente -->
@@ -351,6 +367,8 @@
                     nossos concorrentes e me mande o resumo'. O agente se vira sozinho e só volta quando o trabalho
                     estiver pronto.
                 </aside>
+            
+                <div class="slide-source">Fonte: 'ReAct: Synergizing Reasoning and Acting in Language Models' (Yao et al., 2022)</div>
             </section>
 
             <!-- Slide 4: Bagunça vs. Organização -->
@@ -388,6 +406,8 @@
                 <aside class="notes">
                     Para entender a diferença na prática, pensem na bagunça versus a organização. A bagunça é o texto de um chatbot convencional como o ChatGPT, onde você fala sobre receita de bolo, código de programação e cotação do dólar tudo no mesmo chat sem rumo. A organização é o Agente Virtual: ele tem uma proposta isolada e um objetivo bem definido. Ele não tenta fazer tudo; ele foca em uma missão com as ferramentas certas e só para quando atinge o objetivo.
                 </aside>
+            
+                <div class="slide-source">Fonte: Guias de Design de Agentes Autônomos (Anthropic/OpenAI)</div>
             </section>
 
             <!-- Slide 4: Anatomia -->
@@ -429,6 +449,8 @@
                     'Descubra quais são as principais tendências de tecnologia desta semana e prepare um relatório'. Com
                     isso, ela une a sua identidade com as ferramentas disponíveis para cumprir a meta.
                 </aside>
+            
+                <div class="slide-source">Fonte: Arquiteturas de Agentic Workflows</div>
             </section>
 
             <!-- Slide 5: O Ecossistema Hermes -->
@@ -476,6 +498,8 @@
                 <aside class="notes">
                     Por dentro, o Hermes é um orquestrador. Pense como um regente de orquestra: ele não toca nenhum instrumento, mas coordena tudo. O modelo de linguagem (a inteligência via API) é o músico principal. As ferramentas de busca e e-mail são os outros instrumentos. E o Hermes é quem diz quem toca quando. A beleza do sistema é que você pode trocar o músico principal — migrar do GPT para o Claude ou Llama — sem precisar reescrever a orquestra inteira.
                 </aside>
+            
+                <div class="slide-source">Fonte: Documentação Oficial do Projeto Hermes CIIA</div>
             </section>
 
             <!-- Slide 5: Caso Prático 1 -->
@@ -502,6 +526,8 @@
                     direto no celular do dono da empresa antes do horário do café. Quanto tempo isso economiza na sua
                     semana?
                 </aside>
+            
+                <div class="slide-source">Fonte: Casos de Uso - Automação de Inteligência Competitiva</div>
             </section>
 
             <!-- Slide 6: Caso Prático 2 -->
@@ -545,6 +571,8 @@
                     único trabalho é ler o rascunho que a IA fez, ver se está tudo certo e clicar em 'Enviar'. Você vira
                     um supervisor do seu próprio tempo.
                 </aside>
+            
+                <div class="slide-source">Fonte: Casos de Uso - Triagem de Comunicação via LLMs</div>
             </section>
 
             <!-- Slide 7: Como é feito? -->
@@ -588,6 +616,8 @@
                     escrito. Se você sabe dar ordens claras e delegar tarefas para um ser humano, você sabe criar um
                     Agente de IA.
                 </aside>
+            
+                <div class="slide-source">Fonte: Andrej Karpathy (2023) - 'English is the hottest new programming language'</div>
             </section>
 
             <!-- Slide 8: A Alma do Agente: O System Prompt -->
@@ -623,6 +653,8 @@
                 <aside class="notes">
                     Como a inteligência artificial aprende quem ela deve ser? Através do System Prompt. Num chat normal, a IA tem uma personalidade super abrangente, pronta para agradar a todos sem se comprometer. Já no agente, nós cunhamos a alma dele no System Prompt: definimos exatamente quem ele é, o que ele pode e o que ele jamais deve fazer. Isso define as fronteiras e garante que a execução seja profissional e segura.
                 </aside>
+            
+                <div class="slide-source">Fonte: Boas práticas de Prompt Engineering (OpenAI, 2023)</div>
             </section>
 
             <!-- Slide 9: A Memória do Agente: De Episódico a Contínuo -->
@@ -656,6 +688,8 @@
                 <aside class="notes">
                     Outro ponto crucial é a Memória. Chatbots tradicionais esquecem tudo assim que você fecha a janela. O Hermes, no entanto, usa o sistema de arquivos locais para persistir informações. Ele lembra do que pesquisou antes, dos caminhos de pasta que usou e das preferências do usuário. Isso transforma o agente de uma ferramenta episódica, que esquece tudo, em um assistente contínuo, que evolui e fica cada vez mais inteligente com o tempo.
                 </aside>
+            
+                <div class="slide-source">Fonte: Padrões de Memória Contínua para Agentes Autônomos</div>
             </section>
 
             <!-- Slide 8: Conclusão -->
@@ -672,23 +706,23 @@
                     trabalharem para você não é luxo, é sobrevivência no mercado atual para focar no que realmente
                     importa: a estratégia, o lado humano e o crescimento do seu negócio. Muito obrigado!
                 </aside>
+            
+                <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
             </section>
 
             <!-- Slide 9: Q&A -->
             <section data-transition="convex" data-background-color="#000000">
                 <h1 class="accent-blue" style="font-size: 2.8em;">Perguntas?</h1>
 
-                <div class="glass-box" style="text-align: center; margin-top: 40px; padding: 20px;">
-                    <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;"> Professores: Gustavo, André e
-                        João</p>
-                    <p style="color: var(--neon-pink); margin-bottom: 5px;">Aula 1: Conhecendo o poder do Hermes</p>
-                </div>
+                
 
                 <aside class="notes">
                     Agora eu quero abrir o espaço para vocês. Me digam: qual é a tarefa mais chata ou demorada do dia a
                     dia de vocês? Vamos desenhar juntos, aqui e agora, como seria o agente ideal para resolver esse
                     problema.
                 </aside>
+            
+                <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
             </section>
 
         </div>
