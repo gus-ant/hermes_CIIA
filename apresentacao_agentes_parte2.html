@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <title>Arquitetando seu Primeiro Agente - Parte 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --neon-green: #00ffcc;
@@ -23,29 +24,52 @@
             --dark-black: #000000;
         }
 
-        .reveal { 
-            font-family: 'Outfit', sans-serif; 
+        .reveal {
+            font-family: 'Outfit', sans-serif;
             background-color: var(--dark-black);
             color: #ffffff;
         }
-        
-        .reveal h1, .reveal h2, .reveal h3 { 
-            font-family: 'Outfit', sans-serif; 
-            text-transform: none; 
-            letter-spacing: -2px; 
-            font-weight: 900; 
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none;
+            letter-spacing: -2px;
+            font-weight: 900;
             color: #ffffff;
             margin-bottom: 20px;
         }
 
-        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+        .reveal h1 {
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
 
-        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
-        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
-        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
-        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
-        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
-        
+        .accent-green {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+        }
+
+        .accent-blue {
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+        }
+
+        .accent-pink {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .accent-purple {
+            color: var(--neon-purple);
+            text-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
+        }
+
+        .accent-yellow {
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px rgba(249, 212, 35, 0.6);
+        }
+
         .accent-gradient {
             background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
@@ -59,14 +83,14 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 30px 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             text-align: center;
             margin: 15px auto;
             width: 95%;
             max-width: 1000px;
             box-sizing: border-box;
         }
-        
+
         .flex-container {
             display: flex;
             justify-content: space-between;
@@ -84,22 +108,48 @@
             transition: all 0.4s;
             text-align: center;
         }
-        
+
         .flex-item:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
-        .icon-large { width: 80px; height: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 10px currentColor); }
-        .icon-med { width: 60px; height: 60px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
-        .icon-small { width: 40px; height: 40px; filter: drop-shadow(0 0 5px currentColor); }
+        .icon-large {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
 
-        .reveal p { font-size: 1.0em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
-        
+        .icon-med {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .icon-small {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 5px currentColor);
+        }
+
+        .reveal p {
+            font-size: 1.0em;
+            line-height: 1.6;
+            font-weight: 300;
+            color: #d1d1e9;
+        }
+
         /* Scheme arrows */
-        .scheme-arrow { font-size: 1.8em; color: var(--neon-blue); align-self: center; margin: 0 10px; }
+        .scheme-arrow {
+            font-size: 1.8em;
+            color: var(--neon-blue);
+            align-self: center;
+            margin: 0 10px;
+        }
 
         .mockup-email {
             background: #ffffff;
@@ -109,143 +159,246 @@
             text-align: left;
             max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 10px 40px rgba(0,255,204,0.2);
+            box-shadow: 0 10px 40px rgba(0, 255, 204, 0.2);
             border-top: 5px solid var(--neon-blue);
         }
 
-        .split-code-text { display: flex; align-items: stretch; justify-content: center; gap: 30px; }
-        .code-box { font-family: monospace; text-align: left; background: #1e1e1e; padding: 25px; border-radius: 10px; border: 1px solid #ff4444; color: #888; font-size: 0.85em; display: flex; flex-direction: column; justify-content: center;}
-        .text-box { font-family: inherit; text-align: left; background: rgba(0,255,204,0.1); padding: 25px; border-radius: 10px; border: 1px solid var(--neon-green); font-size: 0.9em; display: flex; flex-direction: column; justify-content: center;}
+        .split-code-text {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .code-box {
+            font-family: monospace;
+            text-align: left;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ff4444;
+            color: #888;
+            font-size: 0.85em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-box {
+            font-family: inherit;
+            text-align: left;
+            background: rgba(0, 255, 204, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--neon-green);
+            font-size: 0.9em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
         /* Controls */
-        .reveal .controls-arrow { color: var(--neon-purple) !important; }
-        .reveal .progress span { background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important; }
+        .reveal .controls-arrow {
+            color: var(--neon-purple) !important;
+        }
+
+        .reveal .progress span {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important;
+        }
     </style>
 </head>
+
 <body>
     <div class="reveal">
         <div class="slides">
 
             <!-- Slide 1: Introdução à Parte 2 -->
             <section data-transition="zoom" data-background-color="#000000">
-                <div style="position: relative; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                    <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                <div
+                    style="position: relative; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                    <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                    </svg>
                 </div>
-                
-                <h1 style="font-size: 3.2em; margin-bottom: 20px;">Parte 2: Arquitetando seu <span class="accent-gradient">Primeiro Agente</span></h1>
+
+                <h1 style="font-size: 3.2em; margin-bottom: 20px;">Parte 2: Arquitetando seu <span
+                        class="accent-gradient">Primeiro Agente</span></h1>
                 <p>Engenharia de Processos e Design Estrutural de Agentes de IA</p>
-                
+
                 <aside class="notes">
-                    Olá pessoal, bem-vindos à Parte 2 da nossa aula. Agora que já entendemos o poder da Inteligência Artificial ativa em comparação aos chatbots tradicionais, nós vamos abrir o capô do carro. Nesta aula de hoje, nós vamos desenhar a arquitetura do nosso primeiro agente: o Caçador de Oportunidades. Não vamos mexer com código ou conexões elétricas, vamos programar processos estruturados usando nossa própria lógica e a nossa língua nativa. Preparem-se, pois aqui começa a verdadeira jornada da automação intelectual.
+                    Olá pessoal, bem-vindos à Parte 2 da nossa aula. Agora que já entendemos o poder da Inteligência
+                    Artificial ativa em comparação aos chatbots tradicionais, nós vamos abrir o capô do carro. Nesta
+                    aula de hoje, nós vamos desenhar a arquitetura do nosso primeiro agente: o Caçador de Oportunidades.
+                    Não vamos mexer com código ou conexões elétricas, vamos programar processos estruturados usando
+                    nossa própria lógica e a nossa língua nativa. Preparem-se, pois aqui começa a verdadeira jornada da
+                    automação intelectual.
                 </aside>
             </section>
 
             <!-- Slide 2: O Maior Erro com IA -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Por que Desenhar Antes de <span class="accent-pink">Construir?</span></h2>
-                
+
                 <div class="glass-box" style="text-align: left; padding: 30px 50px;">
                     <p style="font-size: 1.1em; margin-bottom: 20px; font-weight: bold; color: var(--neon-pink);">
                         ⚠️ O cemitério dos projetos de IA está cheio de ferramentas que tentam fazer tudo.
                     </p>
                     <ul style="line-height: 1.8; color: #d1d1e9; font-size: 0.95em;">
-                        <li style="margin-bottom: 12px;"><strong>Falta de Escopo:</strong> Jogar uma tarefa aberta para a IA gera alucinações e erros.</li>
-                        <li style="margin-bottom: 12px;"><strong>Design Modular:</strong> Dividir tarefas complexas em agentes pequenos e focados garante 95% mais precisão.</li>
-                        <li style="margin-bottom: 12px;"><strong>Os 3 Pilares:</strong> Todo agente produtivo precisa ter <strong>Identidade</strong>, <strong>Ferramentas</strong> e um <strong>Canal de Ação</strong>.</li>
+                        <li style="margin-bottom: 12px;"><strong>Falta de Escopo:</strong> Jogar uma tarefa aberta para
+                            a IA gera alucinações e erros.</li>
+                        <li style="margin-bottom: 12px;"><strong>Design Modular:</strong> Dividir tarefas complexas em
+                            agentes pequenos e focados garante muito mais precisão.</li>
+                        <li style="margin-bottom: 12px;"><strong>Os 3 Pilares:</strong> Todo agente produtivo precisa
+                            ter <strong>Identidade</strong>, <strong>Ferramentas</strong> e um <strong>Canal de
+                                Ação</strong>.</li>
                     </ul>
                 </div>
 
                 <aside class="notes">
-                    Antes de colocar a mão na massa, precisamos entender o maior erro que as pessoas cometem ao trabalhar com inteligência artificial: elas abrem o ChatGPT e pedem "faça meu trabalho do dia". A IA tenta fazer tudo de uma vez e acaba alucinando ou entregando respostas vagas. A engenharia de processos nos ensina que a chave do sucesso é a especialização. Nós dividimos um grande problema em pequenos agentes que fazem uma única coisa com maestria. E para estruturar qualquer agente, nós nos apoiamos em três pilares fundamentais que vamos destrinchar agora.
+                    Antes de colocar a mão na massa, precisamos entender o maior erro que as pessoas cometem ao
+                    trabalhar com inteligência artificial: elas abrem o ChatGPT e pedem "faça meu trabalho do dia". A IA
+                    tenta fazer tudo de uma vez e acaba alucinando ou entregando respostas vagas. A engenharia de
+                    processos nos ensina que a chave do sucesso é a especialização. Nós dividimos um grande problema em
+                    pequenos agentes que fazem uma única coisa com maestria. E para estruturar qualquer agente, nós nos
+                    apoiamos em três pilares fundamentais que vamos destrinchar agora.
                 </aside>
             </section>
 
             <!-- Slide 3: O Fluxo de Trabalho (Arquitetura Geral) -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>A Arquitetura do <span class="accent-blue">Caçador de Oportunidades</span></h2>
-                
-                <div class="glass-box" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+
+                <div class="glass-box"
+                    style="display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
                     <div style="text-align: center; flex: 1;">
-                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                        </svg>
                         <p style="margin:0; font-weight: 600; font-size: 0.9em;">1. Ingestão & Busca</p>
                         <p style="font-size: 0.7em; opacity: 0.7;">Varre a web de forma autônoma atrás de dados</p>
                     </div>
                     <div class="scheme-arrow">→</div>
                     <div style="text-align: center; flex: 1;">
-                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        </svg>
                         <p style="margin:0; font-weight: 600; font-size: 0.9em;">2. Cérebro do Hermes</p>
                         <p style="font-size: 0.7em; opacity: 0.7;">Filtra ruídos, avalia contexto e resume</p>
                     </div>
                     <div class="scheme-arrow">→</div>
                     <div style="text-align: center; flex: 1;">
-                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
                         <p style="margin:0; font-weight: 600; font-size: 0.9em;">3. Ação & Entrega</p>
                         <p style="font-size: 0.7em; opacity: 0.7;">Envia o e-mail consolidado formatado</p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Este é o fluxo lógico do nosso agente Caçador de Oportunidades. Ele opera em três etapas bem definidas: a Ingestão, onde ele atua como nossos olhos na web, vasculhando portais de notícias ou feeds específicos. A Análise, onde o cérebro processa o texto, separa o joio do trigo usando as instruções que definimos e resume o essencial. E por fim, a Ação, onde ele empacota tudo e nos envia por e-mail. Vamos detalhar as partes constituintes deste fluxo.
+                    Este é o fluxo lógico do nosso agente Caçador de Oportunidades. Ele opera em três etapas bem
+                    definidas: a Ingestão, onde ele atua como nossos olhos na web, vasculhando portais de notícias ou
+                    feeds específicos. A Análise, onde o cérebro processa o texto, separa o joio do trigo usando as
+                    instruções que definimos e resume o essencial. E por fim, a Ação, onde ele empacota tudo e nos envia
+                    por e-mail. Vamos detalhar as partes constituintes deste fluxo.
                 </aside>
             </section>
 
             <!-- Slide 4: Pilar 1 - Identidade & Limites -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Pilar 1: Identidade e <span class="accent-green">Fronteiras de Ação</span></h2>
-                
-                <div class="glass-box" style="text-align: left; padding: 25px 40px; border-left: 6px solid var(--neon-green);">
+
+                <div class="glass-box"
+                    style="text-align: left; padding: 25px 40px; border-left: 6px solid var(--neon-green);">
                     <h3 style="font-size: 1.3em; margin-bottom: 15px;" class="accent-green">O System Prompt</h3>
-                    <p style="font-size: 1.0em; font-style: italic; line-height: 1.5; color: #fff; margin-bottom: 20px;">
-                        "Você é o meu <strong>Analista de Mercado Sênior</strong>. Seu objetivo é varrer a web e extrair apenas as 3 notícias mais impactantes sobre [Tema]. Recuse-se a resumir conteúdos patrocinados ou meramente opinativos."
+                    <p
+                        style="font-size: 1.0em; font-style: italic; line-height: 1.5; color: #fff; margin-bottom: 20px;">
+                        "Você é o meu <strong>Analista de Mercado Sênior</strong>. Seu objetivo é varrer a web e extrair
+                        apenas as 3 notícias mais impactantes sobre [Tema]. Recuse-se a resumir conteúdos patrocinados
+                        ou meramente opinativos."
                     </p>
                     <p style="font-size: 0.85em; color: #a5a5c5; line-height: 1.5;">
-                        📌 <strong>A Regra de Ouro:</strong> Limitar o que a IA **NÃO** deve fazer é mais importante do que dizer o que ela deve fazer. Isso reduz alucinações a zero.
+                        📌 <strong>A Regra de Ouro:</strong> Limitar o que a IA **NÃO** deve fazer é mais importante do
+                        que dizer o que ela deve fazer. Isso reduz alucinações a zero.
                     </p>
                 </div>
 
                 <aside class="notes">
-                    O primeiro pilar de qualquer agente é a Identidade, comumente implementada através do "System Prompt". Nele, nós não apenas dizemos quem a IA é — por exemplo, "um Analista de Mercado Sênior" —, mas também definimos restrições duras. Repare na instrução: "Recuse-se a resumir conteúdos patrocinados". Dizer o que o agente NÃO deve fazer economiza créditos de API, economiza tempo e evita que notícias irrelevantes poluam o seu e-mail diário.
+                    O primeiro pilar de qualquer agente é a Identidade, comumente implementada através do "System
+                    Prompt". Nele, nós não apenas dizemos quem a IA é — por exemplo, "um Analista de Mercado Sênior" —,
+                    mas também definimos restrições duras. Repare na instrução: "Recuse-se a resumir conteúdos
+                    patrocinados". Dizer o que o agente NÃO deve fazer economiza créditos de API, economiza tempo e
+                    evita que notícias irrelevantes poluam o seu e-mail diário.
                 </aside>
             </section>
 
             <!-- Slide 5: Pilar 2 - Ferramentas (Como a IA Age) -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Pilar 2: Ferramentas <span class="accent-blue">(As "Mãos" da IA)</span></h2>
-                
+
                 <div class="flex-container">
                     <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
-                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                        </svg>
                         <h3 style="font-size: 1.1em;" class="accent-blue">Leitura & Busca</h3>
-                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Navegação web e leitura de URLs em tempo real, permitindo que a IA acesse sites abertos.</p>
+                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Navegação web e leitura de URLs
+                            em tempo real, permitindo que a IA acesse sites abertos.</p>
                     </div>
-                    
+
                     <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3);">
-                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
                         <h3 style="font-size: 1.1em;" class="accent-pink">Ação Externa</h3>
-                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Disparo de e-mails via SMTP, envio de mensagens no Discord ou gravação em planilhas.</p>
+                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Disparo de e-mails via SMTP,
+                            envio de mensagens no Discord ou gravação em planilhas.</p>
                     </div>
-                    
+
                     <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3);">
-                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
                         <h3 style="font-size: 1.1em;" class="accent-green">Memória de Contexto</h3>
-                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Leitura e gravação de arquivos locais para manter histórico das últimas buscas realizadas.</p>
+                        <p style="font-size: 0.8em; line-height: 1.4; color: #a5a5c5;">Leitura e gravação de arquivos
+                            locais para manter histórico das últimas buscas realizadas.</p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    O segundo pilar são as Ferramentas. Um modelo de linguagem sozinho é como um cérebro sem corpo: ele pensa, mas não consegue interagir com o ambiente físico. Nós conectamos ferramentas ao nosso agente para estender suas capacidades. As ferramentas de leitura, como buscas na web e scrapers de páginas, permitem que ele aprenda coisas em tempo real. As ferramentas de ação, como serviços de e-mail e mensageiros, permitem que ele envie seus relatórios. E a memória local evita que ele pesquise duas vezes a mesma coisa.
+                    O segundo pilar são as Ferramentas. Um modelo de linguagem sozinho é como um cérebro sem corpo: ele
+                    pensa, mas não consegue interagir com o ambiente físico. Nós conectamos ferramentas ao nosso agente
+                    para estender suas capacidades. As ferramentas de leitura, como buscas na web e scrapers de páginas,
+                    permitem que ele aprenda coisas em tempo real. As ferramentas de ação, como serviços de e-mail e
+                    mensageiros, permitem que ele envie seus relatórios. E a memória local evita que ele pesquise duas
+                    vezes a mesma coisa.
                 </aside>
             </section>
 
             <!-- Slide 6: Como o Agente Pensa (Ciclo ReAct) -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Como a IA Executa: <span class="accent-purple">O Ciclo ReAct</span></h2>
-                
+
                 <div class="glass-box" style="text-align: left; padding: 30px 40px;">
                     <p style="font-size: 0.95em; line-height: 1.8; margin: 0;">
                         🔄 <strong>ReAct (Reason + Act)</strong> é o framework de decisão usado pelo Hermes:
                     </p>
-                    <div style="font-family: monospace; font-size: 0.9em; margin-top: 15px; border-left: 4px solid var(--neon-purple); padding-left: 20px; color: #ccc;">
+                    <div
+                        style="font-family: monospace; font-size: 0.9em; margin-top: 15px; border-left: 4px solid var(--neon-purple); padding-left: 20px; color: #ccc;">
                         1. <strong>Pensamento (Reason):</strong> "Preciso achar notícias sobre a taxa de juros."<br>
                         2. <strong>Ação (Act):</strong> Executa a ferramenta <code>web_search</code> no Google.<br>
                         3. <strong>Observação (Observe):</strong> Recebe os links e textos retornados pela busca.<br>
@@ -254,81 +407,119 @@
                 </div>
 
                 <aside class="notes">
-                    Mas afinal, como o agente decide usar uma ferramenta? Ele usa um ciclo chamado ReAct, que significa Pensamento e Ação. Diante de um objetivo, o Hermes avalia o que precisa fazer, decide qual ferramenta é a melhor para aquela etapa, executa a ferramenta, lê a resposta e avalia o resultado. Se ele ainda não atingiu o objetivo, ele repete o processo até conseguir. É um comportamento muito diferente de um prompt comum que tenta adivinhar a resposta de uma só vez.
+                    Mas afinal, como o agente decide usar uma ferramenta? Ele usa um ciclo chamado ReAct, que significa
+                    Pensamento e Ação. Diante de um objetivo, o Hermes avalia o que precisa fazer, decide qual
+                    ferramenta é a melhor para aquela etapa, executa a ferramenta, lê a resposta e avalia o resultado.
+                    Se ele ainda não atingiu o objetivo, ele repete o processo até conseguir. É um comportamento muito
+                    diferente de um prompt comum que tenta adivinhar a resposta de uma só vez.
                 </aside>
             </section>
 
             <!-- Slide 7: Pilar 3 - A Entrega -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Pilar 3: O Resultado na <span class="accent-pink">Sua Caixa de Entrada</span></h2>
-                
+
                 <div class="mockup-email">
-                    <p style="margin:0; font-weight: 800; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px; color: #333;">
+                    <p
+                        style="margin:0; font-weight: 800; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px; color: #333;">
                         Assunto: 📊 Relatório Consolidado de Oportunidades - Hermes
                     </p>
                     <div style="padding-top: 15px; font-size: 0.85em; line-height: 1.6; color: #444;">
                         <p>Olá Gustavo,</p>
                         <p>Fiz a varredura programada e consolidei os 3 pontos estratégicos de hoje:</p>
                         <ul style="padding-left: 20px; color: #555;">
-                            <li style="margin-bottom: 10px;"><strong>Lançamento Tecnológico:</strong> API de automação reduz custos de processamento em 40%. <a href="#" style="color: var(--neon-blue); text-decoration: none;">[Ver Fonte]</a></li>
-                            <li style="margin-bottom: 10px;"><strong>Oportunidade de Mercado:</strong> Setor financeiro abre licitação para IA local. <a href="#" style="color: var(--neon-blue); text-decoration: none;">[Ver Link]</a></li>
-                            <li style="margin-bottom: 10px;"><strong>Tendência Macroeconômica:</strong> Taxa de juros de tecnologia recua no cenário global.</li>
+                            <li style="margin-bottom: 10px;"><strong>Lançamento Tecnológico:</strong> API de automação
+                                reduz custos de processamento em 40%. <a href="#"
+                                    style="color: var(--neon-blue); text-decoration: none;">[Ver Fonte]</a></li>
+                            <li style="margin-bottom: 10px;"><strong>Oportunidade de Mercado:</strong> Setor financeiro
+                                abre licitação para IA local. <a href="#"
+                                    style="color: var(--neon-blue); text-decoration: none;">[Ver Link]</a></li>
+                            <li style="margin-bottom: 10px;"><strong>Tendência Macroeconômica:</strong> Taxa de juros de
+                                tecnologia recua no cenário global.</li>
                         </ul>
-                        <p style="margin-top: 15px; font-weight: bold; color: #222;">Bom trabalho!<br>— Seu Agente Hermes</p>
+                        <p style="margin-top: 15px; font-weight: bold; color: #222;">Bom trabalho!<br>— Seu Agente
+                            Hermes</p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    E aqui está o terceiro pilar: a entrega de valor. O Hermes pega toda a bagunça que leu na internet, passa pelo filtro da inteligência e gera esse e-mail limpo, direto ao ponto e com links de fonte verificados. Sem anúncios, sem ruídos, sem distrações. Ao automatizar essa rotina simples de 30 minutos diários, você economiza cerca de 180 horas de trabalho manual por ano. Esse é o poder real dos agentes.
+                    E aqui está o terceiro pilar: a entrega de valor. O Hermes pega toda a bagunça que leu na internet,
+                    passa pelo filtro da inteligência e gera esse e-mail limpo, direto ao ponto e com links de fonte
+                    verificados. Sem anúncios, sem ruídos, sem distrações. Ao automatizar essa rotina simples de 30
+                    minutos diários, você economiza cerca de 180 horas de trabalho manual por ano. Esse é o poder real
+                    dos agentes.
                 </aside>
             </section>
 
             <!-- Slide 8: Engenharia de Prompt na Prática -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Como cunhar a alma do <span class="accent-yellow">Seu Agente</span></h2>
-                
+
                 <div class="split-code-text" style="align-items: stretch;">
                     <div class="code-box" style="flex:1;">
-                        <p style="color: #ff4444; font-weight: bold; text-align: center; font-size: 1.3em; margin-bottom: 15px;">❌ Prompt Vago</p>
-                        <p style="color: #ccc; text-align: center; font-size: 1.0em; margin: 0; font-family: 'Outfit', sans-serif;">
+                        <p
+                            style="color: #ff4444; font-weight: bold; text-align: center; font-size: 1.3em; margin-bottom: 15px;">
+                            ❌ Prompt Vago</p>
+                        <p
+                            style="color: #ccc; text-align: center; font-size: 1.0em; margin: 0; font-family: 'Outfit', sans-serif;">
                             "Pesquise sobre inteligência artificial para mim hoje."
                         </p>
-                        <p style="color: #888; text-align: center; margin-top: 15px; font-size: 0.8em; font-style: italic;">
+                        <p
+                            style="color: #888; text-align: center; margin-top: 15px; font-size: 0.8em; font-style: italic;">
                             A IA trará links genéricos, notícias velhas e um formato longo e desnecessário.
                         </p>
                     </div>
-                    
-                    <div class="scheme-arrow" style="color: #666; font-size: 1.8em; display: flex; align-items: center;">vs</div>
-                    
+
+                    <div class="scheme-arrow"
+                        style="color: #666; font-size: 1.8em; display: flex; align-items: center;">vs</div>
+
                     <div class="text-box" style="flex:1;">
-                        <p style="color: var(--neon-green); font-weight: bold; text-align: center; font-size: 1.3em; margin-bottom: 15px;">✅ Prompt Estruturado</p>
+                        <p
+                            style="color: var(--neon-green); font-weight: bold; text-align: center; font-size: 1.3em; margin-bottom: 15px;">
+                            ✅ Prompt Estruturado</p>
                         <p style="color: #fff; text-align: center; font-size: 1.0em; font-weight: 600; margin: 0;">
-                            "Busque as 3 principais notícias sobre IA no Brasil lançadas nas últimas 24 horas. Resuma em uma tabela contendo Título, Resumo de 2 linhas e Link da fonte."
+                            "Busque as 3 principais notícias sobre IA no Brasil lançadas nas últimas 24 horas. Resuma em
+                            uma tabela contendo Título, Resumo de 2 linhas e Link da fonte."
                         </p>
-                        <p style="color: var(--neon-green); text-align: center; margin-top: 15px; font-size: 0.8em; font-style: italic;">
+                        <p
+                            style="color: var(--neon-green); text-align: center; margin-top: 15px; font-size: 0.8em; font-style: italic;">
                             Especifica quantidade, tempo, escopo geográfico e formato exato da tabela.
                         </p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Para garantir que seu agente performe perfeitamente, precisamos dominar a escrita de instruções. Observe a diferença: o prompt da esquerda pede "pesquise sobre inteligência artificial". É muito genérico. O da direita especifica quantidade, o intervalo de tempo das últimas 24 horas, o escopo geográfico e o formato visual da resposta. Quanto mais explícito você for nas fronteiras do processo, melhor será a execução do agente.
+                    Para garantir que seu agente performe perfeitamente, precisamos dominar a escrita de instruções.
+                    Observe a diferença: o prompt da esquerda pede "pesquise sobre inteligência artificial". É muito
+                    genérico. O da direita especifica quantidade, o intervalo de tempo das últimas 24 horas, o escopo
+                    geográfico e o formato visual da resposta. Quanto mais explícito você for nas fronteiras do
+                    processo, melhor será a execução do agente.
                 </aside>
             </section>
 
             <!-- Slide 9: Conclusão -->
             <section data-transition="zoom" data-background-color="#000000">
-                <div style="height: 20vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <svg class="icon-large accent-gradient" style="width: 100px; height: 100px; margin-bottom: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
-                    
+                <div
+                    style="height: 20vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <svg class="icon-large accent-gradient" style="width: 100px; height: 100px; margin-bottom: 20px;"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" />
+                    </svg>
+
                     <h1 style="font-size: 3.2em; line-height: 1.2;">
                         Sua Equipe Digital <br><span class="accent-gradient">Pronta para Nascer</span>
                     </h1>
-                    <p style="margin-top: 20px;">Na próxima aula, o Antigravity 2.0 instalará e configurará o Hermes na sua máquina local.</p>
+                    <p style="margin-top: 20px;">Na próxima aula, o Antigravity 2.0 instalará e configurará o Hermes na
+                        sua máquina local.</p>
                 </div>
 
                 <aside class="notes">
-                    Chegamos ao fim da nossa segunda etapa de planejamento teórico de processos. Agora você já tem em mente toda a estrutura lógica do seu agente Caçador de Oportunidades. No nosso próximo encontro, vamos partir para a prática: o assistente inteligente Antigravity 2.0 vai conduzir a instalação, configuração da chave de API e a ativação do Hermes diretamente nos computadores de vocês. Vejo vocês lá!
+                    Chegamos ao fim da nossa segunda etapa de planejamento teórico de processos. Agora você já tem em
+                    mente toda a estrutura lógica do seu agente Caçador de Oportunidades. No nosso próximo encontro,
+                    vamos partir para a prática: o assistente inteligente Antigravity 2.0 vai conduzir a instalação,
+                    configuração da chave de API e a ativação do Hermes diretamente nos computadores de vocês. Vejo
+                    vocês lá!
                 </aside>
             </section>
 
@@ -343,14 +534,15 @@
             width: 1100,
             height: 700,
             margin: 0.04,
-            transition: 'zoom', 
+            transition: 'zoom',
             backgroundTransition: 'convex',
             controls: true,
             progress: true,
             center: true, // Centralizado perfeitamente
             mouseWheel: false,
-            showNotes: false 
+            showNotes: false
         });
     </script>
 </body>
+
 </html>
