@@ -205,23 +205,22 @@
         .reveal .progress span {
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important;
         }
-    
-  .slide-source {
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Outfit', sans-serif;
-    text-align: center;
-    margin-top: 35px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-  }
 
-</style>
+        .slide-source {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            margin-top: 35px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
 
 <body>
@@ -239,19 +238,19 @@
                     </svg>
                 </div>
 
-                <h1 style="font-size: 3.2em; margin-bottom: 20px;">Parte 2: Arquitetando seu <span
-                        class="accent-gradient">Primeiro Agente</span></h1>
+                <h1 style="font-size: 3.2em; margin-bottom: 20px;">Parte 2: Arquitetando o <span
+                        class="accent-gradient">Agente Cronos</span></h1>
                 <p>Engenharia de Processos e Design Estrutural de Agentes de IA</p>
 
                 <aside class="notes">
                     Olá pessoal, bem-vindos à Parte 2 da nossa aula. Agora que já entendemos o poder da Inteligência
                     Artificial ativa em comparação aos chatbots tradicionais, nós vamos abrir o capô do carro. Nesta
-                    aula de hoje, nós vamos desenhar a arquitetura do nosso primeiro agente: o Caçador de Oportunidades.
+                    aula de hoje, nós vamos desenhar a arquitetura do nosso primeiro agente: o CRONOS.
                     Não vamos mexer com código ou conexões elétricas, vamos programar processos estruturados usando
                     nossa própria lógica e a nossa língua nativa. Preparem-se, pois aqui começa a verdadeira jornada da
                     automação intelectual.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 2: O Maior Erro com IA -->
@@ -281,12 +280,12 @@
                     pequenos agentes que fazem uma única coisa com maestria. E para estruturar qualquer agente, nós nos
                     apoiamos em três pilares fundamentais que vamos destrinchar agora.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 3: O Fluxo de Trabalho (Arquitetura Geral) -->
             <section data-transition="convex" data-background-color="#000000">
-                <h2>A Arquitetura do <span class="accent-blue">Caçador de Oportunidades</span></h2>
+                <h2>A Arquitetura do <span class="accent-blue">Agente Cronos</span></h2>
 
                 <div class="glass-box"
                     style="display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
@@ -328,7 +327,7 @@
                     instruções que definimos e resume o essencial. E por fim, a Ação, onde ele empacota tudo e nos envia
                     por e-mail. Vamos detalhar as partes constituintes deste fluxo.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 4: Pilar 1 - Identidade & Limites -->
@@ -357,7 +356,7 @@
                     patrocinados". Dizer o que o agente NÃO deve fazer economiza créditos de API, economiza tempo e
                     evita que notícias irrelevantes poluam o seu e-mail diário.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 5: Pilar 2 - Ferramentas (Como a IA Age) -->
@@ -407,7 +406,7 @@
                     mensageiros, permitem que ele envie seus relatórios. E a memória local evita que ele pesquise duas
                     vezes a mesma coisa.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 6: Como o Agente Pensa (Ciclo ReAct) -->
@@ -434,21 +433,23 @@
                     Se ele ainda não atingiu o objetivo, ele repete o processo até conseguir. É um comportamento muito
                     diferente de um prompt comum que tenta adivinhar a resposta de uma só vez.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 7: Pilar 3 - A Entrega -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Pilar 3: O Resultado na <span class="accent-pink">Sua Caixa de Entrada</span></h2>
 
-                <div class="mockup-email" style="max-width: 850px; width: 100%; box-sizing: border-box; padding: 15px 25px;">
+                <div class="mockup-email"
+                    style="max-width: 850px; width: 100%; box-sizing: border-box; padding: 15px 25px;">
                     <p
                         style="margin:0; font-weight: 800; font-size: 1.0em; border-bottom: 1px solid #eee; padding-bottom: 8px; color: #333;">
                         Assunto: 📊 Relatório Consolidado de Oportunidades - Hermes
                     </p>
                     <div style="padding-top: 10px; font-size: 0.8em; line-height: 1.4; color: #161515;">
                         <p style="margin: 0 0 8px 0; color: #161515;">Olá Gustavo,</p>
-                        <p style="margin: 0 0 10px 0; color: #161515;">Fiz a varredura programada e consolidei os 3 pontos estratégicos de hoje:</p>
+                        <p style="margin: 0 0 10px 0; color: #161515;">Fiz a varredura programada e consolidei os 3
+                            pontos estratégicos de hoje:</p>
                         <ul style="padding-left: 20px; color: #000000; margin: 0 0 12px 0;">
                             <li style="margin-bottom: 8px;"><strong>Lançamento Tecnológico:</strong> API de automação
                                 reduz custos de processamento em 40%. <a href="#"
@@ -459,7 +460,8 @@
                             <li style="margin-bottom: 8px;"><strong>Tendência Macroeconômica:</strong> Taxa de juros de
                                 tecnologia recua no cenário global.</li>
                         </ul>
-                        <p style="margin-top: 10px; font-weight: bold; color: #222; margin-bottom: 0;">Bom trabalho!<br>— Seu Agente
+                        <p style="margin-top: 10px; font-weight: bold; color: #222; margin-bottom: 0;">Bom
+                            trabalho!<br>— Seu Agente
                             Hermes</p>
                     </div>
                 </div>
@@ -471,10 +473,60 @@
                     minutos diários, você economiza cerca de 180 horas de trabalho manual por ano. Esse é o poder real
                     dos agentes.
                 </aside>
-            
+
             </section>
 
-            <!-- Slide 8: Engenharia de Prompt na Prática -->
+            <!-- Slide 8: Ferramentas na Prática -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Como Dar Ferramentas ao <span class="accent-blue">Nosso Agente?</span></h2>
+
+                <div class="glass-box" style="margin-bottom: 20px; padding: 20px 40px;">
+                    <p style="font-size: 0.9em; line-height: 1.6; margin: 0; color: #d1d1e9;">
+                        As ferramentas são <strong>APIs e integrações</strong> que estendem as capacidades da IA. Nós
+                        conectamos o agente ao mundo real fornecendo acesso a elas através de instruções claras.
+                    </p>
+                </div>
+
+                <div class="flex-container" style="margin-top: 0;">
+                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3); padding: 20px;">
+                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                        </svg>
+                        <h3 style="font-size: 1.0em;" class="accent-green">Web search
+                            <p style="font-size: 0.75em; line-height: 1.4; color: #a5a5c5;">Permite que o agente acesse
+                                a a internet para notícias arquivos, depois sintetizar e filtrar os dados coletados.</p>
+                    </div>
+
+                    <div class="scheme-arrow"
+                        style="color: #666; font-size: 1.8em; display: flex; align-items: center; margin: 0 5px;">+
+                    </div>
+
+                    <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3); padding: 20px;">
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        <h3 style="font-size: 1.0em;" class="accent-pink">Envio de E-mails</h3>
+                        <p style="font-size: 0.75em; line-height: 1.4; color: #a5a5c5;">Após buscar e sintetizar as
+                            informações, o agente utiliza essa ferramenta para disparar um relatório consolidado com os
+                            resultados.</p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Mas como damos essas ferramentas ao agente? Na prática, nós o ensinamos a se conectar aos nossos
+                    serviços. No nosso projeto, daremos ao agente o poder de interagir com o Google Drive, para que ele
+                    possa arquivar os documentos estruturados gerados. E depois que ele encontrar e resumir os achados
+                    de forma inteligente, ele vai usar a ferramenta de e-mail para nos mandar tudo sintetizado direto na
+                    nossa caixa de entrada, completando a automação de ponta a ponta.
+                </aside>
+
+            </section>
+
+            <!-- Slide 9: Engenharia de Prompt na Prática -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Como cunhar a alma do <span class="accent-yellow">Seu Agente</span></h2>
 
@@ -501,8 +553,10 @@
                             style="color: var(--neon-green); font-weight: bold; text-align: center; font-size: 1.3em; margin-bottom: 15px;">
                             ✅ Prompt Estruturado</p>
                         <p style="color: #fff; text-align: center; font-size: 1.0em; font-weight: 600; margin: 0;">
-                            "Busque as 3 principais notícias sobre IA no Brasil lançadas nas últimas 24 horas. Resuma em
-                            uma tabela contendo Título, Resumo de 2 linhas e Link da fonte."
+                            "Busque as 3 principais notícias sobre IA no Brasil com a ferramenta de web search das
+                            últimas 24 horas. Resuma em
+                            uma tabela contendo Título, Resumo de 2 linhas e Link da fonte, depois use a ferramenta de
+                            email para me enviar o resumo."
                         </p>
                         <p
                             style="color: var(--neon-green); text-align: center; margin-top: 15px; font-size: 0.8em; font-style: italic;">
@@ -518,10 +572,10 @@
                     geográfico e o formato visual da resposta. Quanto mais explícito você for nas fronteiras do
                     processo, melhor será a execução do agente.
                 </aside>
-            
+
             </section>
 
-            <!-- Slide 9: Conclusão -->
+            <!-- Slide 10: Conclusão -->
             <section data-transition="zoom" data-background-color="#000000">
                 <div
                     style="height: 20vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
@@ -545,12 +599,12 @@
                     configuração da chave de API e a ativação do Hermes diretamente nos computadores de vocês. Vejo
                     vocês lá!
                 </aside>
-            
+
                 <br>
                 <br>
                 <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
             </section>
-            
+
 
         </div>
     </div>
