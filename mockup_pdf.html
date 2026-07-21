@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #525659;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    height: 100vh;
+  }
+  .pdf-viewer-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: #323639;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
+  .pdf-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pdf-controls {
+    display: flex;
+    gap: 15px;
+    color: #f1f1f1;
+    font-weight: bold;
+  }
+  .page {
+    width: 794px; /* A4 size proportional */
+    height: 1123px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+    padding: 60px 80px;
+    box-sizing: border-box;
+    margin-top: 30px;
+  }
+  .doc-header {
+    border-bottom: 2px solid #00d2ff;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  .doc-logo {
+    color: #9d4edd;
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .doc-title {
+    font-size: 28px;
+    color: #1a1a2e;
+    margin: 0;
+  }
+  .doc-meta {
+    color: #666;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .doc-content h3 {
+    color: #333;
+    font-size: 18px;
+    margin-top: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+  .doc-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+  }
+  .highlight-box {
+    background: #f8f9fa;
+    border-left: 4px solid #00d2ff;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #495057;
+    margin-right: 5px;
+  }
+</style>
+</head>
+<body>
+  <div class="pdf-viewer-header">
+    <div class="pdf-title">Relatorio_Agente_Rascunho.pdf</div>
+    <div class="pdf-controls">
+      <span>1 / 1</span>
+      <span>|</span>
+      <span>- 100% +</span>
+      <span>⬇ Baixar</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="doc-header">
+      <div class="doc-logo">⬢ HERMES AGENT</div>
+      <h1 class="doc-title">Rascunho de E-mail Automático</h1>
+      <div class="doc-meta">Gerado em: 20 de Julho de 2026 | Tarefa: Categorização de Inbox</div>
+    </div>
+
+    <div class="doc-content">
+      <div class="highlight-box">
+        <p style="margin: 0;"><strong>Status:</strong> Rascunho pronto para revisão humana.</p>
+        <p style="margin: 5px 0 0 0;"><strong>Contexto:</strong> E-mail recebido do cliente solicitando informações sobre o Produto Y.</p>
+      </div>
+
+      <h3>Dados da Mensagem Original</h3>
+      <p>
+        <span class="tag">Dúvida Frequente</span> <span class="tag">Prioridade Média</span><br><br>
+        <strong>De:</strong> cliente.contato@empresa.com<br>
+        <strong>Assunto:</strong> Dúvida sobre integração do sistema
+      </p>
+
+      <h3>Sugestão de Resposta (Gerada pela IA)</h3>
+      <div style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; margin-top: 15px;">
+        <p>Olá,</p>
+        <p>Agradecemos o seu contato.</p>
+        <p>Sim, o nosso sistema possui integração nativa com o Produto Y. Para realizar essa configuração, basta acessar o painel de integrações no menu principal e inserir a chave de API fornecida pela ferramenta.</p>
+        <p>Caso precise de ajuda com o passo a passo, temos um guia completo em nossa documentação oficial.</p>
+        <p>Qualquer dúvida, nossa equipe de suporte está à disposição.</p>
+        <p>Atenciosamente,<br>Equipe de Atendimento</p>
+      </div>
+
+      <p style="text-align: center; color: #888; font-size: 12px; margin-top: 50px;">
+        Este documento foi gerado autonomamente pelo Agente Virtual de Categorização e Resposta.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

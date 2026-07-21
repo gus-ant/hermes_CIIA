@@ -237,23 +237,22 @@
         .reveal .progress span {
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)) !important;
         }
-    
-  .slide-source {
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Outfit', sans-serif;
-    text-align: center;
-    margin-top: 35px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-  }
 
-</style>
+        .slide-source {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            margin-top: 35px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
 
 <body>
@@ -282,9 +281,8 @@
                     </svg>
                 </div>
 
-                <h1 style="font-size: 3em; margin-bottom: 20px;">Como Colocar a Inteligência Artificial para <span
-                        class="accent-gradient">Trabalhar por Você</span></h1>
-                <p style="font-size: 1.3em;"><strong class="accent-blue">(Sem Programar Nada)</strong></p>
+                <h1 style="font-size: 3em; margin-bottom: 20px;">Introdução aos <span class="accent-gradient">Agentes de
+                        IA</span></h1>
 
                 <aside class="notes">
                     Olá, pessoal, muito obrigado pela presença de todos. Hoje nós vamos falar sobre um assunto que está
@@ -293,7 +291,7 @@
                     virtuais altamente qualificados — os chamados Agentes — para assumirem o trabalho chato do dia a dia
                     de vocês, usando apenas o bom e velho português.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 2: O Problema -->
@@ -330,7 +328,7 @@
                     colando dados de um lugar para o outro? Nós gastamos nossa energia intelectual com processos
                     manuais. E se você pudesse delegar isso tudo?
                 </aside>
-            
+
             </section>
 
             <!-- Slide 3: ChatGPT vs. Agente -->
@@ -369,45 +367,59 @@
                     nossos concorrentes e me mande o resumo'. O agente se vira sozinho e só volta quando o trabalho
                     estiver pronto.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 4: Bagunça vs. Organização -->
             <section data-transition="convex" data-background-color="#000000">
-                <h2>A <span class="accent-pink">Bagunça Conversacional</span> vs. A <span class="accent-green">Organização do Agente</span></h2>
+                <h2>A <span class="accent-pink">Bagunça Conversacional</span> vs. A <span
+                        class="accent-green">Organização do Agente</span></h2>
 
                 <div class="flex-container">
-                    <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="flex-item"
+                        style="border-color: rgba(255, 0, 127, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <h3 class="accent-pink" style="font-size: 1.2em;">Chatbot Comum (Bagunça)</h3>
-                            <p style="font-size: 0.85em; margin-bottom: 15px;">Um único chat para misturar receitas, e-mails e dúvidas gerais.</p>
+                            <p style="font-size: 0.85em; margin-bottom: 15px;">Um único chat para misturar receitas,
+                                e-mails e dúvidas gerais.</p>
                         </div>
-                        <div class="code-box" style="font-size: 0.75em; color: #ff4444; border-color: rgba(255, 0, 127, 0.4); padding: 15px; background: #111; margin-top: 10px;">
+                        <div class="code-box"
+                            style="font-size: 0.75em; color: #ff4444; border-color: rgba(255, 0, 127, 0.4); padding: 15px; background: #111; margin-top: 10px;">
                             💬 "Escreva um e-mail para meu chefe..."<br>
                             💬 "Ah, e me passe uma receita de bolo..."<br>
                             💬 "Qual a cotação do dólar hoje?"<br>
-                            <span style="color: #666; font-style: italic; display: block; margin-top: 10px;">(Sem foco, sem persistência, resultado volátil)</span>
+                            <span style="color: #666; font-style: italic; display: block; margin-top: 10px;">(Sem foco,
+                                sem persistência, resultado volátil)</span>
                         </div>
                     </div>
 
-                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="flex-item"
+                        style="border-color: rgba(0, 255, 204, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <h3 class="accent-green" style="font-size: 1.2em;">Agente Virtual (Organização)</h3>
-                            <p style="font-size: 0.85em; margin-bottom: 15px;">Uma proposta isolada, com escopo e objetivo bem definidos.</p>
+                            <p style="font-size: 0.85em; margin-bottom: 15px;">Uma proposta isolada, com escopo e
+                                objetivo bem definidos.</p>
                         </div>
-                        <div class="text-box" style="font-size: 0.75em; color: #fff; border-color: rgba(0, 255, 204, 0.4); padding: 15px; margin-top: 10px;">
+                        <div class="text-box"
+                            style="font-size: 0.75em; color: #fff; border-color: rgba(0, 255, 204, 0.4); padding: 15px; margin-top: 10px;">
                             🎯 <strong>Objetivo Único:</strong> Monitorar o mercado e notificar.<br>
                             🛠️ <strong>Ferramentas Fixas:</strong> Web scraper + Envio de e-mail.<br>
                             📋 <strong>Resultado Esperado:</strong> Relatório diário às 8h.<br>
-                            <span style="color: var(--neon-green); font-weight: bold; display: block; margin-top: 10px;">(Foco total na execução de uma missão)</span>
+                            <span
+                                style="color: var(--neon-green); font-weight: bold; display: block; margin-top: 10px;">(Foco
+                                total na execução de uma missão)</span>
                         </div>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Para entender a diferença na prática, pensem na bagunça versus a organização. A bagunça é o texto de um chatbot convencional como o ChatGPT, onde você fala sobre receita de bolo, código de programação e cotação do dólar tudo no mesmo chat sem rumo. A organização é o Agente Virtual: ele tem uma proposta isolada e um objetivo bem definido. Ele não tenta fazer tudo; ele foca em uma missão com as ferramentas certas e só para quando atinge o objetivo.
+                    Para entender a diferença na prática, pensem na bagunça versus a organização. A bagunça é o texto de
+                    um chatbot convencional como o ChatGPT, onde você fala sobre receita de bolo, código de programação
+                    e cotação do dólar tudo no mesmo chat sem rumo. A organização é o Agente Virtual: ele tem uma
+                    proposta isolada e um objetivo bem definido. Ele não tenta fazer tudo; ele foca em uma missão com as
+                    ferramentas certas e só para quando atinge o objetivo.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 4: Anatomia -->
@@ -449,7 +461,7 @@
                     'Descubra quais são as principais tendências de tecnologia desta semana e prepare um relatório'. Com
                     isso, ela une a sua identidade com as ferramentas disponíveis para cumprir a meta.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 5: O Ecossistema Hermes -->
@@ -457,47 +469,66 @@
                 <h2>O Ecossistema Hermes: <span class="accent-gradient">O Maestro e os Instrumentos</span></h2>
 
                 <div class="glass-box" style="padding: 20px 30px; max-width: 1050px; width: 100%;">
-                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 15px;">
-                        <div style="text-align: center; background: rgba(157, 78, 221, 0.1); border: 2px solid var(--neon-purple); border-radius: 50%; width: 90px; height: 90px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(157, 78, 221, 0.4); flex-shrink: 0;">
+                    <div
+                        style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 15px;">
+                        <div
+                            style="text-align: center; background: rgba(157, 78, 221, 0.1); border: 2px solid var(--neon-purple); border-radius: 50%; width: 90px; height: 90px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(157, 78, 221, 0.4); flex-shrink: 0;">
                             <span style="font-size: 1.8em;">🎼</span>
-                            <span style="font-size: 0.75em; font-weight: bold; color: var(--neon-purple); margin-top: 2px;">O Maestro</span>
+                            <span
+                                style="font-size: 0.75em; font-weight: bold; color: var(--neon-purple); margin-top: 2px;">O
+                                Maestro</span>
                         </div>
                         <div class="scheme-arrow" style="font-size: 2em; color: var(--neon-purple);">🔀</div>
                         <div style="text-align: left; max-width: 600px;">
-                            <h3 class="accent-purple" style="font-size: 1.2em; margin: 0 0 5px 0;">O Orquestrador (Hermes)</h3>
-                            <p style="font-size: 0.8em; margin: 0; line-height: 1.3;">Ele não executa as tarefas diretamente, mas coordena o fluxo, decidindo quem age e quando.</p>
+                            <h3 class="accent-purple" style="font-size: 1.2em; margin: 0 0 5px 0;">O Orquestrador
+                                (Hermes)</h3>
+                            <p style="font-size: 0.8em; margin: 0; line-height: 1.3;">Ele não executa as tarefas
+                                diretamente, mas coordena o fluxo, decidindo quem age e quando.</p>
                         </div>
                     </div>
 
                     <div class="flex-container" style="gap: 15px; margin-top: 15px;">
-                        <div class="flex-item" style="padding: 12px 10px; border-color: rgba(0, 210, 255, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="flex-item"
+                            style="padding: 12px 10px; border-color: rgba(0, 210, 255, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <span style="font-size: 1.5em; display: block; margin-bottom: 3px;">🎻</span>
-                                <h4 class="accent-blue" style="font-size: 0.9em; margin-bottom: 3px;">LLM (Músico Principal)</h4>
+                                <h4 class="accent-blue" style="font-size: 0.9em; margin-bottom: 3px;">LLM (Músico
+                                    Principal)</h4>
                             </div>
-                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">O cérebro. Pode ser trocado (OpenAI, Claude, Llama) sem precisar reconfigurar as ferramentas.</p>
+                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">O cérebro. Pode ser trocado
+                                (OpenAI, Claude, Llama) sem precisar reconfigurar as ferramentas.</p>
                         </div>
-                        <div class="flex-item" style="padding: 12px 10px; border-color: rgba(0, 255, 204, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="flex-item"
+                            style="padding: 12px 10px; border-color: rgba(0, 255, 204, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <span style="font-size: 1.5em; display: block; margin-bottom: 3px;">🔍</span>
-                                <h4 class="accent-green" style="font-size: 0.9em; margin-bottom: 3px;">Busca & Leitura</h4>
+                                <h4 class="accent-green" style="font-size: 0.9em; margin-bottom: 3px;">Busca & Leitura
+                                </h4>
                             </div>
-                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">Os olhos do agente na internet. Permitem varrer portais e extrair dados em tempo real.</p>
+                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">Os olhos do agente na
+                                internet. Permitem varrer portais e extrair dados em tempo real.</p>
                         </div>
-                        <div class="flex-item" style="padding: 12px 10px; border-color: rgba(255, 0, 127, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="flex-item"
+                            style="padding: 12px 10px; border-color: rgba(255, 0, 127, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <span style="font-size: 1.5em; display: block; margin-bottom: 3px;">📩</span>
-                                <h4 class="accent-pink" style="font-size: 0.9em; margin-bottom: 3px;">Canais de Ação</h4>
+                                <h4 class="accent-pink" style="font-size: 0.9em; margin-bottom: 3px;">Canais de Ação
+                                </h4>
                             </div>
-                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">A voz e mãos do agente. Capazes de enviar e-mails, alertas no Discord ou atualizar planilhas.</p>
+                            <p style="font-size: 0.7em; line-height: 1.3; margin-top: 5px;">A voz e mãos do agente.
+                                Capazes de enviar e-mails, alertas no Discord ou atualizar planilhas.</p>
                         </div>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Por dentro, o Hermes é um orquestrador. Pense como um regente de orquestra: ele não toca nenhum instrumento, mas coordena tudo. O modelo de linguagem (a inteligência via API) é o músico principal. As ferramentas de busca e e-mail são os outros instrumentos. E o Hermes é quem diz quem toca quando. A beleza do sistema é que você pode trocar o músico principal — migrar do GPT para o Claude ou Llama — sem precisar reescrever a orquestra inteira.
+                    Por dentro, o Hermes é um orquestrador. Pense como um regente de orquestra: ele não toca nenhum
+                    instrumento, mas coordena tudo. O modelo de linguagem (a inteligência via API) é o músico principal.
+                    As ferramentas de busca e e-mail são os outros instrumentos. E o Hermes é quem diz quem toca quando.
+                    A beleza do sistema é que você pode trocar o músico principal — migrar do GPT para o Claude ou Llama
+                    — sem precisar reescrever a orquestra inteira.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 5: Caso Prático 1 -->
@@ -524,7 +555,7 @@
                     direto no celular do dono da empresa antes do horário do café. Quanto tempo isso economiza na sua
                     semana?
                 </aside>
-            
+
             </section>
 
             <!-- Slide 6: Caso Prático 2 -->
@@ -568,33 +599,41 @@
                     único trabalho é ler o rascunho que a IA fez, ver se está tudo certo e clicar em 'Enviar'. Você vira
                     um supervisor do seu próprio tempo.
                 </aside>
-            
+
             </section>
 
-            
+
             <!-- Slide 8: A Alma do Agente: O System Prompt -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>A Alma do Agente: <span class="accent-blue">O System Prompt</span></h2>
 
                 <div class="flex-container">
-                    <div class="flex-item" style="border-color: rgba(255, 255, 255, 0.15); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="flex-item"
+                        style="border-color: rgba(255, 255, 255, 0.15); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <h3 style="font-size: 1.1em; color: #aaa;">Chatbot Genérico</h3>
-                            <p style="font-size: 0.85em; margin-bottom: 10px;">Sem identidade específica ou fronteiras de ação definidas.</p>
+                            <p style="font-size: 0.85em; margin-bottom: 10px;">Sem identidade específica ou fronteiras
+                                de ação definidas.</p>
                         </div>
-                        <div class="code-box" style="font-size: 0.75em; color: #888; border-color: rgba(255, 255, 255, 0.1); padding: 15px; background: #111;">
-                            🤖 <em>"Olá! Sou um assistente virtual de inteligência artificial criado para ajudar você. O que quer saber hoje?"</em>
+                        <div class="code-box"
+                            style="font-size: 0.75em; color: #888; border-color: rgba(255, 255, 255, 0.1); padding: 15px; background: #111;">
+                            🤖 <em>"Olá! Sou um assistente virtual de inteligência artificial criado para ajudar você. O
+                                que quer saber hoje?"</em>
                             <br><br>
-                            <span style="color: #555;">(Personalidade ampla, sem compromisso com tarefas estruturadas)</span>
+                            <span style="color: #555;">(Personalidade ampla, sem compromisso com tarefas
+                                estruturadas)</span>
                         </div>
                     </div>
 
-                    <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="flex-item"
+                        style="border-color: rgba(0, 210, 255, 0.3); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <h3 class="accent-blue" style="font-size: 1.1em;">System Prompt do Agente</h3>
-                            <p style="font-size: 0.85em; margin-bottom: 10px;">Define regras rígidas de identidade, comportamento e metas.</p>
+                            <p style="font-size: 0.85em; margin-bottom: 10px;">Define regras rígidas de identidade,
+                                comportamento e metas.</p>
                         </div>
-                        <div class="text-box" style="font-size: 0.75em; color: #fff; border-color: rgba(0, 210, 255, 0.4); padding: 15px;">
+                        <div class="text-box"
+                            style="font-size: 0.75em; color: #fff; border-color: rgba(0, 210, 255, 0.4); padding: 15px;">
                             👤 <strong>Identidade:</strong> "Você é o Vini, assessor de comunicação do CIIA..."<br>
                             🚫 <strong>Fronteiras:</strong> "Nunca use gírias ou divulgue dados não oficiais..."<br>
                             🎯 <strong>Objetivo:</strong> "Crie comunicados acadêmicos limpos a partir do drive..."
@@ -603,9 +642,13 @@
                 </div>
 
                 <aside class="notes">
-                    Como a inteligência artificial aprende quem ela deve ser? Através do System Prompt. Num chat normal, a IA tem uma personalidade super abrangente, pronta para agradar a todos sem se comprometer. Já no agente, nós cunhamos a alma dele no System Prompt: definimos exatamente quem ele é, o que ele pode e o que ele jamais deve fazer. Isso define as fronteiras e garante que a execução seja profissional e segura.
+                    Como a inteligência artificial aprende quem ela deve ser? Através do System Prompt. Num chat normal,
+                    a IA tem uma personalidade super abrangente, pronta para agradar a todos sem se comprometer. Já no
+                    agente, nós cunhamos a alma dele no System Prompt: definimos exatamente quem ele é, o que ele pode e
+                    o que ele jamais deve fazer. Isso define as fronteiras e garante que a execução seja profissional e
+                    segura.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 9: A Memória do Agente: De Episódico a Contínuo -->
@@ -614,40 +657,85 @@
 
                 <div class="glass-box" style="padding: 20px 30px; text-align: left; max-width: 1050px; width: 100%;">
                     <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
-                        <div style="background: rgba(0, 255, 204, 0.1); border: 1px solid var(--neon-green); border-radius: 12px; padding: 10px 15px; text-align: center; width: 140px; flex-shrink: 0;">
+                        <div
+                            style="background: rgba(0, 255, 204, 0.1); border: 1px solid var(--neon-green); border-radius: 12px; padding: 10px 15px; text-align: center; width: 140px; flex-shrink: 0;">
                             <span style="font-size: 1.8em; display: block; margin-bottom: 3px;">💾</span>
-                            <span style="color: var(--neon-green); font-weight: bold; font-size: 0.8em;">Arquivos Locais</span>
+                            <span style="color: var(--neon-green); font-weight: bold; font-size: 0.8em;">Arquivos
+                                Locais</span>
                         </div>
                         <div>
-                            <h3 class="accent-green" style="font-size: 1.2em; margin: 0 0 5px 0;">Persistência de Aprendizado</h3>
-                            <p style="font-size: 0.8em; color: #d1d1e9; line-height: 1.4; margin: 0;">O Hermes grava históricos e decisões em arquivos locais seguros. Ele não ofusca o contexto quando a sessão é fechada.</p>
+                            <h3 class="accent-green" style="font-size: 1.2em; margin: 0 0 5px 0;">Persistência de
+                                Aprendizado</h3>
+                            <p style="font-size: 0.8em; color: #d1d1e9; line-height: 1.4; margin: 0;">O Hermes grava
+                                históricos e decisões em arquivos locais seguros. Ele não ofusca o contexto quando a
+                                sessão é fechada.</p>
                         </div>
                     </div>
 
                     <div class="flex-container" style="gap: 15px; margin-top: 15px;">
-                        <div class="flex-item" style="padding: 15px; border-color: rgba(255, 0, 127, 0.2); text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
-                            <h4 class="accent-pink" style="font-size: 0.95em; margin-bottom: 5px;">🧠 Memória Básica</h4>
-                            <p style="font-size: 0.7em; line-height: 1.3; color: #aaa; margin: 0;">Normalmente a conversa começa do absoluto zero. Às vezes os mesmos termos são pesquisados repetidamente, gerando retrabalho constante.</p>
+                        <div class="flex-item"
+                            style="padding: 15px; border-color: rgba(255, 0, 127, 0.2); text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                            <h4 class="accent-pink" style="font-size: 0.95em; margin-bottom: 5px;">🧠 Memória Básica
+                            </h4>
+                            <p style="font-size: 0.7em; line-height: 1.3; color: #aaa; margin: 0;">Normalmente a
+                                conversa começa do absoluto zero. Às vezes os mesmos termos são pesquisados
+                                repetidamente, gerando retrabalho constante.</p>
                         </div>
-                        <div class="flex-item" style="padding: 15px; border-color: rgba(0, 255, 204, 0.2); text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
-                            <h4 class="accent-green" style="font-size: 0.95em; margin-bottom: 5px;">🔄 Com Memória Contínua</h4>
-                            <p style="font-size: 0.7em; line-height: 1.3; color: #aaa; margin: 0;">Lembrança de buscas anteriores, preferências do usuário e histórico que se aprimora ao longo dos meses.</p>
+                        <div class="flex-item"
+                            style="padding: 15px; border-color: rgba(0, 255, 204, 0.2); text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                            <h4 class="accent-green" style="font-size: 0.95em; margin-bottom: 5px;">🔄 Com Memória
+                                Contínua</h4>
+                            <p style="font-size: 0.7em; line-height: 1.3; color: #aaa; margin: 0;">Lembrança de buscas
+                                anteriores, preferências do usuário e histórico que se aprimora ao longo dos meses.</p>
                         </div>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Outro ponto crucial é a Memória. Chatbots tradicionais esquecem tudo assim que você fecha a janela. O Hermes, no entanto, usa o sistema de arquivos locais para persistir informações. Ele lembra do que pesquisou antes, dos caminhos de pasta que usou e das preferências do usuário. Isso transforma o agente de uma ferramenta episódica, que esquece tudo, em um assistente contínuo, que evolui e fica cada vez mais inteligente com o tempo.
+                    Outro ponto crucial é a Memória. Chatbots tradicionais esquecem tudo assim que você fecha a janela.
+                    O Hermes, no entanto, usa o sistema de arquivos locais para persistir informações. Ele lembra do que
+                    pesquisou antes, dos caminhos de pasta que usou e das preferências do usuário. Isso transforma o
+                    agente de uma ferramenta episódica, que esquece tudo, em um assistente contínuo, que evolui e fica
+                    cada vez mais inteligente com o tempo.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 8: Conclusão -->
             <section data-transition="zoom" data-background-color="#000000">
-                <div style="height: 10vh; display: flex; align-items: center; justify-content: center;">
-                    <h1 style="font-size: 3.5em; line-height: 1.2;">
-                        O Futuro Pertence a Quem Sabe <span class="accent-gradient">Delegar.</span>
-                    </h1>
+                <h2 style="font-size: 2.3em; margin-bottom: 20px;">O Futuro Pertence a Quem Sabe <span
+                        class="accent-gradient">Delegar.</span></h2>
+
+                <div class="glass-box"
+                    style="padding: 20px 30px; text-align: center; max-width: 900px; margin: 0 auto;">
+                    <p style="font-size: 1.1em; color: var(--neon-blue); font-weight: bold; margin-bottom: 20px;">
+                        Sua Vantagem na Nova Economia:
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap;">
+                        <div
+                            style="flex: 1; padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 255, 204, 0.3); border-radius: 15px;">
+                            <span style="font-size: 2.0em; display: block; margin-bottom: 5px;">⏰</span>
+                            <h4 class="accent-green" style="font-size: 1.0em; margin-bottom: 8px;">Tempo Livre</h4>
+                            <p style="font-size: 0.7em; color: #ccc; margin: 0; line-height: 1.3;">Foque na estratégia
+                                enquanto os Agentes executam as tarefas.</p>
+                        </div>
+                        <div
+                            style="flex: 1; padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 15px;">
+                            <span style="font-size: 2.0em; display: block; margin-bottom: 5px;">🧠</span>
+                            <h4 class="accent-blue" style="font-size: 1.0em; margin-bottom: 8px;">Sistemas Inteligentes
+                            </h4>
+                            <p style="font-size: 0.7em; color: #ccc; margin: 0; line-height: 1.3;">Sistemas que pensam,
+                                planejam e entregam resultados.</p>
+                        </div>
+                        <div
+                            style="flex: 1; padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 15px;">
+                            <span style="font-size: 2.0em; display: block; margin-bottom: 5px;">🚀</span>
+                            <h4 class="accent-purple" style="font-size: 1.0em; margin-bottom: 8px;">Automação Completa
+                            </h4>
+                            <p style="font-size: 0.7em; color: #ccc; margin: 0; line-height: 1.3;">Sua equipe digital
+                                incansável trabalhando para você.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <aside class="notes">
@@ -656,22 +744,20 @@
                     trabalharem para você não é luxo, é sobrevivência no mercado atual para focar no que realmente
                     importa: a estratégia, o lado humano e o crescimento do seu negócio. Muito obrigado!
                 </aside>
-            
             </section>
 
             <!-- Slide 9: Q&A -->
             <section data-transition="convex" data-background-color="#000000">
                 <h1 class="accent-blue" style="font-size: 2.8em;">Perguntas?</h1>
 
-                
+
 
                 <aside class="notes">
                     Agora eu quero abrir o espaço para vocês. Me digam: qual é a tarefa mais chata ou demorada do dia a
                     dia de vocês? Vamos desenhar juntos, aqui e agora, como seria o agente ideal para resolver esse
                     problema.
                 </aside>
-            
-                <div class="slide-source">Fonte: Equipe Hermes CIIA e Referências OpenRouter</div>
+
             </section>
 
         </div>

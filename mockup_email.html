@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fc;
+    color: #202124;
+  }
+  .container {
+    width: 1000px;
+    height: 600px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    height: 64px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: #fff;
+  }
+  .header-logo {
+    font-size: 20px;
+    color: #5f6368;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo span { color: #d93025; font-size: 24px; }
+  .search-bar {
+    background: #f1f3f4;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-left: 50px;
+    width: 500px;
+    color: #5f6368;
+  }
+  .main {
+    display: flex;
+    flex: 1;
+  }
+  .sidebar {
+    width: 250px;
+    padding: 20px 0;
+  }
+  .menu-item {
+    padding: 10px 25px;
+    color: #d93025;
+    font-weight: bold;
+    background: #fce8e6;
+    border-radius: 0 20px 20px 0;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .menu-item-inactive {
+    padding: 10px 25px;
+    color: #3c4043;
+    font-weight: normal;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .content {
+    flex: 1;
+    padding: 20px 30px;
+  }
+  .email-title {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
+  .email-sender {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    background: #9d4edd;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .sender-info {
+    flex: 1;
+  }
+  .sender-info strong { font-size: 14px; }
+  .sender-info span { font-size: 12px; color: #5f6368; margin-left: 5px; }
+  .time { font-size: 12px; color: #5f6368; }
+  
+  .email-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #202124;
+  }
+  .btn-reply {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    color: #5f6368;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-logo"><span>✉</span> Mail</div>
+      <div class="search-bar">Pesquisar e-mail</div>
+    </div>
+    <div class="main">
+      <div class="sidebar">
+        <div style="margin: 0 0 20px 20px; background: #fff; border: 1px solid #dadce0; border-radius: 15px; padding: 12px 20px; display: inline-block; font-weight: bold; color: #5f6368; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);">
+          + Escrever
+        </div>
+        <div class="menu-item">Caixa de entrada</div>
+        <div class="menu-item-inactive">Com estrela</div>
+        <div class="menu-item-inactive">Adiados</div>
+        <div class="menu-item-inactive">Enviados</div>
+        <div class="menu-item-inactive">Rascunhos</div>
+      </div>
+      <div class="content">
+        <div class="email-title">Resumo de Mercado Diário 📊</div>
+        <div class="email-sender">
+          <div class="avatar">A</div>
+          <div class="sender-info">
+            <strong>Agente Hermes (Analista Sênior)</strong><span>&lt;hermes@seunegocio.com&gt;</span><br>
+            <span style="margin-left:0;">para mim</span>
+          </div>
+          <div class="time">06:00 AM (Há 2 horas)</div>
+        </div>
+        <div class="email-body">
+          Bom dia! ☕<br><br>
+          Aqui está o resumo das tendências do seu setor de hoje:<br><br>
+          <strong>1. Tecnologia:</strong> Nova IA anunciada com redução de custos em 30%.<br>
+          <strong>2. Concorrentes:</strong> Empresa X lançou produto Y focado no mesmo nicho que o nosso.<br><br>
+          Acesse o dossiê completo no drive.<br><br>
+          <em>— Este é um e-mail automático gerado pelo seu assistente virtual.</em>
+        </div>
+        <div class="btn-reply">↩ Responder</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
