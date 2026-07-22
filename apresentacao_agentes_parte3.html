@@ -87,7 +87,7 @@
             text-align: center;
             margin: 0 auto;
             width: 95%;
-            max-width: 900px;
+            max-width: 1250px;
             box-sizing: border-box;
         }
 
@@ -291,39 +291,60 @@
 
             </section>
 
-            <!-- Slide 4: O Que é o Terminal? -->
+            <!-- Slide 4: O Que é o Terminal? (Ajustado com foco no Windows) -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Perdendo o Medo da <span class="accent-green">Tela Preta</span></h2>
 
-                <div class="glass-box" style="text-align: left; padding: 30px;">
-                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <svg class="icon-med accent-green" style="margin-bottom:0; margin-right: 20px;"
+                <div class="glass-box" style="text-align: left; padding: 25px 35px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <svg class="icon-med accent-green" style="margin-bottom:0; margin-right: 15px;"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <h3 class="accent-green" style="margin:0;">O que é um Terminal?</h3>
+                        <h3 class="accent-green" style="margin:0;">O que é o Terminal no seu Computador?</h3>
                     </div>
-                    <p style="margin-bottom: 20px;">
-                        O terminal nada mais é do que um <strong>chat diretamente com o seu computador</strong>. Em vez
-                        de usar o mouse para clicar em pastas, você "fala" com ele digitando ordens.
+
+                    <p style="margin-bottom: 15px; font-size: 0.95em; line-height: 1.5;">
+                        O terminal nada mais é do que um <strong>chat direto com o seu computador</strong>. Em vez de
+                        usar o mouse para clicar em pastas e ícones, você conversa com o sistema digitando ordens
+                        simples.
                     </p>
-                    <h4 style="color: var(--neon-blue); margin-top: 30px; font-size: 1.1em;">Para que vamos usá-lo hoje?
-                    </h4>
-                    <ul style="color: #ccc; line-height: 1.6;">
-                        <li>Para configurar a nossa API do OpenRouter.</li>
-                        <li>Para <strong>acordar</strong> (ativar) o nosso agente Cronos de Oportunidades.</li>
+
+                    <!-- DESTAQUE PARA SISTEMAS OPERACIONAIS -->
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; font-size: 0.85em;">
+                        <div
+                            style="background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 8px; padding: 12px;">
+                            <strong style="color: var(--neon-blue); display: block; margin-bottom: 4px;">🪟 No
+                                Windows:</strong>
+                            Ele se chama <strong>PowerShell</strong> ou <strong>Prompt de Comando (CMD)</strong>. (Basta
+                            pesquisar no Iniciar!).
+                        </div>
+                        <div
+                            style="background: rgba(157, 78, 221, 0.08); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 8px; padding: 12px;">
+                            <strong style="color: var(--neon-purple); display: block; margin-bottom: 4px;">🍎 No Mac /
+                                Linux:</strong>
+                            Ele se chama simplesmente <strong>Terminal</strong>.
+                        </div>
+                    </div>
+
+                    <h4 style="color: var(--neon-green); margin-top: 15px; margin-bottom: 8px; font-size: 1.0em;">Para
+                        que vamos usá-lo hoje?</h4>
+                    <ul style="color: #ccc; line-height: 1.5; font-size: 0.85em; margin: 0; padding-left: 20px;">
+                        <li>Para autorizar o nosso agente com a chave de API do OpenRouter.</li>
+                        <li>Para <strong>acordar</strong> (ativar) o cérebro do Hermes no seu sistema.</li>
                     </ul>
                 </div>
 
                 <aside class="notes">
-                    Outro pavor dos iniciantes é o Terminal, aquela famosa 'tela preta'. Para desmistificar: o terminal
-                    é apenas um chat do WhatsApp, só que em vez de falar com uma pessoa, você fala com o núcleo do seu
-                    computador. E como você fala? Escrevendo comandos. Nós vamos usar a tela preta apenas para duas
-                    coisas simples: rodar a configuração inicial e para dar o botão de 'Play' no agente. E mesmo isso,
-                    faremos com ajuda.
+                    Outro pavor clássico de quem está começando é a famosa 'tela preta'. Mas para desmistificar: o
+                    terminal é apenas um chat do WhatsApp, só que em vez de falar com uma pessoa, você fala com o núcleo
+                    do seu sistema operacional. Se você usa Windows — como a maioria de nós —, no seu computador ele vai
+                    aparecer com o nome de 'PowerShell' ou 'Prompt de Comando'. No Mac, ele se chama apenas 'Terminal'.
+                    É a mesma coisa! Nós vamos usar essa janela apenas para duas tarefas simples: salvar as credenciais
+                    e apertar o botão de 'Play' no nosso agente.
                 </aside>
-
             </section>
 
             <!-- Slide 5: Instalação com Antigravity -->
@@ -612,7 +633,7 @@
                 </aside>
             </section>
 
-    
+
 
             <!-- Slide: Conclusão da Parte 3 / Ponte para a Parte 4 -->
             <section data-transition="zoom" data-background-color="#000000">
@@ -641,7 +662,8 @@
                         </div>
                         <div
                             style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-                            ✅ <strong>Conexão Segura:</strong> Chave de API ativada no OpenRouter e guardada no arquivo <code>.env</code>.
+                            ✅ <strong>Conexão Segura:</strong> Chave de API ativada no OpenRouter e guardada no arquivo
+                            <code>.env</code>.
                         </div>
                         <div
                             style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
@@ -659,13 +681,16 @@
                             🔥 Próximo Passo (Parte 4):
                         </p>
                         <p style="margin: 3px 0 0 0; font-size: 0.88em; color: #fff; line-height: 1.3;">
-                            Conectar braços ao cérebro: Vamos integrar ferramentas de busca web e e-mail SMTP para transformar o Hermes no <strong>Agente CRONOS</strong> em piloto automático!
+                            Conectar braços ao cérebro: Vamos integrar ferramentas de busca web e e-mail SMTP para
+                            transformar o Hermes no <strong>Agente CRONOS</strong> em piloto automático!
                         </p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Parabéns a todos! Olhem o que nós acabamos de fazer: vencemos o medo da tela preta, configuramos o VS Code, conectamos nossa chave de API no OpenRouter e colocamos o motor do Hermes para rodar direto no computador de vocês.
+                    Parabéns a todos! Olhem o que nós acabamos de fazer: vencemos o medo da tela preta, configuramos o
+                    VS Code, conectamos nossa chave de API no OpenRouter e colocamos o motor do Hermes para rodar direto
+                    no computador de vocês.
                 </aside>
             </section>
 
