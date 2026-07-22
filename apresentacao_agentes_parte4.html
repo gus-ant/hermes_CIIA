@@ -63,7 +63,7 @@
             text-align: center;
             margin: 0 auto;
             width: 95%;
-            max-width: 1500px;
+            max-width: 950px;
             box-sizing: border-box;
         }
         
@@ -191,13 +191,14 @@
             <!-- Slide 3: Criando o Agente CRONOS -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Criando o <span class="accent-pink">Agente CRONOS</span></h2>
-                <p>O jeito certo (e fácil): vamos usar o <strong>Antigravity</strong> para programar o nosso agente.</p>
+                <p style="margin-bottom: 10px;">O jeito certo (e fácil): vamos usar o <strong>Antigravity</strong> para programar o nosso agente.</p>
                 
-                <div class="glass-box">
-                    <p style="text-align: left; margin-bottom: 10px; color: var(--neon-pink); font-weight: bold;">Mande esse prompt no chat do Antigravity:</p>
-                    <div class="code-block" style="border-color: var(--neon-pink); color: #fff;">
+                <div class="glass-box" style="padding: 15px 25px;">
+                    <p style="text-align: left; margin-bottom: 5px; color: var(--neon-pink); font-weight: bold; font-size: 0.9em;">Mande esse prompt no chat do Antigravity:</p>
+                    <div class="code-block" style="border-color: var(--neon-pink); color: #fff; font-size: 0.85em; padding: 10px 15px; margin: 5px 0;">
                         "Crie um agente chamado CRONOS focado em procurar notícias. Configure o ambiente dele para que ele consiga varrer sites de forma autônoma e me enviar os relatórios diários exclusivamente por e-mail."
                     </div>
+                    <img src="print_cronos_antigravity.png" alt="Criando Agente Cronos" style="border-radius: 10px; max-height: 250px; max-width: 100%; object-fit: contain; margin-top: 10px; box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);">
                 </div>
 
                 <aside class="notes">
@@ -231,12 +232,7 @@
                 <h2>Inserindo as <span class="accent-purple">Credenciais</span></h2>
                 <p>Preencha as variáveis de servidor SMTP no VS Code e salve.</p>
                 
-                <div class="print-placeholder">
-                    <!-- ADICIONAR PRINT DO VS CODE AQUI -->
-                    <svg class="icon-med" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
-                    <p>[ COLAR O PRINT DO VS CODE AQUI ]</p>
-                    <p style="font-size: 0.7em; font-weight: normal; margin-top: 10px;">Mostrar o arquivo aberto com EMAIL_ADDRESS, EMAIL_PASSWORD, EMAIL_SMTP_HOST, EMAIL_SMTP_PORT, EMAIL_HOME_ADDRESS</p>
-                </div>
+                <img src="print_cronos_vscode.png" alt="VS Code Credenciais" style="border-radius: 10px; max-height: 420px; max-width: 100%; object-fit: contain; margin: 10px auto; display: block; box-shadow: 0 10px 30px rgba(157, 78, 221, 0.3);">
 
                 <aside class="notes">
                     [INSTRUÇÃO PARA O PROFESSOR: Mostrar e explicar a tela do VS Code]
@@ -245,83 +241,55 @@
             
             </section>
 
-            <!-- Slide 6: Agendando a Rotina -->
-            <section data-transition="convex" data-background-color="#000000">
-                <h2>A Rotina Matinal <span class="accent-blue">(O Cron Job)</span></h2>
-                <p>Como dizer ao agente para trabalhar sozinho todo dia às 08:00?</p>
-                
-                <div class="glass-box" style="padding: 20px 30px;">
-                    <p style="text-align: left; font-size: 0.9em; margin-bottom: 5px;">Rode este comando no terminal para automatizar o envio:</p>
-                    <div class="code-block" style="font-size: 0.85em; color: var(--neon-blue);">
-cronos cron create "0 8 * * *" \<br>
-&nbsp;&nbsp;"Visite um site de notícias confiável, leia as manchetes do dia, crie uma newsletter amigável com as 5 mais relevantes e me envie o resumo." \<br>
-&nbsp;&nbsp;--name "Newsletter do Cronos" \<br>
-&nbsp;&nbsp;--deliver email
-                    </div>
-                </div>
-
-                <aside class="notes">
-                    Agora vem a parte mágica. Queremos que ele trabalhe dormindo. Usamos o agendamento em background (o famoso Cron Job). Esse comando assustador faz uma coisa muito simples: Os números "0 8 * * *" dizem: rode às 08h00, todos os dias. Logo abaixo está o comando claro do que ele deve fazer, seguido do nome da rotina e o formato de entrega: email. Acabou. Seu robô foi contratado para um turno fixo!
-                </aside>
-            
-            </section>
-
-            <!-- Slide 7: Dicas e Atalhos -->
+            <!-- Slide 6: O Teste de Fogo (Print 2) -->
             <section data-transition="zoom" data-background-color="#000000">
-                <h2>Dicas Úteis <span class="accent-yellow">com o CRONOS</span></h2>
+                <h2>O <span class="accent-green">Teste de Fogo</span> (Disparo Manual)</h2>
+                <p>Vamos mandar ele buscar e enviar um e-mail AGORA para ver se funciona!</p>
                 
-                <div class="flex-container">
-                    <div class="flex-item" style="border-color: rgba(249, 212, 35, 0.3);">
-                        <svg class="icon-med accent-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
-                        <h3 class="accent-yellow" style="font-size: 1.2em;">Bata um papo no Chat</h3>
-                        <p style="font-size: 0.85em;">Quer falar com ele agora? No terminal, digite apenas <code style="color:var(--neon-yellow);">cronos</code> e converse diretamente com ele.</p>
-                    </div>
-                    
-                    <div class="flex-item" style="border-color: rgba(0, 255, 204, 0.3);">
-                        <svg class="icon-med accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.64 8.38m6-.01a15.01 15.01 0 00-6.17 12.12A15.01 15.01 0 003.41 8.38M12 12v.01" /></svg>
-                        <h3 class="accent-green" style="font-size: 1.2em;">Forçar Execução</h3>
-                        <p style="font-size: 0.85em;">Não quer esperar as 08:00 para ver funcionando? Rode: <br><code style="color:var(--neon-green);">cronos cron trigger "Newsletter do Cronos"</code></p>
-                    </div>
-                </div>
+                <img src="print_cronos_trigger.png" alt="Cron Trigger" style="border-radius: 10px; max-height: 420px; max-width: 100%; object-fit: contain; margin: 10px auto; display: block; box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);">
 
                 <aside class="notes">
-                    Uma dica muito bacana do Hermes é a flexibilidade. Você agendou pra de manhã, mas e se quiser pedir uma pesquisa na hora? Basta abrir o terminal e digitar "cronos", e ele entra em modo Chat para conversar com você em tempo real. E se você quiser apenas testar para ver se o e-mail chega certinho agora mesmo, use o atalho 'cron trigger', forçando a tarefa que você acabou de criar a rodar neste exato segundo.
+                    Em vez de esperar o agente rodar sozinho, nós vamos testar ao vivo! Usando o comando 'cronos cron trigger', nós dizemos para ele: "Rode a sua tarefa agora". É a prova de que a conexão com o e-mail deu certo e que o robô está perfeitamente configurado e vivo.
                 </aside>
-            
             </section>
 
-            <!-- Slide 8: O Resultado Final (Print 2) -->
+            <!-- Slide 7: O Resultado Tangível (Print 3) -->
             <section data-transition="convex" data-background-color="#000000">
-                <h2>O Seu Primeiro <span class="accent-pink">E-mail Autônomo</span></h2>
-                <p>O que acontece quando o gatilho dispara:</p>
+                <h2>O Resultado <span class="accent-pink">Tangível</span></h2>
+                <p>O momento "Uau!" - O e-mail chegando na sua caixa de entrada.</p>
                 
-                <div class="print-placeholder">
-                    <!-- ADICIONAR PRINT DO EMAIL AQUI -->
-                    <svg class="icon-med" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                    <p>[ COLAR O PRINT DA CAIXA DE EMAIL AQUI ]</p>
-                    <p style="font-size: 0.7em; font-weight: normal; margin-top: 10px;">Mostrar a tela do e-mail recebido, formatado e enviado pelo agente de forma 100% invisível</p>
-                </div>
+                <img src="print_cronos_email.png" alt="E-mail na Caixa de Entrada" style="border-radius: 10px; max-height: 420px; max-width: 100%; object-fit: contain; margin: 10px auto; display: block; box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4);">
 
                 <aside class="notes">
-                    [INSTRUÇÃO PARA O PROFESSOR: Mostrar e celebrar o print do e-mail recebido]
-                    E aqui está! O resultado tangível. Você estava tomando café ou em outra reunião, e o Cronos entrou nos portais de notícias, filtrou o lixo, organizou os textos, entrou no servidor de e-mail e despachou isso pra você. Esse nível de automação inteligente, antigamente, custava dezenas de milhares de dólares para ser desenvolvido por engenheiros de software. Vocês acabaram de fazer na sala de casa.
+                    E aqui está! O resultado tangível. Vocês acabaram de receber um e-mail formatado, limpo, escrito 100% de forma autônoma pelo CRONOS. Ele pesquisou as notícias, usou o modelo da inteligência artificial para resumir as top 5 e entregou direto pra você.
                 </aside>
-            
+            </section>
+
+            <!-- Slide 8: Piloto Automático (Print 4) -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <h2>Colocando no <span class="accent-blue">Piloto Automático</span></h2>
+                <p>Agendando para rodar sozinho todo dia às 08:00 com o Cron Job.</p>
+                
+                <img src="print_cronos_cron.png" alt="Agendamento Cron" style="border-radius: 10px; max-height: 420px; max-width: 100%; object-fit: contain; margin: 10px auto; display: block; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);">
+
+                <aside class="notes">
+                    Agora que vimos que funciona perfeitamente, vamos deixar o agente contratado. Usamos o comando cron create com "0 8 * * *", que significa rodar todo dia às 8 da manhã. A partir de amanhã, você não precisa fazer nada, o Cronos já estará trabalhando no plano de fundo.
+                </aside>
             </section>
 
             <!-- Slide 9: Expandindo Horizontes -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Modificando o <span class="accent-blue">Cronos</span></h2>
-                <p>O poder de criar múltiplos agentes especialistas.</p>
+                <p style="margin-bottom: 12px;">O poder de criar múltiplos agentes especialistas.</p>
                 
-                <div class="glass-box" style="text-align: left; border-left: 5px solid var(--neon-blue);">
-                    <p style="font-size: 1.1em; margin-bottom: 20px;">Você não está restrito a notícias gerais. É só alterar o <strong>prompt do comando</strong>:</p>
-                    <ul style="line-height: 1.8;">
-                        <li><strong>Política:</strong> <em>"Resuma os projetos de lei focados em impostos votados ontem."</em></li>
-                        <li><strong>Mercado:</strong> <em>"Analise as manchetes de finanças e destaque a cotação das empresas X e Y."</em></li>
-                        <li><strong>Empregos:</strong> <em>"Visite portais de vagas e me avise se surgiu algo para Analista de Marketing Sênior no Linkedin."</em></li>
+                <div class="glass-box" style="text-align: left; border-left: 5px solid var(--neon-blue); padding: 20px 30px;">
+                    <p style="font-size: 1.05em; margin-bottom: 12px; color: #fff;">Você não está restrito a notícias gerais. É só alterar o <strong>prompt do comando</strong>:</p>
+                    <ul style="line-height: 1.5; margin-bottom: 15px;">
+                        <li style="margin-bottom: 8px;"><strong>Política:</strong> <em>"Resuma os projetos de lei focados em impostos votados ontem."</em></li>
+                        <li style="margin-bottom: 8px;"><strong>Mercado:</strong> <em>"Analise as manchetes de finanças e destaque a cotação das empresas X e Y."</em></li>
+                        <li style="margin-bottom: 0;"><strong>Empregos:</strong> <em>"Visite portais de vagas e me avise se surgiu algo para Analista de Marketing Sênior no Linkedin."</em></li>
                     </ul>
-                    <p style="color: var(--neon-green); text-align: center; font-weight: bold; font-size: 1.1em; margin-top: 30px;">
+                    <p style="color: var(--neon-green); text-align: center; font-weight: bold; font-size: 1.05em; margin-top: 15px; margin-bottom: 0;">
                         Imagine ter 5 agentes diferentes, todos trabalhando em background.
                     </p>
                 </div>
