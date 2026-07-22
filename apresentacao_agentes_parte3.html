@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <title>Setup do Hermes - Módulo 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --neon-green: #00ffcc;
@@ -23,29 +24,52 @@
             --dark-black: #000000;
         }
 
-        .reveal { 
-            font-family: 'Outfit', sans-serif; 
+        .reveal {
+            font-family: 'Outfit', sans-serif;
             background-color: var(--dark-black);
             color: #ffffff;
         }
-        
-        .reveal h1, .reveal h2, .reveal h3 { 
-            font-family: 'Outfit', sans-serif; 
-            text-transform: none; 
-            letter-spacing: -2px; 
-            font-weight: 900; 
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none;
+            letter-spacing: -2px;
+            font-weight: 900;
             color: #ffffff;
             margin-bottom: 20px;
         }
 
-        .reveal h1 { text-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+        .reveal h1 {
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
 
-        .accent-green { color: var(--neon-green); text-shadow: 0 0 20px rgba(0,255,204,0.6); }
-        .accent-blue { color: var(--neon-blue); text-shadow: 0 0 20px rgba(0,210,255,0.6); }
-        .accent-pink { color: var(--neon-pink); text-shadow: 0 0 20px rgba(255,0,127,0.6); }
-        .accent-purple { color: var(--neon-purple); text-shadow: 0 0 20px rgba(157,78,221,0.6); }
-        .accent-yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(249,212,35,0.6); }
-        
+        .accent-green {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+        }
+
+        .accent-blue {
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+        }
+
+        .accent-pink {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .accent-purple {
+            color: var(--neon-purple);
+            text-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
+        }
+
+        .accent-yellow {
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px rgba(249, 212, 35, 0.6);
+        }
+
         .accent-gradient {
             background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
             -webkit-background-clip: text;
@@ -59,14 +83,14 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 30px 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             text-align: center;
             margin: 0 auto;
             width: 95%;
             max-width: 900px;
             box-sizing: border-box;
         }
-        
+
         .flex-container {
             display: flex;
             justify-content: space-between;
@@ -85,19 +109,35 @@
             transition: all 0.4s;
             text-align: center;
         }
-        
+
         .flex-item:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
-        .icon-large { width: 90px; height: 90px; margin-bottom: 20px; filter: drop-shadow(0 0 10px currentColor); }
-        .icon-med { width: 50px; height: 50px; margin-bottom: 10px; filter: drop-shadow(0 0 8px currentColor); }
+        .icon-large {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
 
-        .reveal p { font-size: 1.0em; line-height: 1.6; font-weight: 300; color: #d1d1e9; }
-        
+        .icon-med {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .reveal p {
+            font-size: 1.0em;
+            line-height: 1.6;
+            font-weight: 300;
+            color: #d1d1e9;
+        }
+
         .code-block {
             background: #111;
             border-radius: 10px;
@@ -107,11 +147,11 @@
             color: var(--neon-green);
             border: 1px solid rgba(0, 255, 204, 0.3);
             display: inline-block;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             margin: 20px 0;
             text-align: left;
         }
-        
+
         .print-placeholder {
             background: rgba(255, 255, 255, 0.03);
             border: 2px dashed rgba(255, 255, 255, 0.3);
@@ -127,7 +167,7 @@
             justify-content: center;
             min-height: 250px;
         }
-        
+
         .print-placeholder:hover {
             border-color: var(--neon-blue);
             color: var(--neon-blue);
@@ -135,28 +175,38 @@
             transition: all 0.3s;
         }
 
-        .scheme-arrow { font-size: 2em; color: var(--neon-blue); align-self: center; margin: 0 10px; }
+        .scheme-arrow {
+            font-size: 2em;
+            color: var(--neon-blue);
+            align-self: center;
+            margin: 0 10px;
+        }
 
-        .reveal .controls-arrow { color: var(--neon-green) !important; }
-        .reveal .progress span { background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)) !important; }
-    
-  .slide-source {
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Outfit', sans-serif;
-    text-align: center;
-    margin-top: 35px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-  }
+        .reveal .controls-arrow {
+            color: var(--neon-green) !important;
+        }
 
-</style>
+        .reveal .progress span {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)) !important;
+        }
+
+        .slide-source {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            margin-top: 35px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
+
 <body>
     <div class="reveal">
         <div class="slides">
@@ -165,44 +215,60 @@
             <section data-transition="zoom" data-background-color="#000000">
                 <h1 style="font-size: 3.5em;">Módulo 3: O Setup</h1>
                 <h2>Instalando e Dando Vida ao <span class="accent-gradient">Seu Agente</span></h2>
-                
+
                 <aside class="notes">
-                    Chegamos ao Módulo 3. Agora que entendemos como o agente funciona na teoria, nós vamos literalmente dar vida a ele no seu computador. Muitas pessoas acham que rodar Inteligência Artificial localmente exige supercomputadores da NASA ou ser hacker de filmes, mas vou mostrar que é muito mais simples. Para essa aula, preparei um passo a passo para leigos, mostrando que a tecnologia está ao alcance de todos. E nós precisaremos apenas de dois programas iniciais.
+                    Chegamos ao Módulo 3. Agora que entendemos como o agente funciona na teoria, nós vamos literalmente
+                    dar vida a ele no seu computador. Muitas pessoas acham que rodar Inteligência Artificial localmente
+                    exige supercomputadores da NASA ou ser hacker de filmes, mas vou mostrar que é muito mais simples.
+                    Para essa aula, preparei um passo a passo para leigos, mostrando que a tecnologia está ao alcance de
+                    todos. E nós precisaremos apenas de dois programas iniciais.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 2: O Cinto de Utilidades -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>O Nosso <span class="accent-blue">Cinto de Utilidades</span></h2>
                 <p>O que precisamos baixar antes de começar?</p>
-                
+
                 <div class="flex-container">
                     <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3);">
-                        <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                        <svg class="icon-large accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        </svg>
                         <h3 class="accent-blue" style="font-size: 1.4em;">Antigravity 2.0</h3>
-                        <p style="font-size: 0.9em;">O assistente de inteligência artificial que fará a instalação e o trabalho pesado por nós.</p>
+                        <p style="font-size: 0.9em;">O assistente de inteligência artificial que fará a instalação e o
+                            trabalho pesado por nós.</p>
                     </div>
-                    
+
                     <div class="scheme-arrow">+</div>
-                    
+
                     <div class="flex-item" style="border-color: rgba(157, 78, 221, 0.3);">
-                        <svg class="icon-large accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+                        <svg class="icon-large accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                        </svg>
                         <h3 class="accent-purple" style="font-size: 1.4em;">VS Code</h3>
-                        <p style="font-size: 0.9em;">(Visual Studio Code) - O editor que usaremos para configurar as chaves do agente.</p>
+                        <p style="font-size: 0.9em;">(Visual Studio Code) - O editor que usaremos para configurar as
+                            chaves do agente.</p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Para preparar o terreno, precisamos baixar apenas duas ferramentas. A primeira é o Antigravity 2.0, um assistente autônomo que age como um desenvolvedor particular, fazendo o trabalho pesado por você. A segunda é o Visual Studio Code, ou VS Code.
+                    Para preparar o terreno, precisamos baixar apenas duas ferramentas. A primeira é o Antigravity 2.0,
+                    um assistente autônomo que age como um desenvolvedor particular, fazendo o trabalho pesado por você.
+                    A segunda é o Visual Studio Code, ou VS Code.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 3: O Que é o VS Code? -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Por que o <span class="accent-purple">VS Code</span>?</h2>
-                
+
                 <div class="glass-box" style="border-left: 6px solid var(--neon-purple); text-align: left;">
                     <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 20px;">
                         "Mas eu não sei programar! Pra que um editor de código?"
@@ -210,29 +276,40 @@
                     <ul style="line-height: 1.8; color: #d1d1e9;">
                         <li>Na prática, o VS Code é apenas um <strong>Bloco de Notas com superpoderes</strong>.</li>
                         <li>Nós vamos usá-lo apenas para abrir um arquivo seguro chamado <code>.env</code>.</li>
-                        <li>É lá que nós colaremos a nossa Chave de API, para que fique escondida e segura no seu computador.</li>
+                        <li>É lá que nós colaremos a nossa Chave de API, para que fique escondida e segura no seu
+                            computador.</li>
                     </ul>
                 </div>
 
                 <aside class="notes">
-                    Muitas pessoas olham pro VS Code e entram em pânico achando que terão que programar em Matrix. Mas na verdade, para leigos, o VS Code funciona como um Bloco de Notas mais chique e seguro. Nós baixamos ele apenas porque o bloco de notas normal do Windows as vezes estraga arquivos de configuração. Nós vamos abrí-lo, clicar no arquivo .env (que é um cofre do agente), colar um texto lá e fechar. Simples assim.
+                    Muitas pessoas olham pro VS Code e entram em pânico achando que terão que programar em Matrix. Mas
+                    na verdade, para leigos, o VS Code funciona como um Bloco de Notas mais chique e seguro. Nós
+                    baixamos ele apenas porque o bloco de notas normal do Windows as vezes estraga arquivos de
+                    configuração. Nós vamos abrí-lo, clicar no arquivo .env (que é um cofre do agente), colar um texto
+                    lá e fechar. Simples assim.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 4: O Que é o Terminal? -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Perdendo o Medo da <span class="accent-green">Tela Preta</span></h2>
-                
+
                 <div class="glass-box" style="text-align: left; padding: 30px;">
                     <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <svg class="icon-med accent-green" style="margin-bottom:0; margin-right: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        <svg class="icon-med accent-green" style="margin-bottom:0; margin-right: 20px;"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                         <h3 class="accent-green" style="margin:0;">O que é um Terminal?</h3>
                     </div>
                     <p style="margin-bottom: 20px;">
-                        O terminal nada mais é do que um <strong>chat diretamente com o seu computador</strong>. Em vez de usar o mouse para clicar em pastas, você "fala" com ele digitando ordens.
+                        O terminal nada mais é do que um <strong>chat diretamente com o seu computador</strong>. Em vez
+                        de usar o mouse para clicar em pastas, você "fala" com ele digitando ordens.
                     </p>
-                    <h4 style="color: var(--neon-blue); margin-top: 30px; font-size: 1.1em;">Para que vamos usá-lo hoje?</h4>
+                    <h4 style="color: var(--neon-blue); margin-top: 30px; font-size: 1.1em;">Para que vamos usá-lo hoje?
+                    </h4>
                     <ul style="color: #ccc; line-height: 1.6;">
                         <li>Para configurar a nossa API do OpenRouter.</li>
                         <li>Para <strong>acordar</strong> (ativar) o nosso agente Cronos de Oportunidades.</li>
@@ -240,169 +317,239 @@
                 </div>
 
                 <aside class="notes">
-                    Outro pavor dos iniciantes é o Terminal, aquela famosa 'tela preta'. Para desmistificar: o terminal é apenas um chat do WhatsApp, só que em vez de falar com uma pessoa, você fala com o núcleo do seu computador. E como você fala? Escrevendo comandos. Nós vamos usar a tela preta apenas para duas coisas simples: rodar a configuração inicial e para dar o botão de 'Play' no agente. E mesmo isso, faremos com ajuda.
+                    Outro pavor dos iniciantes é o Terminal, aquela famosa 'tela preta'. Para desmistificar: o terminal
+                    é apenas um chat do WhatsApp, só que em vez de falar com uma pessoa, você fala com o núcleo do seu
+                    computador. E como você fala? Escrevendo comandos. Nós vamos usar a tela preta apenas para duas
+                    coisas simples: rodar a configuração inicial e para dar o botão de 'Play' no agente. E mesmo isso,
+                    faremos com ajuda.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 5: Instalação com Antigravity -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>O Primeiro Passo: <span class="accent-blue">Instalação Facilitada</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
                         <div class="glass-box" style="padding: 18px 24px; text-align: left;">
-                            <p style="margin-bottom: 15px; color: #fff; font-size: 1.05em;">Deixe o <strong>Antigravity 2.0</strong> instalar o Hermes para você com um simples pedido:</p>
-                            
-                            <div class="code-block" style="border-color: var(--neon-blue); color: #fff; font-size: 0.85em; padding: 12px 15px; margin: 15px 0;">
+                            <p style="margin-bottom: 15px; color: #fff; font-size: 1.05em;">Deixe o <strong>Antigravity
+                                    2.0</strong> instalar o Hermes para você com um simples pedido:</p>
+
+                            <div class="code-block"
+                                style="border-color: var(--neon-blue); color: #fff; font-size: 0.85em; padding: 12px 15px; margin: 15px 0;">
                                 "Instale o Hermes Agent no meu computador e configure o ambiente para mim."
                             </div>
-                            
+
                             <p style="font-size: 0.85em; margin-top: 15px; color: #a5a5c5; line-height: 1.5;">
-                                (O Antigravity cria as pastas, baixa o orquestrador e valida a instalação de forma 100% autônoma, sem você digitar nenhum código complexo)
+                                (O Antigravity cria as pastas, baixa o orquestrador e valida a instalação de forma 100%
+                                autônoma, sem você digitar nenhum código complexo)
                             </p>
                         </div>
                     </div>
                     <div style="flex: 1.2; text-align: center;">
-                        <img src="print_antigravity.png" alt="Antigravity trabalhando" style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3); display: block; margin: 0 auto;">
+                        <img src="print_antigravity.png" alt="Antigravity trabalhando"
+                            style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3); display: block; margin: 0 auto;">
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Para instalar o agente de verdade, você não precisa decorar um passo a passo enorme. Lembra do Antigravity 2.0? Nós vamos abrir o chat com ele e pedir em português: 'Instale o Hermes na minha máquina'. Ele vai assumir o controle (com a sua permissão) e fazer o download, instalar arquivos nas pastas corretas e configurar tudo.
+                    Para instalar o agente de verdade, você não precisa decorar um passo a passo enorme. Lembra do
+                    Antigravity 2.0? Nós vamos abrir o chat com ele e pedir em português: 'Instale o Hermes na minha
+                    máquina'. Ele vai assumir o controle (com a sua permissão) e fazer o download, instalar arquivos nas
+                    pastas corretas e configurar tudo.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 6: Preview das Ferramentas -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Como o Antigravity <span class="accent-purple">Trabalha?</span></h2>
                 <p style="margin-bottom: 30px;">O que a IA está fazendo nos bastidores da sua máquina:</p>
-                
+
                 <div class="flex-container">
                     <div class="flex-item" style="border-color: rgba(157, 78, 221, 0.3); padding: 20px;">
-                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18.75V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25v13.5A2.25 2.25 0 005.25 21z" /></svg>
+                        <svg class="icon-med accent-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18.75V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25v13.5A2.25 2.25 0 005.25 21z" />
+                        </svg>
                         <h3 class="accent-purple" style="font-size: 1.1em;">Terminal</h3>
-                        <p style="font-size: 0.8em;">O agente executa comandos no seu terminal para baixar dependências e criar pastas.</p>
+                        <p style="font-size: 0.8em;">O agente executa comandos no seu terminal para baixar dependências
+                            e criar pastas.</p>
                     </div>
-                    
+
                     <div class="flex-item" style="border-color: rgba(0, 210, 255, 0.3); padding: 20px;">
-                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+                        <svg class="icon-med accent-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                        </svg>
                         <h3 class="accent-blue" style="font-size: 1.1em;">Leitura de Arquivos</h3>
-                        <p style="font-size: 0.8em;">Ele analisa o seu computador para saber onde organizar o sistema.</p>
+                        <p style="font-size: 0.8em;">Ele analisa o seu computador para saber onde organizar o sistema.
+                        </p>
                     </div>
-                    
+
                     <div class="flex-item" style="border-color: rgba(255, 0, 127, 0.3); padding: 20px;">
-                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
+                        <svg class="icon-med accent-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                        </svg>
                         <h3 class="accent-pink" style="font-size: 1.1em;">Edição de Código</h3>
-                        <p style="font-size: 0.8em;">O próprio Antigravity edita configurações iniciais para que tudo fique compatível.</p>
+                        <p style="font-size: 0.8em;">O próprio Antigravity edita configurações iniciais para que tudo
+                            fique compatível.</p>
                     </div>
                 </div>
 
                 <aside class="notes">
-                    E enquanto o Antigravity trabalha, o que ele está fazendo exatamente? Ele está usando as próprias ferramentas que descrevemos na aula anterior. Ele usa a ferramenta Terminal para clonar repositórios, a de Leitura para ver se a pasta já existe, e a de Edição para preparar os arquivos-base. É uma IA configurando outra IA.
+                    E enquanto o Antigravity trabalha, o que ele está fazendo exatamente? Ele está usando as próprias
+                    ferramentas que descrevemos na aula anterior. Ele usa a ferramenta Terminal para clonar
+                    repositórios, a de Leitura para ver se a pasta já existe, e a de Edição para preparar os
+                    arquivos-base. É uma IA configurando outra IA.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 7: API Key Parte 1 (Site) -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Passo 1: A Chave no <span class="accent-pink">OpenRouter</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
-                        <div class="glass-box" style="border-top: 5px solid var(--neon-pink); padding: 18px 24px; text-align: left;">
-                            <p style="font-size: 1.1em; font-weight: 600; margin-bottom: 12px; color: #fff;">A Alma do Seu Agente</p>
-                            <p style="margin-bottom: 20px; font-size: 0.95em;">A chave de API é o "passaporte" que conecta o Hermes aos super cérebros como ChatGPT, Llama 3 ou Claude.</p>
-                            
-                            <ol style="font-size: 0.95em; color: #ddd; line-height: 1.7; padding-left: 20px; margin: 0;">
-                                <li style="margin-bottom: 8px;">Acesse o site <strong class="accent-pink">openrouter.ai</strong></li>
+                        <div class="glass-box"
+                            style="border-top: 5px solid var(--neon-pink); padding: 18px 24px; text-align: left;">
+                            <p style="font-size: 1.1em; font-weight: 600; margin-bottom: 12px; color: #fff;">A Alma do
+                                Seu Agente</p>
+                            <p style="margin-bottom: 20px; font-size: 0.95em;">A chave de API é o "passaporte" que
+                                conecta o Hermes aos super cérebros como ChatGPT, Llama 3 ou Claude.</p>
+
+                            <ol
+                                style="font-size: 0.95em; color: #ddd; line-height: 1.7; padding-left: 20px; margin: 0;">
+                                <li style="margin-bottom: 8px;">Acesse o site <strong
+                                        class="accent-pink">openrouter.ai</strong></li>
                                 <li style="margin-bottom: 8px;">Crie uma conta gratuita</li>
-                                <li style="margin-bottom: 8px;">Vá em <strong>"Keys"</strong> e clique em <em>Create Key</em></li>
-                                <li style="margin-bottom: 0;">Copie o código gerado (ex: <code>sk-or-v1-xxxx...</code>)</li>
+                                <li style="margin-bottom: 8px;">Vá em <strong>"Keys"</strong> e clique em <em>Create
+                                        Key</em></li>
+                                <li style="margin-bottom: 0;">Copie o código gerado (ex: <code>sk-or-v1-xxxx...</code>)
+                                </li>
                             </ol>
                         </div>
                     </div>
                     <div style="flex: 1.1; text-align: center;">
-                        <img src="print_openrouter.png" alt="OpenRouter API Key" style="border-radius: 12px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);">
+                        <img src="print_openrouter.png" alt="OpenRouter API Key"
+                            style="border-radius: 12px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);">
                     </div>
                 </div>
 
                 <aside class="notes">
-                    Assim que a instalação termina, o agente existe, mas é como um cérebro desligado. A inteligência vem da Chave de API, que conecta a estrutura local à capacidade de raciocínio de ponta. Acessem openrouter.ai, criem a chave e deixem no CTRL+C. O OpenRouter é excelente porque nos dá acesso a dezenas de modelos de IA num único lugar, pagando apenas centavos por uso.
+                    Assim que a instalação termina, o agente existe, mas é como um cérebro desligado. A inteligência vem
+                    da Chave de API, que conecta a estrutura local à capacidade de raciocínio de ponta. Acessem
+                    openrouter.ai, criem a chave e deixem no CTRL+C. O OpenRouter é excelente porque nos dá acesso a
+                    dezenas de modelos de IA num único lugar, pagando apenas centavos por uso.
                 </aside>
-            
+
             </section>
 
             <!-- Slide 8: O Terminal em Ação (Print 1) -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Passo 2: Configurando no <span class="accent-yellow">Terminal</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
-                        <div class="glass-box" style="border-left: 5px solid var(--neon-yellow); padding: 18px 24px; text-align: left;">
-                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 15px;">Assistente de Configuração</p>
-                            <p style="margin-bottom: 15px; font-size: 0.95em;">No terminal, digite o comando de setup guiado:</p>
-                            <div class="code-block" style="border-color: var(--neon-yellow); color: var(--neon-yellow); font-size: 0.9em; padding: 10px 15px; margin: 10px 0;">
+                        <div class="glass-box"
+                            style="border-left: 5px solid var(--neon-yellow); padding: 18px 24px; text-align: left;">
+                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 15px;">Assistente
+                                de Configuração</p>
+                            <p style="margin-bottom: 15px; font-size: 0.95em;">No terminal, digite o comando de setup
+                                guiado:</p>
+                            <div class="code-block"
+                                style="border-color: var(--neon-yellow); color: var(--neon-yellow); font-size: 0.9em; padding: 10px 15px; margin: 10px 0;">
                                 hermes configure
                             </div>
-                            <ul style="font-size: 0.9em; color: #ccc; line-height: 1.6; padding-left: 20px; margin-top: 15px;">
-                                <li style="margin-bottom: 8px;"><strong>Provider:</strong> Escolha <em>OpenRouter</em></li>
-                                <li style="margin-bottom: 8px;"><strong>Model:</strong> Escolha <em>claude-3.5-sonnet</em></li>
+                            <ul
+                                style="font-size: 0.9em; color: #ccc; line-height: 1.6; padding-left: 20px; margin-top: 15px;">
+                                <li style="margin-bottom: 8px;"><strong>Provider:</strong> Escolha <em>OpenRouter</em>
+                                </li>
+                                <li style="margin-bottom: 8px;"><strong>Model:</strong> Escolha
+                                    <em>claude-3.5-sonnet</em>
+                                </li>
                                 <li style="margin-bottom: 0;"><strong>API Key:</strong> Cole sua chave copiada</li>
                             </ul>
                         </div>
                     </div>
                     <div style="flex: 1.2; text-align: center;">
-                        <img src="print_terminal_config.png" alt="Hermes Configure Terminal" style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(249, 212, 35, 0.3);">
+                        <img src="print_terminal_config.png" alt="Hermes Configure Terminal"
+                            style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(249, 212, 35, 0.3);">
                     </div>
                 </div>
 
                 <aside class="notes">
                     [INSTRUÇÃO PARA O PROFESSOR: Mostrar o slide e comentar a imagem do print]
-                    Como vocês podem ver no print da tela preta, quando digitamos 'hermes configure', o programa nos guia. Ele pergunta: Qual provedor? Escolhemos OpenRouter. Qual modelo? Escolhemos Llama ou Claude. Colar sua chave? Colamos a chave e pronto, o terminal nos diz que a configuração foi salva!
+                    Como vocês podem ver no print da tela preta, quando digitamos 'hermes configure', o programa nos
+                    guia. Ele pergunta: Qual provedor? Escolhemos OpenRouter. Qual modelo? Escolhemos Llama ou Claude.
+                    Colar sua chave? Colamos a chave e pronto, o terminal nos diz que a configuração foi salva!
                 </aside>
-            
+
             </section>
 
             <!-- Slide 9: Editando o Arquivo (Print 2) -->
             <section data-transition="convex" data-background-color="#000000">
                 <h2>Passo 3: Colando a Chave no <span class="accent-purple">VS Code</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
-                        <div class="glass-box" style="border-left: 5px solid var(--neon-purple); padding: 18px 24px; text-align: left;">
-                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Validando no VS Code</p>
-                            <p style="margin-bottom: 15px; font-size: 0.95em;">Caso prefira conferir manualmente, abra a pasta do projeto no VS Code e acesse o arquivo <code>.env</code>.</p>
+                        <div class="glass-box"
+                            style="border-left: 5px solid var(--neon-purple); padding: 18px 24px; text-align: left;">
+                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Validando
+                                no VS Code</p>
+                            <p style="margin-bottom: 15px; font-size: 0.95em;">Caso prefira conferir manualmente, abra a
+                                pasta do projeto no VS Code e acesse o arquivo <code>.env</code>.</p>
                             <ul style="font-size: 0.9em; color: #ccc; line-height: 1.6; padding-left: 20px; margin: 0;">
-                                <li style="margin-bottom: 8px;">Confera se a chave está em <code>OPENROUTER_API_KEY</code>.</li>
-                                <li style="margin-bottom: 8px;">Este arquivo é 100% local e seguro no seu computador.</li>
+                                <li style="margin-bottom: 8px;">Confera se a chave está em
+                                    <code>OPENROUTER_API_KEY</code>.
+                                </li>
+                                <li style="margin-bottom: 8px;">Este arquivo é 100% local e seguro no seu computador.
+                                </li>
                                 <li style="margin-bottom: 0;">O cérebro da IA estará fisicamente conectado!</li>
                             </ul>
                         </div>
                     </div>
                     <div style="flex: 1.2; text-align: center;">
-                        <img src="print_vscode_env.png" alt="VS Code Env" style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(157, 78, 221, 0.3);">
+                        <img src="print_vscode_env.png" alt="VS Code Env"
+                            style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(157, 78, 221, 0.3);">
                     </div>
                 </div>
 
                 <aside class="notes">
                     [INSTRUÇÃO PARA O PROFESSOR: Mostrar o slide e comentar a imagem do VS Code]
-                    Para quem preferir, ou para quem precisar validar, é aqui que o Visual Studio Code entra. Olhem para este print: nós abrimos a pasta do projeto no VS Code, clicamos no arquivo .env e vemos nossa chave lá dentro. Ninguém de fora tem acesso a esse arquivo, ele é 100% local. O cérebro está fisicamente conectado à estrutura!
+                    Para quem preferir, ou para quem precisar validar, é aqui que o Visual Studio Code entra. Olhem para
+                    este print: nós abrimos a pasta do projeto no VS Code, clicamos no arquivo .env e vemos nossa chave
+                    lá dentro. Ninguém de fora tem acesso a esse arquivo, ele é 100% local. O cérebro está fisicamente
+                    conectado à estrutura!
                 </aside>
-            
+
             </section>
 
             <!-- Slide 10: O Despertar (Print 3) -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>Passo 4: O Despertar do <span class="accent-green">Hermes</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 15px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 15px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
-                        <div class="glass-box" style="border-left: 5px solid var(--neon-green); padding: 18px 24px; text-align: left;">
-                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Ligando o Agente</p>
-                            <p style="margin-bottom: 15px; font-size: 0.95em;">No terminal, digite o comando para iniciar a execução:</p>
-                            <div class="code-block" style="border-color: var(--neon-green); color: var(--neon-green); font-size: 0.9em; padding: 10px 15px; margin: 10px 0;">
+                        <div class="glass-box"
+                            style="border-left: 5px solid var(--neon-green); padding: 18px 24px; text-align: left;">
+                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Ligando o
+                                Agente</p>
+                            <p style="margin-bottom: 15px; font-size: 0.95em;">No terminal, digite o comando para
+                                iniciar a execução:</p>
+                            <div class="code-block"
+                                style="border-color: var(--neon-green); color: var(--neon-green); font-size: 0.9em; padding: 10px 15px; margin: 10px 0;">
                                 hermes start
                             </div>
                             <p style="font-size: 0.88em; color: #a5a5c5; line-height: 1.5; margin-top: 15px;">
@@ -411,31 +558,40 @@
                         </div>
                     </div>
                     <div style="flex: 1.2; text-align: center;">
-                        <img src="print_terminal_start.png" alt="Hermes Start" style="border-radius: 10px; max-height: 400px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);">
+                        <img src="print_terminal_start.png" alt="Hermes Start"
+                            style="border-radius: 10px; max-height: 400px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);">
                     </div>
                 </div>
-                
+
                 <h3 class="accent-gradient" style="font-size: 1.6em; margin-top: 20px;">
                     "Vamos fazer uma pergunta para o nosso Hermes?"
                 </h3>
 
                 <aside class="notes">
-                    E, finalmente, nós voltamos para o terminal e rodamos 'hermes start'. O que vemos agora? [Mostrar Print] Serviços iniciando... Conexão com OpenRouter OK. Memória OK. Hermes Gateway Online. Ele está vivo, rodando silenciosamente no fundo do nosso computador. E para provar que funciona, nós vamos agora, ao vivo, testar essa comunicação: "Vamos fazer uma pergunta para o nosso Hermes?".
+                    E, finalmente, nós voltamos para o terminal e rodamos 'hermes start'. O que vemos agora? [Mostrar
+                    Print] Serviços iniciando... Conexão com OpenRouter OK. Memória OK. Hermes Gateway Online. Ele está
+                    vivo, rodando silenciosamente no fundo do nosso computador. E para provar que funciona, nós vamos
+                    agora, ao vivo, testar essa comunicação: "Vamos fazer uma pergunta para o nosso Hermes?".
                 </aside>
-            
+
                 <div class="slide-source">Fonte: Documentação Oficial do Hermes</div>
             </section>
 
             <!-- Slide 11: Bônus - Interação Real -->
             <section data-transition="zoom" data-background-color="#000000">
                 <h2>O Hermes na <span class="accent-gradient">Prática</span></h2>
-                
-                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
+
+                <div
+                    style="display: flex; gap: 30px; align-items: center; justify-content: center; width: 100%; max-width: 1320px; margin: 20px auto 0 auto;">
                     <div style="flex: 1.4; text-align: left;">
-                        <div class="glass-box" style="border-left: 5px solid var(--neon-blue); padding: 18px 24px; text-align: left;">
-                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Interação Direta</p>
-                            <p style="margin-bottom: 15px; font-size: 0.95em;">Envie um prompt direto pelo terminal para ver o raciocínio em tempo real:</p>
-                            <div class="code-block" style="border-color: var(--neon-blue); color: #fff; font-size: 0.8em; padding: 10px 12px; margin: 10px 0;">
+                        <div class="glass-box"
+                            style="border-left: 5px solid var(--neon-blue); padding: 18px 24px; text-align: left;">
+                            <p style="font-size: 1.1em; font-weight: 600; color: #fff; margin-bottom: 12px;">Interação
+                                Direta</p>
+                            <p style="margin-bottom: 15px; font-size: 0.95em;">Envie um prompt direto pelo terminal para
+                                ver o raciocínio em tempo real:</p>
+                            <div class="code-block"
+                                style="border-color: var(--neon-blue); color: #fff; font-size: 0.8em; padding: 10px 12px; margin: 10px 0;">
                                 hermes chat "Olá Hermes! Quem é você?"
                             </div>
                             <p style="font-size: 0.88em; color: #a5a5c5; line-height: 1.5; margin-top: 15px;">
@@ -444,15 +600,74 @@
                         </div>
                     </div>
                     <div style="flex: 1.2; text-align: center;">
-                        <img src="print_terminal_chat.png" alt="Hermes Chat" style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);">
+                        <img src="print_terminal_chat.png" alt="Hermes Chat"
+                            style="border-radius: 10px; max-height: 440px; max-width: 100%; object-fit: contain; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);">
                     </div>
                 </div>
-                
+
                 <aside class="notes">
-                    Para fechar com chave de ouro: aqui está o nosso agente rodando e respondendo ativamente. Quando eu pergunto 'Quem é você e qual a sua função?', ele responde perfeitamente, assumindo o papel que configuramos no System Prompt dele.
+                    Para fechar com chave de ouro: aqui está o nosso agente rodando e respondendo ativamente. Quando eu
+                    pergunto 'Quem é você e qual a sua função?', ele responde perfeitamente, assumindo o papel que
+                    configuramos no System Prompt dele.
                 </aside>
             </section>
 
+    
+
+            <!-- Slide: Conclusão da Parte 3 / Ponte para a Parte 4 -->
+            <section data-transition="zoom" data-background-color="#000000">
+                <div style="margin-bottom: 15px;">
+                    <span class="badge"
+                        style="background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); color: #34d399; padding: 6px 16px; border-radius: 20px; font-size: 0.8em; font-weight: bold; text-transform: uppercase;">
+                        Conquista Desbloqueada 🚀
+                    </span>
+                </div>
+
+                <h1 style="font-size: 2.5em; line-height: 1.1; margin-bottom: 15px;">
+                    O Cérebro do Hermes <br><span class="accent-gradient">Já Está Vivo!</span>
+                </h1>
+
+                <div class="glass-box"
+                    style="padding: 20px 30px; text-align: left; max-width: 1250px; width: 100%; margin: 0 auto; border-left: 5px solid var(--neon-green);">
+                    <p style="font-size: 1.0em; color: #fff; font-weight: bold; margin-bottom: 12px;">
+                        O que você conquistou nesta etapa:
+                    </p>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9em; color: #d1d1e9; margin-bottom: 15px;">
+                        <div
+                            style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                            ✅ <strong>Ambiente Configurado:</strong> VS Code e Antigravity prontos no seu computador.
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                            ✅ <strong>Conexão Segura:</strong> Chave de API ativada no OpenRouter e guardada no arquivo <code>.env</code>.
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                            ✅ <strong>Barreira Vencida:</strong> Perdeu o medo do Terminal e executou comandos reais.
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                            ✅ <strong>Motor Rodando:</strong> O Hermes Gateway está ativado e respondendo localmente.
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(157, 78, 221, 0.15); border: 1px solid rgba(157, 78, 221, 0.4); border-radius: 10px; padding: 12px 20px; text-align: center;">
+                        <p style="margin: 0; font-weight: bold; font-size: 0.95em; color: var(--neon-purple);">
+                            🔥 Próximo Passo (Parte 4):
+                        </p>
+                        <p style="margin: 3px 0 0 0; font-size: 0.88em; color: #fff; line-height: 1.3;">
+                            Conectar braços ao cérebro: Vamos integrar ferramentas de busca web e e-mail SMTP para transformar o Hermes no <strong>Agente CRONOS</strong> em piloto automático!
+                        </p>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Parabéns a todos! Olhem o que nós acabamos de fazer: vencemos o medo da tela preta, configuramos o VS Code, conectamos nossa chave de API no OpenRouter e colocamos o motor do Hermes para rodar direto no computador de vocês.
+                </aside>
+            </section>
 
         </div>
     </div>
@@ -465,14 +680,15 @@
             width: 1400,
             height: 700,
             margin: 0.04,
-            transition: 'zoom', 
+            transition: 'zoom',
             backgroundTransition: 'convex',
             controls: true,
             progress: true,
             center: true, // Centralizado perfeitamente
             mouseWheel: false,
-            showNotes: false 
+            showNotes: false
         });
     </script>
 </body>
+
 </html>
